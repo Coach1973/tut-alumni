@@ -419,6 +419,16 @@
       font-size: 2.4rem;
       font-weight: 900;
     }
+    .photo-source {
+      display: block;
+      font-size: 0.68rem;
+      margin: -8px auto 10px;
+      color: var(--text-muted);
+    }
+    .photo-source.ai-generated {
+      color: #B8860B;
+      font-weight: 600;
+    }
     .alumni-name {
       font-size: 1.05rem;
       font-weight: 700;
@@ -542,10 +552,33 @@
       border-color: var(--purple);
       background: var(--bg-light);
     }
+    /* 原生radio的勾選外觀在部分瀏覽器/系統下不會顯示明顯的勾勾，教練反映「框框看起來能勾但勾不出東西」
+       改成自畫方框+勾號，靠.selected class(JS已經在切換)控制顯示，不依賴瀏覽器原生樣式 */
     .chapter-pill input {
-      width: auto;
-      margin: 0;
-      accent-color: var(--purple);
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .chapter-pill .check-box {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border: 1.5px solid #D4B8E0;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: #fff;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .chapter-pill.selected .check-box {
+      border-color: var(--purple);
+      background: var(--purple);
+    }
+    .chapter-pill.selected .check-box::after {
+      content: '✓';
     }
     .chapter-pill.selected {
       border-color: var(--purple);
@@ -782,6 +815,7 @@
         <!-- 校友卡 1 -->
         <div class="alumni-card">
           <img class="alumni-portrait" src="https://a.lovart.ai/artifacts/agent/LIEDj3J7ibClet3i.png" alt="王瞳（吳姍耘）形象照">
+          <span class="photo-source ai-generated">⚠️AI生成示意圖，非本人照片</span>
           <div class="alumni-name">王瞳（吳姍耘）</div>
           <span class="alumni-tag">演藝圈 · 演員</span>
           <p class="alumni-desc">橫跨戲劇與綜藝的知名演員，螢光幕前的熟面孔。</p>
@@ -789,7 +823,8 @@
 
         <!-- 校友卡 2 -->
         <div class="alumni-card">
-          <img class="alumni-portrait" src="https://a.lovart.ai/artifacts/agent/MAPkIOTaguEXTKZK.png" alt="賴琳恩形象照">
+          <img class="alumni-portrait" src="https://upload.wikimedia.org/wikipedia/commons/9/94/Lene_Lai.jpg" alt="賴琳恩形象照">
+          <span class="photo-source">圖片來源：維基百科</span>
           <div class="alumni-name">賴琳恩</div>
           <span class="alumni-tag">演藝圈 · 演員/名模</span>
           <p class="alumni-desc">從選美舞台走向戲劇與時尚圈的亮麗學姊。</p>
@@ -798,6 +833,7 @@
         <!-- 校友卡 3 -->
         <div class="alumni-card">
           <img class="alumni-portrait" src="https://a.lovart.ai/artifacts/agent/H8JzQHgJZTFb2O6g.png" alt="謝雅琳（阿嬌）形象照">
+          <span class="photo-source ai-generated">⚠️AI生成示意圖，非本人照片</span>
           <div class="alumni-name">謝雅琳（阿嬌）</div>
           <span class="alumni-tag">演藝圈 · 藝人/主持人</span>
           <p class="alumni-desc">親切自然、深受觀眾喜愛的節目主持人。</p>
@@ -805,7 +841,8 @@
 
         <!-- 校友卡 4 -->
         <div class="alumni-card">
-          <img class="alumni-portrait" src="https://a.lovart.ai/artifacts/agent/qTVugfh2rNGVbGj2.png" alt="蘇治芬形象照">
+          <img class="alumni-portrait" src="https://upload.wikimedia.org/wikipedia/commons/8/8d/立法委員蘇治芬.jpg" alt="蘇治芬形象照">
+          <span class="photo-source">圖片來源：維基百科</span>
           <div class="alumni-name">蘇治芬</div>
           <span class="alumni-tag">公共事務 · 前雲林縣長</span>
           <p class="alumni-desc">投身公共事務、長期關懷地方發展的學姊。</p>
@@ -814,6 +851,7 @@
         <!-- 校友卡 5 -->
         <div class="alumni-card">
           <img class="alumni-portrait" src="https://a.lovart.ai/artifacts/agent/2zmGnZellsH6aU0s.png" alt="張芳宇形象照">
+          <span class="photo-source ai-generated">⚠️AI生成示意圖，非本人照片</span>
           <div class="alumni-name">張芳宇</div>
           <span class="alumni-tag">藝術教育 · 大學藝術學院院長</span>
           <p class="alumni-desc">73級音樂科畢業。聲樂家、國立清華大學教授暨藝術學院院長，持續投入演出、教學與學術。</p>
@@ -822,6 +860,7 @@
         <!-- 校友卡 6 -->
         <div class="alumni-card">
           <img class="alumni-portrait" src="https://a.lovart.ai/artifacts/agent/8qujsg8Cea7h4Wh7.png" alt="陳慧姝形象照">
+          <span class="photo-source ai-generated">⚠️AI生成示意圖，非本人照片</span>
           <div class="alumni-name">陳慧姝</div>
           <span class="alumni-tag">文創經營 · 台南林百貨經營團隊</span>
           <p class="alumni-desc">110級國際企業經營研究所畢業。企業經營者，參與 FOCUS、林百貨等品牌經營與文化推廣。</p>
@@ -830,6 +869,7 @@
         <!-- 校友卡 7 -->
         <div class="alumni-card">
           <img class="alumni-portrait" src="https://a.lovart.ai/artifacts/agent/mKdPgTgdQz5YRiK1.png" alt="劉韋宗形象照">
+          <span class="photo-source ai-generated">⚠️AI生成示意圖，非本人照片</span>
           <div class="alumni-name">劉韋宗</div>
           <span class="alumni-tag">餐飲廚藝 · WCC 廚藝大賽特級金牌</span>
           <p class="alumni-desc">在國際廚藝競賽奪下特級金牌的主廚。</p>
@@ -838,6 +878,7 @@
         <!-- 校友卡 8 -->
         <div class="alumni-card">
           <img class="alumni-portrait" src="https://a.lovart.ai/artifacts/agent/CpBgzDMVZN8iEKiD.png" alt="路之·瑪迪霖形象照">
+          <span class="photo-source ai-generated">⚠️AI生成示意圖，非本人照片</span>
           <div class="alumni-name">路之·瑪迪霖</div>
           <span class="alumni-tag">多元領域 · 第七屆傑出校友</span>
           <p class="alumni-desc">舞蹈系校友、蒂摩爾古薪舞集創辦人，將台灣文化與部落藝術帶上國際舞台。</p>
@@ -920,11 +961,11 @@
           <div class="form-group">
             <label>選擇校友會分會<span class="required-star">＊</span></label>
             <div class="chapter-options">
-              <label class="chapter-pill"><input type="radio" name="chapter" value="台南" required="">我要加入台南校友會</label>
-              <label class="chapter-pill"><input type="radio" name="chapter" value="台中">我要加入台中校友會</label>
-              <label class="chapter-pill"><input type="radio" name="chapter" value="高雄">我要加入高雄校友會</label>
-              <label class="chapter-pill"><input type="radio" name="chapter" value="台北">我要加入台北校友會</label>
-              <label class="chapter-pill"><input type="radio" name="chapter" value="嘉義">我要加入嘉義校友會</label>
+              <label class="chapter-pill"><input type="radio" name="chapter" value="台南" required=""><span class="check-box"></span><span class="pill-text">我要加入台南校友會</span></label>
+              <label class="chapter-pill"><input type="radio" name="chapter" value="台中"><span class="check-box"></span><span class="pill-text">我要加入台中校友會</span></label>
+              <label class="chapter-pill"><input type="radio" name="chapter" value="高雄"><span class="check-box"></span><span class="pill-text">我要加入高雄校友會</span></label>
+              <label class="chapter-pill"><input type="radio" name="chapter" value="台北"><span class="check-box"></span><span class="pill-text">我要加入台北校友會</span></label>
+              <label class="chapter-pill"><input type="radio" name="chapter" value="嘉義"><span class="check-box"></span><span class="pill-text">我要加入嘉義校友會</span></label>
             </div>
             <p class="error-msg" id="chapter-error">請選擇一個校友會分會</p>
           </div>
