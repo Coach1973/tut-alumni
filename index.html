@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="台南應用科技大學校友會召集令｜找回同學、連結校友，讓南應人的故事繼續發光。">
+  <title>台南應用科技大學校友會 召集令</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FFFFFF;
+      --bg-light: #F6F2F8;
+      --purple: #8B5A96;
+      --purple-dark: #3D2B47;
+      --purple-light: #5B3A6B;
+      --teal: #0E7A8A;
+      --orange: #E65C00;
+      --orange-hover: #C94E00;
+      --text: #333333;
+      --text-muted: #6B6B6B;
+      --topbar-bg: #EDE4F3;
+      --card-border: #D4B8E0;
+      --max-w: 1120px;
+      --font: "PingFang TC","Microsoft JhengHei","Noto Sans TC",sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ── 頂部細列 ── */
+    .topbar {
+      background: var(--topbar-bg);
+      padding: 8px 0;
+      border-bottom: 1px solid #D4B8E0;
+    }
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .topbar-left {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--purple-dark);
+      letter-spacing: 0.04em;
+    }
+    .topbar-right {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--purple);
+      background: #fff;
+      border: 1px solid var(--purple);
+      border-radius: 20px;
+      padding: 2px 12px;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 600px;
+      height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://a.lovart.ai/artifacts/agent/ofU4jslhZV28x46D.png');
+      background-size: cover;
+      background-position: center center;
+      z-index: 0;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(91,58,107,0.88) 0%, rgba(61,43,71,0.55) 50%, rgba(61,43,71,0.72) 100%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+      padding: 40px 20px;
+      max-width: 800px;
+    }
+    .hero-content h1 {
+      font-size: clamp(1.8rem, 5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.3;
+      letter-spacing: 0.02em;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+      margin-bottom: 16px;
+    }
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      font-weight: 500;
+      opacity: 0.92;
+      margin-bottom: 36px;
+      letter-spacing: 0.04em;
+    }
+    .btn-orange {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      font-family: var(--font);
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 16px 40px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 20px rgba(230,92,0,0.35);
+    }
+    .btn-orange:hover {
+      background: var(--orange-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(230,92,0,0.45);
+    }
+    .hero-note {
+      margin-top: 16px;
+      font-size: 0.85rem;
+      opacity: 0.78;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── 數據條 ── */
+    .stats-bar {
+      background: var(--purple);
+      padding: 36px 0;
+    }
+    .stats-bar .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .stat-item {
+      flex: 1;
+      min-width: 180px;
+      text-align: center;
+      color: #fff;
+      padding: 16px 20px;
+      position: relative;
+    }
+    .stat-item + .stat-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 20%;
+      height: 60%;
+      width: 1px;
+      background: rgba(255,255,255,0.3);
+    }
+    .stat-number {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+    }
+    .stat-label {
+      font-size: 0.95rem;
+      font-weight: 500;
+      opacity: 0.88;
+      margin-top: 4px;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── 學校簡介 ── */
+    .about {
+      background: var(--bg);
+      padding: 80px 0;
+    }
+    .section-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--teal);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 900;
+      color: var(--teal);
+      margin-bottom: 24px;
+      line-height: 1.3;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    @media (min-width: 768px) {
+      .about-grid {
+        grid-template-columns: 1fr 340px;
+        gap: 60px;
+      }
+    }
+    .about-text {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--text);
+    }
+    .about-features {
+      background: linear-gradient(135deg, var(--purple) 0%, var(--purple-light) 100%);
+      border-radius: 16px;
+      padding: 32px 28px;
+      color: #fff;
+    }
+    .about-features h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      opacity: 0.9;
+      letter-spacing: 0.06em;
+    }
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+    .feature-list li::before {
+      content: '✦';
+      color: #FFD580;
+      font-size: 0.8rem;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    /* ── 母校沿革時間軸 ── */
+    .timeline-block {
+      margin-top: 56px;
+    }
+    .timeline-title {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--purple);
+      margin-bottom: 24px;
+    }
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    @media (min-width: 700px) {
+      .timeline-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    .timeline-card {
+      background: #fff;
+      border: 1.5px solid var(--card-border);
+      border-radius: 14px;
+      padding: 22px 18px;
+      box-shadow: 0 4px 16px rgba(139,90,150,0.08);
+    }
+    .timeline-year {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--purple);
+      margin-bottom: 8px;
+    }
+    .timeline-card b {
+      display: block;
+      color: var(--text);
+      margin-bottom: 6px;
+      font-size: 0.98rem;
+    }
+    .timeline-card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    /* ── 加入倡議 ── */
+    .why-join {
+      background: var(--bg-light);
+      padding: 80px 0;
+    }
+    .why-lead {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 700px;
+      margin-bottom: 36px;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media (min-width: 700px) {
+      .why-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    .why-card {
+      background: #fff;
+      border-radius: 16px;
+      border: 1.5px solid var(--card-border);
+      padding: 28px 24px;
+      box-shadow: 0 4px 16px rgba(139,90,150,0.08);
+    }
+    .why-icon {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+    .why-card h3 {
+      font-size: 1.05rem;
+      color: var(--purple);
+      margin-bottom: 8px;
+    }
+    .why-card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* ── 傑出校友 ── */
+    .alumni {
+      background: var(--bg);
+      padding: 80px 0;
+    }
+    .alumni .section-title {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .alumni-lead {
+      text-align: center;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 44px;
+      font-size: 0.95rem;
+    }
+    .alumni-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 560px) {
+      .alumni-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 900px) {
+      .alumni-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    .alumni-card {
+      background: #fff;
+      border-radius: 16px;
+      border: 1.5px solid var(--card-border);
+      padding: 28px 20px 24px;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(139,90,150,0.10);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: default;
+    }
+    .alumni-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 32px rgba(139,90,150,0.18);
+    }
+    .alumni-portrait {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
+      border: 3px solid var(--purple);
+      margin: 0 auto 16px;
+      display: block;
+    }
+    .alumni-avatar-text {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--purple) 0%, var(--purple-light) 100%);
+      color: #fff;
+      font-size: 2.4rem;
+      font-weight: 900;
+    }
+    .alumni-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--purple);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .alumni-tag {
+      display: inline-block;
+      background: #C8EBF0;
+      color: #0A6070;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      letter-spacing: 0.04em;
+    }
+    .alumni-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .alumni-note {
+      text-align: center;
+      margin-top: 28px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      opacity: 0.7;
+    }
+
+    /* ── 加入表單 ── */
+    .join-section {
+      background: var(--bg);
+      padding: 80px 0;
+    }
+    .form-card {
+      background: #fff;
+      border-radius: 20px;
+      border: 1.5px solid var(--card-border);
+      box-shadow: 0 8px 40px rgba(139,90,150,0.12);
+      padding: 48px 40px;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    @media (max-width: 600px) {
+      .form-card {
+        padding: 32px 20px;
+      }
+    }
+    .form-card .section-title {
+      text-align: center;
+      color: var(--purple);
+      margin-bottom: 32px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .required-star {
+      color: var(--purple);
+      margin-left: 2px;
+    }
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid #D4B8E0;
+      border-radius: 10px;
+      font-family: var(--font);
+      font-size: 0.95rem;
+      color: var(--text);
+      background: #fff;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--purple);
+      box-shadow: 0 0 0 3px rgba(139,90,150,0.12);
+    }
+    .form-group input.error,
+    .form-group select.error {
+      border-color: #E53E3E;
+    }
+    .error-msg {
+      color: #E53E3E;
+      font-size: 0.8rem;
+      margin-top: 4px;
+      display: none;
+    }
+
+    /* ── 校友會分會選項 ── */
+    .chapter-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .chapter-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1.5px solid #D4B8E0;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text);
+      cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .chapter-pill:hover {
+      border-color: var(--purple);
+      background: var(--bg-light);
+    }
+    .chapter-pill input {
+      width: auto;
+      margin: 0;
+      accent-color: var(--purple);
+    }
+    .chapter-pill.selected {
+      border-color: var(--purple);
+      background: #F0E8F8;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--orange);
+      color: #fff;
+      font-family: var(--font);
+      font-size: 1.05rem;
+      font-weight: 700;
+      padding: 16px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      margin-top: 8px;
+      transition: background 0.2s ease, transform 0.15s ease;
+      box-shadow: 0 4px 16px rgba(230,92,0,0.3);
+    }
+    .btn-submit:hover {
+      background: var(--orange-hover);
+      transform: translateY(-2px);
+    }
+    .form-note {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 14px;
+    }
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 24px 16px;
+      background: linear-gradient(135deg, #F0E8F8 0%, #E8F8F0 100%);
+      border-radius: 12px;
+      margin-top: 16px;
+    }
+    .success-msg p {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--purple);
+      line-height: 1.6;
+    }
+
+    /* ── 頁尾 ── */
+    .footer {
+      background: var(--purple-dark);
+      padding: 48px 0 32px;
+      text-align: center;
+      color: #fff;
+    }
+    .footer-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: 0.06em;
+      opacity: 0.95;
+    }
+    .footer .btn-orange {
+      font-size: 1rem;
+      padding: 14px 36px;
+      margin-bottom: 24px;
+    }
+    .footer-copy {
+      font-size: 0.8rem;
+      opacity: 0.5;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── 響應式微調 ── */
+    @media (max-width: 480px) {
+      .stat-item + .stat-item::before { display: none; }
+      .stat-item { min-width: 140px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 頂部細列 -->
+  <div class="topbar">
+    <div class="container">
+      <span class="topbar-left">台南應用科技大學校友會</span>
+      <span class="topbar-right">校友召集令</span>
+    </div>
+  </div>
+
+  <!-- Hero 主視覺 -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>台南應用科技大學校友會<br>召集令</h1>
+      <p class="hero-subtitle">我們曾經在同一個校園裡青春過。現在，換我們把散落各地的南應人，再一次聚在一起。</p>
+      <a href="#join" class="btn-orange">立即加入校友會</a>
+      <p class="hero-note">填姓名與電話只要 30 秒，其余資料可之後再補</p>
+    </div>
+  </section>
+
+  <!-- 數據/號召條 -->
+  <section class="stats-bar">
+    <div class="container">
+      <div class="stat-item">
+        <div class="stat-number">1964</div>
+        <div class="stat-label">創校</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">60+</div>
+        <div class="stat-label">年辦學</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">無數</div>
+        <div class="stat-label">各行各業校友</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 學校簡介 -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <p class="section-label">OUR ALMA MATER</p>
+          <h2 class="section-title">關於我們的母校</h2>
+          <p class="about-text">
+            台南應用科技大學前身為「台南家政專科學校」（台南家專），1964 年創立；歷經台南女子技術學院（1997）、台南科技大學（2006），於 2010 年正式更名為「台南應用科技大學」。學校以文化創意為辦學核心，是全台科技大學中唯一擁有完整藝術學院（音樂、舞蹈、美術、漫畫）的大學，設計與藝術教學屢獲德國紅點設計獎、iF 設計新秀獎等國際肯定。一甲子以來，無數校友在演藝、設計、藝術、餐飲、文教與公共事務各領域發光發熱。
+          </p>
+        </div>
+        <div class="about-features">
+          <h3>我們學校的驕傲</h3>
+          <ul class="feature-list">
+            <li>唯一完整藝術學院的科技大學</li>
+            <li>紅點、iF 國際設計獎常勝軍</li>
+            <li>文化創意辦學主軸</li>
+            <li>溫馨和諧的學風</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 母校沿革時間軸 -->
+      <div class="timeline-block">
+        <h3 class="timeline-title">從台南家政專科學校到今天的南應大</h3>
+        <div class="timeline-grid">
+          <div class="timeline-card">
+            <div class="timeline-year">1964</div>
+            <b>南應的起點</b>
+            <p>私立台南家政專科學校奉准立案。</p>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-year">1997</div>
+            <b>升格轉型</b>
+            <p>改制為台南女子技術學院。</p>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-year">2006</div>
+            <b>邁向科技大學</b>
+            <p>改名台南科技大學。</p>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-year">2010</div>
+            <b>今天的名字</b>
+            <p>更名為台南應用科技大學，並持續拓展藝術、設計與科技實務。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 加入倡議 -->
+  <section class="why-join">
+    <div class="container">
+      <p class="section-label">WHY JOIN US</p>
+      <h2 class="section-title">加入，不只是留下一筆資料</h2>
+      <p class="why-lead">我們希望把「校友會」做成一個真正有溫度、有連結、有事情可以一起做的南應人平台。</p>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon">🤝</div>
+          <h3>找回老同學</h3>
+          <p>重新連上曾一起上課、一起熬夜、一起青春過的同學。</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">🌱</div>
+          <h3>跨世代交流</h3>
+          <p>學長姐分享經驗，學弟妹創造新可能，讓南應人的網絡越來越強。</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">✨</div>
+          <h3>讓南應人發光</h3>
+          <p>看見各行各業的校友成就，也讓更多人知道「南應大出人才」。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 傑出校友 -->
+  <section class="alumni" id="alumni">
+    <div class="container">
+      <h2 class="section-title">南應人，真的很厲害！</h2>
+      <p class="alumni-lead">這些名人，都是我們的學長姊——以下先以校方公開資料中的傑出校友作為代表，正式上線後可持續補上更多南應人的故事。</p>
+      <div class="alumni-grid">
+
+        <!-- 校友卡 1 -->
+        <div class="alumni-card">
+          <img class="alumni-portrait" src="https://a.lovart.ai/artifacts/agent/LIEDj3J7ibClet3i.png" alt="王瞳（吳姍耘）形象照">
+          <div class="alumni-name">王瞳（吳姍耘）</div>
+          <span class="alumni-tag">演藝圈 · 演員</span>
+          <p class="alumni-desc">橫跨戲劇與綜藝的知名演員，螢光幕前的熟面孔。</p>
+        </div>
+
+        <!-- 校友卡 2 -->
+        <div class="alumni-card">
+          <img class="alumni-portrait" src="https://a.lovart.ai/artifacts/agent/MAPkIOTaguEXTKZK.png" alt="賴琳恩形象照">
+          <div class="alumni-name">賴琳恩</div>
+          <span class="alumni-tag">演藝圈 · 演員/名模</span>
+          <p class="alumni-desc">從選美舞台走向戲劇與時尚圈的亮麗學姊。</p>
+        </div>
+
+        <!-- 校友卡 3 -->
+        <div class="alumni-card">
+          <img class="alumni-portrait" src="https://a.lovart.ai/artifacts/agent/H8JzQHgJZTFb2O6g.png" alt="謝雅琳（阿嬌）形象照">
+          <div class="alumni-name">謝雅琳（阿嬌）</div>
+          <span class="alumni-tag">演藝圈 · 藝人/主持人</span>
+          <p class="alumni-desc">親切自然、深受觀眾喜愛的節目主持人。</p>
+        </div>
+
+        <!-- 校友卡 4 -->
+        <div class="alumni-card">
+          <img class="alumni-portrait" src="https://a.lovart.ai/artifacts/agent/qTVugfh2rNGVbGj2.png" alt="蘇治芬形象照">
+          <div class="alumni-name">蘇治芬</div>
+          <span class="alumni-tag">公共事務 · 前雲林縣長</span>
+          <p class="alumni-desc">投身公共事務、長期關懷地方發展的學姊。</p>
+        </div>
+
+        <!-- 校友卡 5 -->
+        <div class="alumni-card">
+          <img class="alumni-portrait" src="https://a.lovart.ai/artifacts/agent/2zmGnZellsH6aU0s.png" alt="張芳宇形象照">
+          <div class="alumni-name">張芳宇</div>
+          <span class="alumni-tag">藝術教育 · 大學藝術學院院長</span>
+          <p class="alumni-desc">73級音樂科畢業。聲樂家、國立清華大學教授暨藝術學院院長，持續投入演出、教學與學術。</p>
+        </div>
+
+        <!-- 校友卡 6 -->
+        <div class="alumni-card">
+          <img class="alumni-portrait" src="https://a.lovart.ai/artifacts/agent/8qujsg8Cea7h4Wh7.png" alt="陳慧姝形象照">
+          <div class="alumni-name">陳慧姝</div>
+          <span class="alumni-tag">文創經營 · 台南林百貨經營團隊</span>
+          <p class="alumni-desc">110級國際企業經營研究所畢業。企業經營者，參與 FOCUS、林百貨等品牌經營與文化推廣。</p>
+        </div>
+
+        <!-- 校友卡 7 -->
+        <div class="alumni-card">
+          <img class="alumni-portrait" src="https://a.lovart.ai/artifacts/agent/mKdPgTgdQz5YRiK1.png" alt="劉韋宗形象照">
+          <div class="alumni-name">劉韋宗</div>
+          <span class="alumni-tag">餐飲廚藝 · WCC 廚藝大賽特級金牌</span>
+          <p class="alumni-desc">在國際廚藝競賽奪下特級金牌的主廚。</p>
+        </div>
+
+        <!-- 校友卡 8 -->
+        <div class="alumni-card">
+          <img class="alumni-portrait" src="https://a.lovart.ai/artifacts/agent/CpBgzDMVZN8iEKiD.png" alt="路之·瑪迪霖形象照">
+          <div class="alumni-name">路之·瑪迪霖</div>
+          <span class="alumni-tag">多元領域 · 第七屆傑出校友</span>
+          <p class="alumni-desc">舞蹈系校友、蒂摩爾古薪舞集創辦人，將台灣文化與部落藝術帶上國際舞台。</p>
+        </div>
+
+        <!-- 校友卡 9 -->
+        <div class="alumni-card">
+          <div class="alumni-portrait alumni-avatar-text">劉</div>
+          <div class="alumni-name">劉琴滿</div>
+          <span class="alumni-tag">教育公職 · 第五屆傑出校友</span>
+          <p class="alumni-desc">65級美術工藝科畢業。長期投入教育與公共事務，曾擔任多項全國性教育相關委員。</p>
+        </div>
+
+        <!-- 校友卡 10 -->
+        <div class="alumni-card">
+          <div class="alumni-portrait alumni-avatar-text">黃</div>
+          <div class="alumni-name">黃世惠</div>
+          <span class="alumni-tag">航空產業 · 第六屆傑出校友</span>
+          <p class="alumni-desc">航空產業管理者。曾任中華航空多項主管職務，2025 年獲選為台灣虎航董事長。</p>
+        </div>
+
+        <!-- 校友卡 11 -->
+        <div class="alumni-card">
+          <div class="alumni-portrait alumni-avatar-text">葉</div>
+          <div class="alumni-name">葉紀紋</div>
+          <span class="alumni-tag">藝術設計 · 第六屆傑出校友</span>
+          <p class="alumni-desc">藝術與設計領域傑出校友，返校參與校友講堂與學弟妹交流。</p>
+        </div>
+
+        <!-- 校友卡 12 -->
+        <div class="alumni-card">
+          <div class="alumni-portrait alumni-avatar-text">沈</div>
+          <div class="alumni-name">沈孟穎</div>
+          <span class="alumni-tag">建築規劃 · 第六屆傑出校友</span>
+          <p class="alumni-desc">建築與公共住宅相關領域校友，曾於 60 週年校慶校友講堂分享專業經驗。</p>
+        </div>
+
+        <!-- 校友卡 13 -->
+        <div class="alumni-card">
+          <div class="alumni-portrait alumni-avatar-text">黃</div>
+          <div class="alumni-name">黃思瑜</div>
+          <span class="alumni-tag">多元領域 · 第六屆傑出校友</span>
+          <p class="alumni-desc">第六屆傑出校友，代表南應人在專業領域持續發展、發光。</p>
+        </div>
+
+      </div>
+      <p class="alumni-note">※ 部分肖像為 AI 生成之形象示意圖，非本人真實照片；無照片者以姓氏頭像代表。</p>
+    </div>
+  </section>
+
+  <!-- 加入表單 -->
+  <section class="join-section" id="join">
+    <div class="container">
+      <div class="form-card">
+        <h2 class="section-title">立即加入校友會</h2>
+
+        <form id="joinForm" novalidate="">
+          <div class="form-group">
+            <label for="name">姓名<span class="required-star">＊</span></label>
+            <input type="text" id="name" name="name" placeholder="請輸入您的姓名" required="">
+            <p class="error-msg" id="name-error">請填寫姓名</p>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">電話<span class="required-star">＊</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="請輸入您的聯絡電話" required="">
+            <p class="error-msg" id="phone-error">請填寫聯絡電話</p>
+          </div>
+
+          <div class="form-group">
+            <label for="grad-year">畢業年（選填）</label>
+            <input type="text" id="grad-year" name="grad-year" placeholder="例：民國 90 年 / 2001 年">
+          </div>
+
+          <div class="form-group">
+            <label for="department">科系（選填）</label>
+            <input type="text" id="department" name="department" placeholder="例：服裝設計系、音樂系">
+          </div>
+
+          <div class="form-group">
+            <label>選擇校友會分會<span class="required-star">＊</span></label>
+            <div class="chapter-options">
+              <label class="chapter-pill"><input type="radio" name="chapter" value="台南" required="">我要加入台南校友會</label>
+              <label class="chapter-pill"><input type="radio" name="chapter" value="台中">我要加入台中校友會</label>
+              <label class="chapter-pill"><input type="radio" name="chapter" value="高雄">我要加入高雄校友會</label>
+              <label class="chapter-pill"><input type="radio" name="chapter" value="台北">我要加入台北校友會</label>
+              <label class="chapter-pill"><input type="radio" name="chapter" value="嘉義">我要加入嘉義校友會</label>
+            </div>
+            <p class="error-msg" id="chapter-error">請選擇一個校友會分會</p>
+          </div>
+
+          <button type="submit" class="btn-submit">送出，我要加入！</button>
+          <p class="form-note">只填姓名、電話與分會也可以，我們會專人與您聯繫</p>
+        </form>
+
+        <div class="success-msg" id="successMsg">
+          <p>報名成功！學長姊我們會盡快與您聯繫 💜</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 頁尾 -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-name">台南應用科技大學校友會</p>
+      <a href="#join" class="btn-orange">我也要加入</a>
+      <p class="footer-copy">© 台南應用科技大學校友會 · 召集令</p>
+    </div>
+  </footer>
+
+  <script>
+    // 表單送出攔截與驗證
+    const form = document.getElementById('joinForm');
+    const successMsg = document.getElementById('successMsg');
+
+    // 分會選項：點選後高亮該選項，並清除錯誤提示
+    document.querySelectorAll('input[name="chapter"]').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        document.querySelectorAll('.chapter-pill').forEach(function(pill) {
+          pill.classList.remove('selected');
+        });
+        this.closest('.chapter-pill').classList.add('selected');
+        document.getElementById('chapter-error').style.display = 'none';
+      });
+    });
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const nameEl = document.getElementById('name');
+      const phoneEl = document.getElementById('phone');
+      const nameErr = document.getElementById('name-error');
+      const phoneErr = document.getElementById('phone-error');
+      const chapterErr = document.getElementById('chapter-error');
+      const chapterChecked = form.querySelector('input[name="chapter"]:checked');
+
+      let valid = true;
+
+      // 重置
+      nameEl.classList.remove('error');
+      phoneEl.classList.remove('error');
+      nameErr.style.display = 'none';
+      phoneErr.style.display = 'none';
+      chapterErr.style.display = 'none';
+
+      // 驗證姓名
+      if (!nameEl.value.trim()) {
+        nameEl.classList.add('error');
+        nameErr.style.display = 'block';
+        valid = false;
+      }
+
+      // 驗證電話（基本格式：至少 8 位數字）
+      const phoneVal = phoneEl.value.trim().replace(/[\s\-]/g, '');
+      if (!phoneVal || !/^\d{8,}$/.test(phoneVal)) {
+        phoneEl.classList.add('error');
+        phoneErr.textContent = phoneVal ? '電話格式不正確，請填寫至少 8 位數字' : '請填寫聯絡電話';
+        phoneErr.style.display = 'block';
+        valid = false;
+      }
+
+      // 驗證分會選項
+      if (!chapterChecked) {
+        chapterErr.style.display = 'block';
+        valid = false;
+      }
+
+      if (valid) {
+        form.style.display = 'none';
+        successMsg.style.display = 'block';
+        // 平滑捲動到成功訊息
+        successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+
+    // 清除錯誤狀態
+    document.getElementById('name').addEventListener('input', function() {
+      this.classList.remove('error');
+      document.getElementById('name-error').style.display = 'none';
+    });
+    document.getElementById('phone').addEventListener('input', function() {
+      this.classList.remove('error');
+      document.getElementById('phone-error').style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>
