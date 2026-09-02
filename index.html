@@ -574,6 +574,17 @@
       border-color: var(--purple);
       box-shadow: 0 0 0 3px rgba(139,90,150,0.12);
     }
+    .form-group select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%238B5A96'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z' clip-rule='evenodd'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-size: 18px;
+      padding-right: 40px;
+    }
+    .form-group select:invalid {
+      color: var(--text-muted);
+    }
     .form-group input.error,
     .form-group select.error {
       border-color: #E53E3E;
@@ -583,66 +594,6 @@
       font-size: 0.8rem;
       margin-top: 4px;
       display: none;
-    }
-
-    /* ── 校友會分會選項 ── */
-    .chapter-options {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .chapter-pill {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border: 1.5px solid #D4B8E0;
-      border-radius: 12px;
-      padding: 12px 16px;
-      font-size: 0.92rem;
-      font-weight: 500;
-      color: var(--text);
-      cursor: pointer;
-      transition: border-color 0.2s ease, background 0.2s ease;
-    }
-    .chapter-pill:hover {
-      border-color: var(--purple);
-      background: var(--bg-light);
-    }
-    /* 原生radio的勾選外觀在部分瀏覽器/系統下不會顯示明顯的勾勾，教練反映「框框看起來能勾但勾不出東西」
-       改成自畫方框+勾號，靠.selected class(JS已經在切換)控制顯示，不依賴瀏覽器原生樣式 */
-    .chapter-pill {
-      position: relative;
-    }
-    .chapter-pill input {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      margin: 0;
-      cursor: pointer;
-    }
-    .chapter-pill .check-box {
-      flex-shrink: 0;
-      width: 20px;
-      height: 20px;
-      border: 1.5px solid #D4B8E0;
-      border-radius: 5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      color: #fff;
-      transition: border-color 0.2s ease, background 0.2s ease;
-    }
-    .chapter-pill.selected .check-box {
-      border-color: var(--purple);
-      background: var(--purple);
-    }
-    .chapter-pill.selected .check-box::after {
-      content: '✓';
-    }
-    .chapter-pill.selected {
-      border-color: var(--purple);
-      background: #F0E8F8;
     }
 
     .btn-submit {
@@ -1028,14 +979,15 @@
           </div>
 
           <div class="form-group">
-            <label>選擇校友會分會<span class="required-star">＊</span></label>
-            <div class="chapter-options">
-              <label class="chapter-pill"><input type="radio" name="chapter" value="台南" required=""><span class="check-box"></span><span class="pill-text">我要加入台南校友會</span></label>
-              <label class="chapter-pill"><input type="radio" name="chapter" value="台中"><span class="check-box"></span><span class="pill-text">我要加入台中校友會</span></label>
-              <label class="chapter-pill"><input type="radio" name="chapter" value="高雄"><span class="check-box"></span><span class="pill-text">我要加入高雄校友會</span></label>
-              <label class="chapter-pill"><input type="radio" name="chapter" value="台北"><span class="check-box"></span><span class="pill-text">我要加入台北校友會</span></label>
-              <label class="chapter-pill"><input type="radio" name="chapter" value="嘉義"><span class="check-box"></span><span class="pill-text">我要加入嘉義校友會</span></label>
-            </div>
+            <label for="chapter">選擇校友會分會<span class="required-star">＊</span></label>
+            <select id="chapter" name="chapter" required="">
+              <option value="" disabled="" selected="">請選擇分會</option>
+              <option value="台南">台南校友會</option>
+              <option value="台中">台中校友會</option>
+              <option value="高雄">高雄校友會</option>
+              <option value="台北">台北校友會</option>
+              <option value="嘉義">嘉義校友會</option>
+            </select>
             <p class="error-msg" id="chapter-error">請選擇一個校友會分會</p>
           </div>
 
@@ -1068,15 +1020,9 @@
     const form = document.getElementById('joinForm');
     const successMsg = document.getElementById('successMsg');
 
-    // 分會選項：點選後高亮該選項，並清除錯誤提示
-    document.querySelectorAll('input[name="chapter"]').forEach(function(radio) {
-      radio.addEventListener('change', function() {
-        document.querySelectorAll('.chapter-pill').forEach(function(pill) {
-          pill.classList.remove('selected');
-        });
-        this.closest('.chapter-pill').classList.add('selected');
-        document.getElementById('chapter-error').style.display = 'none';
-      });
+    // 分會選項：選了就清除錯誤提示
+    document.getElementById('chapter').addEventListener('change', function() {
+      document.getElementById('chapter-error').style.display = 'none';
     });
 
     form.addEventListener('submit', function(e) {
@@ -1087,7 +1033,7 @@
       const nameErr = document.getElementById('name-error');
       const phoneErr = document.getElementById('phone-error');
       const chapterErr = document.getElementById('chapter-error');
-      const chapterChecked = form.querySelector('input[name="chapter"]:checked');
+      const chapterSelect = document.getElementById('chapter');
 
       let valid = true;
 
@@ -1115,7 +1061,7 @@
       }
 
       // 驗證分會選項
-      if (!chapterChecked) {
+      if (!chapterSelect.value) {
         chapterErr.style.display = 'block';
         valid = false;
       }
@@ -1131,7 +1077,7 @@
         phone: phoneEl.value.trim(),
         gradYear: document.getElementById('grad-year').value.trim(),
         department: document.getElementById('department').value.trim(),
-        chapter: chapterChecked.value,
+        chapter: chapterSelect.value,
         source: location.hostname.indexOf('bymyway.com') !== -1 ? 'bymyway' : 'github-pages'
       };
 
