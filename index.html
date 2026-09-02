@@ -592,6 +592,36 @@
       color: var(--purple);
       line-height: 1.6;
     }
+    .success-msg .line-step {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px dashed rgba(0,0,0,0.15);
+    }
+    .success-msg .line-note {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+    .btn-line {
+      display: inline-block;
+      background: #06C755;
+      color: #fff;
+      font-family: var(--font);
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      margin-top: 8px;
+      box-shadow: 0 4px 16px rgba(6,199,85,0.3);
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+    .btn-line:hover {
+      background: #05a648;
+      transform: translateY(-2px);
+    }
 
     /* ── 頁尾 ── */
     .footer {
@@ -905,6 +935,10 @@
 
         <div class="success-msg" id="successMsg">
           <p>報名成功！學長姊我們會盡快與您聯繫 💜</p>
+          <div class="line-step">
+            <a href="#" id="lineAddBtn" class="btn-line" target="_blank" rel="noopener">加入佩佩老師 LINE 官方帳號</a>
+            <p class="line-note">加入後請直接在對話框傳送「我已經送出資料了」，佩佩老師才能盡快跟您聯繫喔！</p>
+          </div>
         </div>
       </div>
     </div>
@@ -976,12 +1010,42 @@
         valid = false;
       }
 
-      if (valid) {
+      if (!valid) return;
+
+      var submitBtn = form.querySelector('.btn-submit');
+      submitBtn.disabled = true;
+      submitBtn.textContent = '送出中…';
+
+      var payload = {
+        name: nameEl.value.trim(),
+        phone: phoneEl.value.trim(),
+        gradYear: document.getElementById('grad-year').value.trim(),
+        department: document.getElementById('department').value.trim(),
+        chapter: chapterChecked.value,
+        source: location.hostname.indexOf('bymyway.com') !== -1 ? 'bymyway' : 'github-pages'
+      };
+
+      function showSuccess(lineUrl) {
         form.style.display = 'none';
+        var lineBtn = document.getElementById('lineAddBtn');
+        if (lineBtn) lineBtn.href = lineUrl;
         successMsg.style.display = 'block';
-        // 平滑捲動到成功訊息
         successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
+
+      fetch('https://event.bymyway.com/api/tut/join', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          showSuccess(data.greet_url || data.add_friend_url || 'https://line.me/R/ti/p/@701ohlly');
+        })
+        .catch(function() {
+          // 網路異常也不能卡住訪客：仍導向加好友，只是少了預填問候語
+          showSuccess('https://line.me/R/ti/p/@701ohlly');
+        });
     });
 
     // 清除錯誤狀態
