@@ -462,17 +462,73 @@
 
     /* ── 加入表單 ── */
     .join-section {
-      background: var(--bg);
+      background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
       padding: 80px 0;
+    }
+    .join-split {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    @media (min-width: 900px) {
+      .join-split {
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+      }
+    }
+    .join-eyebrow {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #E8C6F0;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .join-headline {
+      font-size: clamp(1.7rem, 3.6vw, 2.3rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.4;
+      margin-bottom: 18px;
+    }
+    .join-subtitle {
+      font-size: 0.98rem;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.8;
+      margin-bottom: 30px;
+      max-width: 460px;
+    }
+    .join-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,0.6);
+      border-radius: 50px;
+      padding: 12px 24px;
+      font-family: var(--font);
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.14);
+      border-color: #fff;
     }
     .form-card {
       background: #fff;
       border-radius: 20px;
       border: 1.5px solid var(--card-border);
-      box-shadow: 0 8px 40px rgba(139,90,150,0.12);
-      padding: 48px 40px;
-      max-width: 560px;
-      margin: 0 auto;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+      padding: 40px 36px;
     }
     @media (max-width: 600px) {
       .form-card {
@@ -480,9 +536,9 @@
       }
     }
     .form-card .section-title {
-      text-align: center;
-      color: var(--purple);
-      margin-bottom: 32px;
+      text-align: left;
+      color: var(--purple-dark);
+      margin-bottom: 28px;
     }
     .form-group {
       margin-bottom: 20px;
@@ -554,11 +610,15 @@
     }
     /* 原生radio的勾選外觀在部分瀏覽器/系統下不會顯示明顯的勾勾，教練反映「框框看起來能勾但勾不出東西」
        改成自畫方框+勾號，靠.selected class(JS已經在切換)控制顯示，不依賴瀏覽器原生樣式 */
+    .chapter-pill {
+      position: relative;
+    }
     .chapter-pill input {
       position: absolute;
+      inset: 0;
       opacity: 0;
-      width: 0;
-      height: 0;
+      margin: 0;
+      cursor: pointer;
     }
     .chapter-pill .check-box {
       flex-shrink: 0;
@@ -931,9 +991,18 @@
 
   <!-- 加入表單 -->
   <section class="join-section" id="join">
-    <div class="container">
+    <div class="container join-split">
+      <div class="join-left">
+        <p class="join-eyebrow">NOW · YOUR TURN</p>
+        <h2 class="join-headline">南應人，換你回來了。💜</h2>
+        <p class="join-subtitle">不用先想起完整畢業資料。姓名＋手機就可以先加入，我們後續再協助確認畢業級別、科系與校友資訊。</p>
+        <div class="join-actions">
+          <button type="button" id="shareBtn" class="btn-ghost">↗ 分享召集令</button>
+          <button type="button" id="copyLinkBtn" class="btn-ghost">⎘ 複製連結</button>
+        </div>
+      </div>
       <div class="form-card">
-        <h2 class="section-title">立即加入校友會</h2>
+        <h2 class="section-title">加入南應校友</h2>
 
         <form id="joinForm" novalidate="">
           <div class="form-group">
@@ -1098,6 +1167,42 @@
       this.classList.remove('error');
       document.getElementById('phone-error').style.display = 'none';
     });
+
+    // 分享召集令 / 複製連結
+    var shareBtn = document.getElementById('shareBtn');
+    var copyLinkBtn = document.getElementById('copyLinkBtn');
+    var shareUrl = location.href;
+    var shareText = '南應人，換你回來了。一起找回同學、連結校友會，加入台南應用科技大學校友會召集令！';
+
+    function flashBtnLabel(btn, text, duration) {
+      var original = btn.textContent;
+      btn.textContent = text;
+      setTimeout(function() { btn.textContent = original; }, duration || 1800);
+    }
+
+    if (shareBtn) {
+      shareBtn.addEventListener('click', function() {
+        if (navigator.share) {
+          navigator.share({ title: '台南應用科技大學校友會・召集令', text: shareText, url: shareUrl }).catch(function() {});
+        } else {
+          navigator.clipboard.writeText(shareText + ' ' + shareUrl).then(function() {
+            flashBtnLabel(shareBtn, '✓ 已複製分享文字');
+          }).catch(function() {
+            flashBtnLabel(shareBtn, '複製失敗，請手動複製網址');
+          });
+        }
+      });
+    }
+
+    if (copyLinkBtn) {
+      copyLinkBtn.addEventListener('click', function() {
+        navigator.clipboard.writeText(shareUrl).then(function() {
+          flashBtnLabel(copyLinkBtn, '✓ 已複製連結');
+        }).catch(function() {
+          flashBtnLabel(copyLinkBtn, '複製失敗，請手動複製網址');
+        });
+      });
+    }
   </script>
 
 </body>
