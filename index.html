@@ -1,1164 +1,1411 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
+<!doctype html>
+<html lang="zh-Hant-TW">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="台南應用科技大學校友會召集令｜找回同學、連結校友，讓南應人的故事繼續發光。">
-  <title>台南應用科技大學校友會 召集令</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #FFFFFF;
-      --bg-light: #F6F2F8;
-      --purple: #8B5A96;
-      --purple-dark: #3D2B47;
-      --purple-light: #5B3A6B;
-      --teal: #0E7A8A;
-      --orange: #E65C00;
-      --orange-hover: #C94E00;
-      --text: #333333;
-      --text-muted: #6B6B6B;
-      --topbar-bg: #EDE4F3;
-      --card-border: #D4B8E0;
-      --max-w: 1120px;
-      --font: "PingFang TC","Microsoft JhengHei","Noto Sans TC",sans-serif;
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>南應大校友會｜南應人，回家了</title>
+<meta name="description" content="台南應用科技大學校友會：時光走廊、傑出校友、互動記憶牆、理事長候選人陳佩君競選理念、贊助會員與榮譽會員招募，30 秒加入校友會。">
+<meta property="og:title" content="南應大校友會｜南應人，回家了">
+<meta property="og:description" content="我們曾經在同一個校園裡青春過。現在，換我們把散落各地的南應人，再一次聚在一起。">
+<meta property="og:image" content="images/hero-campus.webp">
+<meta name="theme-color" content="#2a1840">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@400;500;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
+<style>
+/* ===== 南應大校友會・整合單頁 =====
+   規範：全頁最小字 20px、內文 22px；主色＝校徽紫，強調＝香檳金；內容不依賴捲動才出現 */
+:root{
+  --plum-900:#1d1030;--plum-800:#2a1840;--plum-700:#3b2257;--plum-600:#523078;
+  --violet:#7b4bb3;--violet-soft:#a988d0;--lilac:#e9def5;--lav:#f3edf9;
+  --paper:#fbf7f0;--paper-2:#f4ede1;--ink:#24172f;--ink-2:#4f4360;--muted:#6c5f7a;
+  --gold:#c9a24b;--gold-2:#e8cd86;--gold-3:#f6e7bd;--line:#e3d8ec;--line-dark:rgba(246,231,189,.18);
+  --serif:"Noto Serif TC","Songti TC",serif;--sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;--latin:"Cormorant Garamond",serif;
+  --r:18px;--wrap:1200px;
+}
+*{box-sizing:border-box}
+html{font-size:20px;scroll-behavior:smooth;scroll-padding-top:96px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:22px;line-height:1.75;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+button,input,select,textarea{font:inherit;font-size:21px}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 40px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.serif{font-family:var(--serif)}
+.latin{font-family:var(--latin);font-style:italic;font-weight:500;letter-spacing:.02em}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:900;margin:0;line-height:1.25;letter-spacing:.01em}
+h2{font-size:clamp(40px,4.6vw,58px)}
+h3{font-size:28px}
+p{margin:0 0 .8em}
+.lead{font-size:24px;color:var(--ink-2);max-width:40em}
+.dark{background:var(--plum-800);color:#f3ead9}
+.dark .lead{color:#dccfe8}
+.dark h2,.dark h3{color:#fff6e3}
+section.ch{padding:120px 0;position:relative}
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* chapter tab — 紀念冊索引標籤 */
+.chap{display:inline-flex;align-items:center;gap:14px;font-size:20px;font-weight:700;letter-spacing:.18em;color:var(--violet);margin-bottom:18px}
+.chap b{font-family:var(--serif);font-size:20px;letter-spacing:.08em;background:var(--violet);color:#fff;padding:2px 14px;border-radius:999px}
+.dark .chap{color:var(--gold-2)}.dark .chap b{background:var(--gold);color:var(--plum-900)}
+.sec-head{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;margin-bottom:56px}
+.sec-head .ghost{font-family:var(--latin);font-style:italic;font-size:clamp(64px,9vw,128px);line-height:.8;color:transparent;-webkit-text-stroke:1.5px var(--violet-soft);opacity:.6;user-select:none}
+.dark .sec-head .ghost{-webkit-text-stroke-color:rgba(232,205,134,.45)}
 
-    html { scroll-behavior: smooth; }
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:12px 30px;border-radius:999px;border:2px solid transparent;font-size:21px;font-weight:700;text-decoration:none;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease,background .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn-gold{background:linear-gradient(180deg,var(--gold-2),var(--gold));color:var(--plum-900);box-shadow:0 8px 22px rgba(201,162,75,.35)}
+.btn-plum{background:var(--plum-700);color:#fff}
+.btn-line{border-color:currentColor;background:transparent}
+.btn[disabled]{opacity:.6;cursor:default;transform:none}
+.link-arrow{font-weight:700;color:var(--violet);text-decoration:none;border-bottom:2px solid var(--gold-2)}
+.dark .link-arrow{color:var(--gold-2)}
 
-    body {
-      font-family: var(--font);
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
+/* ===== top bar ===== */
+.top{position:sticky;top:0;z-index:50;background:rgba(29,16,48,.92);backdrop-filter:blur(10px);color:#f3ead9;border-bottom:1px solid var(--line-dark)}
+.top .wrap{display:flex;align-items:center;gap:28px;height:84px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;flex:none}
+.seal{width:48px;height:48px;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--gold-3),var(--gold) 60%,#9c7a2c);color:var(--plum-900);display:grid;place-items:center;font-family:var(--serif);font-weight:900;font-size:24px}
+.brand b{display:block;font-family:var(--serif);font-size:24px;line-height:1.1;color:#fff6e3}
+.brand>span>span{display:block;font-family:var(--latin);font-style:italic;font-size:20px;color:var(--gold-2);line-height:1.2}
+.nav{margin-left:auto;display:flex;align-items:center;gap:4px}
+.nav a{font-size:20px;text-decoration:none;padding:8px 12px;border-radius:10px;color:#e8dcf2;white-space:nowrap}
+.nav a:hover,.nav a.on{color:#fff;background:rgba(255,255,255,.08)}
+.nav .btn{margin-left:10px;min-height:48px;padding:8px 24px;font-size:20px}
+.burger{display:none;margin-left:auto;background:none;border:1px solid var(--line-dark);color:#fff;border-radius:12px;padding:6px 16px;font-size:20px;cursor:pointer}
 
-    .container {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 20px;
-    }
+/* ===== ch1 home ===== */
+.home{z-index:0;isolation:isolate;position:relative;min-height:calc(100vh - 84px);display:flex;align-items:center;color:#fff;overflow:hidden;background:var(--plum-800)}
+.home-bg{position:absolute;inset:0;background:var(--plum-700) url(images/hero-campus-lg.webp) center 40%/cover}
+.home-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(29,16,48,.92) 0%,rgba(42,24,64,.78) 45%,rgba(42,24,64,.25) 100%),linear-gradient(0deg,rgba(29,16,48,.85),transparent 40%)}
+.home .wrap{position:relative;padding-top:80px;padding-bottom:80px;width:100%}
+.home .latin{font-size:28px;color:var(--gold-2)}
+.home h1{font-size:clamp(56px,8.4vw,112px);line-height:1.08;margin:16px 0 28px;color:#fff8ea}
+.home h1 .ln{display:block;overflow:hidden}
+.home h1 .ln span{display:inline-block;animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+.home h1 .ln:nth-child(2) span{animation-delay:.18s;color:var(--gold-2)}
+@keyframes rise{from{transform:translateY(105%);opacity:0}to{transform:none;opacity:1}}
+.home .lead{color:#efe4f7;font-size:25px;max-width:30em}
+.home .cta{display:flex;flex-wrap:wrap;gap:16px;margin:36px 0 14px}
+.home .hint{font-size:20px;color:#d8c9e6}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:64px;max-width:900px;border-top:1px solid rgba(232,205,134,.35)}
+.stat{padding:22px 24px 0 0}
+.stat+.stat{padding-left:24px;border-left:1px solid rgba(232,205,134,.2)}
+.stat .num{font-family:var(--serif);font-weight:900;font-size:clamp(40px,4.4vw,60px);line-height:1;color:var(--gold-2);display:flex;align-items:flex-end}
+.stat .num small{font-size:.5em;margin-left:4px}
+.stat .lbl{font-size:20px;color:#e3d6ee;margin-top:10px}
+/* ⑨ 滾輪數字 */
+.reel{display:inline-block;height:1em;overflow:hidden;line-height:1}
+.reel i{display:block;font-style:normal;transition:transform 1s cubic-bezier(.16,1,.3,1)}
+.reel i b{display:block;height:1em;font-weight:900}
 
-    /* ── 頂部細列 ── */
-    .topbar {
-      background: var(--topbar-bg);
-      padding: 8px 0;
-      border-bottom: 1px solid #D4B8E0;
-    }
-    .topbar .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 4px;
-    }
-    .topbar-left {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--purple-dark);
-      letter-spacing: 0.04em;
-    }
-    .topbar-right {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--purple);
-      background: #fff;
-      border: 1px solid var(--purple);
-      border-radius: 20px;
-      padding: 2px 12px;
-      letter-spacing: 0.06em;
-    }
+/* doors */
+.doors{background:var(--plum-900);color:#f3ead9;border-top:1px solid var(--line-dark)}
+.doors .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.door{display:block;padding:30px 28px;text-decoration:none;border-left:1px solid var(--line-dark);transition:background .2s}
+.door:last-child{border-right:1px solid var(--line-dark)}
+.door:hover{background:rgba(255,255,255,.05)}
+.door small{display:block;font-family:var(--latin);font-style:italic;font-size:22px;color:var(--gold-2)}
+.door b{display:block;font-family:var(--serif);font-size:26px;color:#fff6e3;margin:4px 0}
+.door span{font-size:20px;color:#cfc0de}
 
-    /* ── Hero ── */
-    .hero {
-      position: relative;
-      width: 100%;
-      min-height: 600px;
-      height: 100svh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background-image: url('https://a.lovart.ai/artifacts/agent/ofU4jslhZV28x46D.png');
-      background-size: cover;
-      background-position: center center;
-      z-index: 0;
-    }
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(91,58,107,0.88) 0%, rgba(61,43,71,0.55) 50%, rgba(61,43,71,0.72) 100%);
-      z-index: 1;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      color: #fff;
-      padding: 40px 20px;
-      max-width: 800px;
-    }
-    .hero-content h1 {
-      font-size: clamp(1.8rem, 5vw, 3.2rem);
-      font-weight: 900;
-      line-height: 1.3;
-      letter-spacing: 0.02em;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
-      margin-bottom: 16px;
-    }
-    .hero-subtitle {
-      font-size: clamp(1rem, 2.5vw, 1.35rem);
-      font-weight: 500;
-      opacity: 0.92;
-      margin-bottom: 36px;
-      letter-spacing: 0.04em;
-    }
-    .btn-orange {
-      display: inline-block;
-      background: var(--orange);
-      color: #fff;
-      font-family: var(--font);
-      font-size: 1.1rem;
-      font-weight: 700;
-      padding: 16px 40px;
-      border-radius: 50px;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-      letter-spacing: 0.04em;
-      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-      box-shadow: 0 4px 20px rgba(230,92,0,0.35);
-    }
-    .btn-orange:hover {
-      background: var(--orange-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(230,92,0,0.45);
-    }
-    .hero-note {
-      margin-top: 16px;
-      font-size: 0.85rem;
-      opacity: 0.78;
-      letter-spacing: 0.02em;
-    }
+/* ===== ch2 corridor ===== */
+.about{display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:start;margin-bottom:96px}
+.about .lead{max-width:none}
+.prides{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.prides li{display:flex;align-items:center;gap:16px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 20px;font-weight:700;font-size:22px}
+.prides svg{flex:none;width:36px;height:36px;color:var(--gold)}
+.tl{position:relative;display:grid;gap:28px}
+.tl::before{content:"";position:absolute;left:118px;top:20px;bottom:20px;width:2px;background:linear-gradient(var(--violet),var(--gold))}
+.tl-item{display:grid;grid-template-columns:96px 44px 1fr;gap:0 0;align-items:start}
+.tl-yr{font-family:var(--serif);font-weight:900;font-size:34px;color:var(--plum-600);text-align:right;padding-top:14px;line-height:1.1}
+.tl-dot{width:22px;height:22px;border-radius:50%;background:var(--paper);border:4px solid var(--violet);margin:22px 0 0 13px;position:relative;z-index:1}
+.tl-item:last-child .tl-dot{border-color:var(--gold);background:var(--gold-3)}
+.tl-card{display:grid;grid-template-columns:320px 1fr;background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:0 10px 30px rgba(42,24,64,.06)}
+.tl-card figure{margin:0;background:var(--lilac);position:relative;cursor:zoom-in;aspect-ratio:4/3}
+.tl-card figure img{width:100%;height:100%;object-fit:cover}
+.tl-card figure figcaption{position:absolute;left:12px;bottom:12px;background:rgba(29,16,48,.78);color:#fff;font-size:20px;padding:2px 12px;border-radius:999px}
+.tl-body{padding:26px 30px}
+.tl-body h3{color:var(--plum-700);margin-bottom:6px}
+.tl-body .one{font-size:22px;color:var(--ink-2)}
+.tl-more{margin-top:8px}
+.tl-more summary{cursor:pointer;color:var(--violet);font-weight:700;font-size:20px;list-style:none;display:inline-flex;gap:8px;align-items:center}
+.tl-more summary::-webkit-details-marker{display:none}
+.tl-more summary::after{content:"＋";font-weight:700}
+.tl-more[open] summary::after{content:"－"}
+.tl-more p{margin-top:10px;color:var(--ink-2)}
 
-    /* ── 數據條 ── */
-    .stats-bar {
-      background: var(--purple);
-      padding: 36px 0;
-    }
-    .stats-bar .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0;
-      flex-wrap: wrap;
-    }
-    .stat-item {
-      flex: 1;
-      min-width: 180px;
-      text-align: center;
-      color: #fff;
-      padding: 16px 20px;
-      position: relative;
-    }
-    .stat-item + .stat-item::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 20%;
-      height: 60%;
-      width: 1px;
-      background: rgba(255,255,255,0.3);
-    }
-    .stat-number {
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      font-weight: 900;
-      line-height: 1.1;
-      letter-spacing: 0.02em;
-    }
-    .stat-label {
-      font-size: 0.95rem;
-      font-weight: 500;
-      opacity: 0.88;
-      margin-top: 4px;
-      letter-spacing: 0.06em;
-    }
+/* ===== ch3 pride ===== */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
+.chip{border:1.5px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:8px 22px;font-size:20px;cursor:pointer;font-weight:500}
+.chip[aria-pressed=true]{background:var(--plum-700);color:#fff;border-color:var(--plum-700)}
+.chip em{font-style:normal;opacity:.7;margin-left:6px}
+.alumni{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:28px}
+.al{background:#fff;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.al:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(42,24,64,.12)}
+.al .ph{aspect-ratio:4/5;background:var(--lilac);overflow:hidden}
+.al .ph img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.al .bd{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+.al .fd{font-size:20px;color:var(--violet);font-weight:700}
+.al h3{font-size:28px;margin:4px 0 8px}
+.al p{font-size:20px;color:var(--ink-2);line-height:1.65;flex:1}
+.al .aka{font-size:20px;font-weight:600;color:var(--muted)}
+.al .src{font-size:20px;color:var(--muted);border-top:1px dashed var(--line);padding-top:8px;margin-top:6px}
+.al[hidden]{display:none}
+.note-sm{font-size:20px;color:var(--muted);margin-top:28px}
 
-    /* ── 學校簡介 ── */
-    .about {
-      background: var(--bg);
-      padding: 80px 0;
-    }
-    .section-label {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--teal);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .section-title {
-      font-size: clamp(1.4rem, 3vw, 2rem);
-      font-weight: 900;
-      color: var(--teal);
-      margin-bottom: 24px;
-      line-height: 1.3;
-    }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 40px;
-      align-items: start;
-    }
-    @media (min-width: 768px) {
-      .about-grid {
-        grid-template-columns: 1fr 340px;
-        gap: 60px;
-      }
-    }
-    .about-text {
-      font-size: 1rem;
-      line-height: 1.85;
-      color: var(--text);
-    }
-    .about-features {
-      background: linear-gradient(135deg, var(--purple) 0%, var(--purple-light) 100%);
-      border-radius: 16px;
-      padding: 32px 28px;
-      color: #fff;
-    }
-    .about-features h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      opacity: 0.9;
-      letter-spacing: 0.06em;
-    }
-    .feature-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-    .feature-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 0.95rem;
-      font-weight: 500;
-      line-height: 1.5;
-    }
-    .feature-list li::before {
-      content: '✦';
-      color: #FFD580;
-      font-size: 0.8rem;
-      margin-top: 3px;
-      flex-shrink: 0;
-    }
+/* ===== ch4 memory wall ===== */
+.memory{background:var(--plum-900);color:#f3ead9;overflow:hidden}
+.mem-hero{position:relative;padding:120px 0 96px}
+.mem-hero::before{content:"";position:absolute;inset:0;background:url(images/IMG-003.webp) center/cover;opacity:.55}
+.mem-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(29,16,48,.5),rgba(29,16,48,.92) 85%)}
+.mem-hero .wrap{position:relative;z-index:1}
+.mem-hero h2{color:#fff6e3;font-size:clamp(46px,6vw,80px)}
+.mem-hero .lead{color:#e8dcf2}
+.mem-count{display:inline-flex;gap:12px;align-items:baseline;margin-top:24px;font-size:22px;color:#e3d6ee;border-top:1px solid rgba(232,205,134,.35);padding-top:16px}
+.mem-count b{font-family:var(--serif);font-size:48px;color:var(--gold-2);line-height:1}
+.board-wrap{background:var(--lav);color:var(--ink);padding:96px 0;background-image:radial-gradient(rgba(123,75,179,.12) 1.5px,transparent 1.5px);background-size:26px 26px}
+.mem-grid{display:grid;grid-template-columns:400px 1fr;gap:48px;align-items:start}
+.post{background:#fff;border-radius:var(--r);padding:32px;box-shadow:0 16px 40px rgba(42,24,64,.1);position:sticky;top:110px;border-top:6px solid var(--violet)}
+.post h3{color:var(--plum-700);margin-bottom:16px}
+.fld{display:block;margin-bottom:18px}
+.fld>span,.fld>legend{display:block;font-size:20px;font-weight:700;color:var(--ink-2);margin-bottom:6px}
+.fld input,.fld select,.fld textarea{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12px 16px;background:var(--paper);color:var(--ink)}
+.fld textarea{min-height:120px;resize:vertical}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--violet);outline:none;box-shadow:0 0 0 4px rgba(123,75,179,.15)}
+.fld .cnt{font-size:20px;color:var(--muted);text-align:right;margin-top:4px}
+fieldset.fld{border:0;padding:0;margin:0 0 18px}
+.swatch{display:flex;gap:12px}
+.swatch label{cursor:pointer;position:relative}
+.swatch input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0}
+.swatch span{display:block;width:48px;height:48px;border-radius:12px;border:3px solid transparent;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.swatch input:checked+span{border-color:var(--plum-700)}
+.swatch input:focus-visible+span{outline:3px solid var(--gold);outline-offset:2px}
+.c-yellow{background:#f6e7bd}.c-pink{background:#ecd9f2}.c-mint{background:#dcd6f3}
+.drop{border:2px dashed var(--violet-soft);border-radius:14px;padding:18px;text-align:center;cursor:pointer;color:var(--ink-2);font-size:20px;background:var(--lav)}
+.drop svg{width:36px;height:36px;color:var(--violet);margin:0 auto 6px}
+.preview{display:none;align-items:center;gap:14px;margin-top:12px}
+.preview.show{display:flex}
+.preview img{width:84px;height:84px;object-fit:cover;border-radius:10px}
+.preview span{font-size:20px;color:var(--muted);flex:1}
+.preview button{border:0;background:var(--lilac);border-radius:10px;padding:6px 14px;cursor:pointer;font-size:20px}
+.post .fine{font-size:20px;color:var(--muted);margin-top:12px;line-height:1.6}
+.wall-tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:24px}
+.wall-tools .sort{margin-left:auto;display:flex;gap:6px}
+.notes{columns:2 300px;column-gap:24px}
+.note{break-inside:avoid;margin:0 0 24px;border-radius:6px;padding:26px 24px 18px;position:relative;box-shadow:0 10px 24px rgba(42,24,64,.12);transform:rotate(var(--rot,0deg))}
+.note::before{content:"";position:absolute;top:-12px;left:50%;width:96px;height:26px;margin-left:-48px;background:rgba(169,136,208,.45);transform:rotate(-2deg)}
+.note.yellow{background:#fbf1d3}.note.pink{background:#f2e4f6}.note.mint{background:#e6e1f7}
+.note.photo{background:#fff;padding:14px 14px 18px}
+.note.photo .pic{background:var(--lilac);cursor:zoom-in;margin-bottom:14px}
+.note.photo .pic img{width:100%;max-height:340px;object-fit:cover}
+.note .tx{font-size:22px;line-height:1.7;color:var(--ink)}
+.note .sig{font-size:20px;color:var(--muted);margin:10px 0 8px;font-family:var(--serif)}
+.note .pend{display:inline-block;font-size:20px;background:var(--gold-3);color:#6b4e0e;border-radius:8px;padding:0 10px;margin-bottom:8px}
+.echo{border:1.5px solid rgba(82,48,120,.25);background:rgba(255,255,255,.6);border-radius:999px;padding:4px 16px;font-size:20px;cursor:pointer;color:var(--plum-600)}
+.echo.on{background:var(--plum-600);color:#fff;border-color:var(--plum-600)}
+.empty{font-size:22px;color:var(--muted);background:#fff;border-radius:14px;padding:28px;text-align:center}
+.talks-wrap{padding:110px 0;background:var(--plum-800)}
+.talks{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:8px}
+.talk{background:var(--paper);color:var(--ink);border-radius:var(--r);padding:28px 24px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.talk .no{font-family:var(--latin);font-style:italic;font-size:44px;line-height:1;color:var(--violet)}
+.talk h3{font-size:24px;margin:10px 0;color:var(--plum-700)}
+.talk p{font-size:20px;color:var(--ink-2);flex:1}
+.talk .tg{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.talk .tg span{font-size:20px;background:var(--lilac);color:var(--plum-600);border-radius:8px;padding:0 10px}
+.talk .wc{font-size:20px;color:var(--muted);margin-bottom:12px}
+.talk .wc b{color:var(--plum-700);font-size:26px}
+.talk .btn{min-height:50px;font-size:20px}
+.wish{margin-top:40px;display:grid;grid-template-columns:1fr 2fr;gap:36px;align-items:center;background:rgba(255,255,255,.06);border:1px solid var(--line-dark);border-radius:var(--r);padding:32px}
+.wish form{display:grid;grid-template-columns:1fr 2fr auto;gap:12px;align-items:end}
+.wish input,.wish textarea{width:100%;border:0;border-radius:12px;padding:12px 16px;background:#fff;color:var(--ink)}
+.wish textarea{min-height:56px;height:56px;resize:vertical}
+.wish .out{grid-column:1/-1;font-size:20px;color:var(--gold-2);min-height:1em;margin:0}
 
-    /* ── 母校沿革時間軸 ── */
-    .timeline-block {
-      margin-top: 56px;
-    }
-    .timeline-title {
-      font-size: 1.15rem;
-      font-weight: 900;
-      color: var(--purple);
-      margin-bottom: 24px;
-    }
-    .timeline-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 18px;
-    }
-    @media (min-width: 700px) {
-      .timeline-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-    .timeline-card {
-      background: #fff;
-      border: 1.5px solid var(--card-border);
-      border-radius: 14px;
-      padding: 22px 18px;
-      box-shadow: 0 4px 16px rgba(139,90,150,0.08);
-    }
-    .timeline-year {
-      font-size: 1.5rem;
-      font-weight: 900;
-      color: var(--purple);
-      margin-bottom: 8px;
-    }
-    .timeline-card b {
-      display: block;
-      color: var(--text);
-      margin-bottom: 6px;
-      font-size: 0.98rem;
-    }
-    .timeline-card p {
-      margin: 0;
-      color: var(--text-muted);
-      font-size: 0.88rem;
-      line-height: 1.6;
-    }
+/* ===== ch5 vision ===== */
+.vision{background:var(--plum-800);color:#f3ead9;padding-top:0}
+.marquee{overflow:hidden;background:var(--gold);color:var(--plum-900);font-weight:700;font-size:22px;white-space:nowrap;border-block:1px solid #9c7a2c}
+.marquee .track{display:inline-flex;gap:56px;padding:14px 0;animation:marq 32s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+.marquee .track span::before{content:"★";margin-right:18px}
+@keyframes marq{to{transform:translateX(-50%)}}
+.cand{display:grid;grid-template-columns:420px 1fr;gap:64px;align-items:center;padding:110px 0 80px}
+.cand-ph{position:relative;border-radius:24px;overflow:hidden;background:var(--plum-600);aspect-ratio:4/5;box-shadow:0 30px 60px rgba(0,0,0,.35)}
+.cand-ph img{width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.cand-ph .badge{position:absolute;left:18px;bottom:18px;background:var(--gold);color:var(--plum-900);font-weight:700;font-size:20px;padding:6px 16px;border-radius:999px}
+.cand h2 em{font-style:normal;color:var(--gold-2)}
+.cand ul{list-style:none;padding:0;margin:20px 0 28px;display:grid;gap:8px}
+.cand li{display:flex;gap:12px;font-size:22px;color:#e8dcf2}
+.cand li::before{content:"";flex:none;width:10px;height:10px;margin-top:13px;border-radius:2px;background:var(--gold);transform:rotate(45deg)}
+.support{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.heart{display:inline-flex;align-items:center;gap:12px}
+.heart b{font-family:var(--serif);font-size:30px;color:var(--gold-2)}
+.pop{animation:pop .4s ease}
+@keyframes pop{50%{transform:scale(1.12)}}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:80px}
+.pillar{background:rgba(255,255,255,.05);border:1px solid var(--line-dark);border-radius:var(--r);padding:30px;text-decoration:none;display:block;transition:background .2s}
+.pillar:hover{background:rgba(255,255,255,.09)}
+.pillar .n{font-family:var(--latin);font-style:italic;font-size:48px;color:var(--gold-2);line-height:1}
+.pillar h3{margin:12px 0 8px;font-size:28px}
+.pillar p{font-size:20px;color:#d6c8e4;margin:0}
+.pane{background:var(--paper);color:var(--ink);border-radius:28px;padding:56px;margin-bottom:40px}
+.pane h3{font-size:36px;color:var(--plum-700)}
+.pane .sub{color:var(--muted);font-size:21px;margin:6px 0 30px}
+.ext{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;list-style:none;padding:0;margin:0}
+.ext a{display:flex;flex-direction:column;height:100%;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 24px;text-decoration:none;transition:border-color .2s,transform .2s}
+.ext a:hover{border-color:var(--violet);transform:translateY(-3px)}
+.ext b{font-family:var(--serif);font-size:24px;color:var(--plum-700)}
+.ext span{font-size:20px;color:var(--ink-2);flex:1;margin:6px 0 10px}
+.ext i{font-style:normal;font-size:20px;font-weight:700;color:var(--violet)}
+.biz-marq{overflow:hidden;margin:0 -56px 28px;background:var(--lav);border-block:1px solid var(--line);white-space:nowrap}
+.biz-marq .track{display:inline-flex;gap:44px;padding:14px 0;animation:marq 45s linear infinite;font-family:var(--serif);font-size:24px;color:var(--plum-600)}
+.biz-marq:hover .track{animation-play-state:paused}
+.bz-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;list-style:none;padding:0;margin:0}
+.bz{display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center;height:100%;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;text-decoration:none;color:inherit;transition:transform .2s,border-color .2s,box-shadow .2s}
+a.bz:hover{transform:translateY(-4px);border-color:var(--violet);box-shadow:0 12px 28px rgba(42,24,64,.12)}
+.bz-ava{flex:none;width:96px;height:96px;border-radius:50%;overflow:hidden;background:linear-gradient(160deg,var(--plum-600),var(--plum-800));display:grid;place-items:center;border:3px solid var(--gold-3)}
+.bz-ava img{width:100%;height:100%;object-fit:cover}
+.bz-ava span{font-family:var(--serif);font-weight:900;font-size:30px;color:var(--gold-2)}
+.bz-t b{display:block;font-family:var(--serif);font-size:24px;color:var(--plum-700);line-height:1.3}
+.bz-t span{display:block;font-size:20px;color:var(--ink-2);line-height:1.45}
+.bz-t i{display:inline-block;font-style:normal;font-size:20px;font-weight:700;color:var(--violet);margin-top:6px;border-bottom:2px solid var(--gold-2)}
+.bz{padding:20px 14px 18px}
+.bd-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:22px;list-style:none;padding:0;margin:0}
+.bd-card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;text-align:center}
+.bd-photo{aspect-ratio:1;background:linear-gradient(160deg,var(--plum-600),var(--plum-800));display:grid;place-items:center;overflow:hidden}
+.bd-photo img{width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.bd-ph{font-family:var(--serif);font-weight:900;font-size:72px;color:var(--gold-2)}
+.bd-info{padding:16px 14px 18px;display:flex;flex-direction:column;align-items:center;gap:6px;flex:1}
+.bd-info h4{font-size:26px;color:var(--plum-700)}
+.bd-title{font-size:20px;color:var(--ink-2);line-height:1.5;flex:1}
+.bd-btn{border:1.5px solid var(--violet);background:transparent;color:var(--violet);border-radius:999px;padding:4px 18px;font-size:20px;cursor:pointer;font-weight:700;text-decoration:none;display:inline-block}
+.bd-btn:hover{background:var(--violet);color:#fff}
+.bd-claim{margin:0}
+.bd-foot{margin-top:28px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;font-size:20px;color:var(--muted)}
 
-    /* ── 加入倡議 ── */
-    .why-join {
-      background: var(--bg-light);
-      padding: 80px 0;
-    }
-    .why-lead {
-      color: var(--text-muted);
-      font-size: 1rem;
-      max-width: 700px;
-      margin-bottom: 36px;
-    }
-    .why-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-    @media (min-width: 700px) {
-      .why-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-    .why-card {
-      background: #fff;
-      border-radius: 16px;
-      border: 1.5px solid var(--card-border);
-      padding: 28px 24px;
-      box-shadow: 0 4px 16px rgba(139,90,150,0.08);
-    }
-    .why-icon {
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-    }
-    .why-card h3 {
-      font-size: 1.05rem;
-      color: var(--purple);
-      margin-bottom: 8px;
-    }
-    .why-card p {
-      margin: 0;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
+/* modal / lightbox */
+.ov{position:fixed;inset:0;z-index:100;background:rgba(20,10,32,.82);display:none;align-items:center;justify-content:center;padding:24px}
+.ov.open{display:flex}
+.modal{background:var(--paper);color:var(--ink);border-radius:22px;max-width:640px;width:100%;max-height:86vh;overflow:auto;padding:40px}
+.modal h3{font-size:34px;color:var(--plum-700)}
+.modal .sub{font-size:20px;color:var(--violet);font-weight:700;margin:4px 0 18px}
+.modal .links{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.modal .links a{font-size:20px;background:var(--lilac);color:var(--plum-700);border-radius:999px;padding:4px 16px;text-decoration:none;font-weight:700}
+.lb img{max-width:min(1100px,92vw);max-height:86vh;border-radius:12px}
+.ov .x{position:absolute;top:18px;right:22px;background:rgba(255,255,255,.12);color:#fff;border:0;border-radius:999px;padding:6px 18px;font-size:20px;cursor:pointer}
 
-    /* ── 傑出校友 ── */
-    .alumni {
-      background: var(--bg);
-      padding: 80px 0;
-    }
-    .alumni .section-title {
-      text-align: center;
-      margin-bottom: 16px;
-    }
-    .alumni-lead {
-      text-align: center;
-      color: var(--text-muted);
-      max-width: 720px;
-      margin: 0 auto 44px;
-      font-size: 0.95rem;
-    }
-    .alumni-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
-    @media (min-width: 560px) {
-      .alumni-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    @media (min-width: 900px) {
-      .alumni-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-    .alumni-card {
-      background: #fff;
-      border-radius: 16px;
-      border: 1.5px solid var(--card-border);
-      padding: 28px 20px 24px;
-      text-align: center;
-      box-shadow: 0 4px 16px rgba(139,90,150,0.10);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      cursor: default;
-    }
-    .alumni-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 32px rgba(139,90,150,0.18);
-    }
-    .alumni-portrait {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center;
-      border: 3px solid var(--purple);
-      margin: 0 auto 16px;
-      display: block;
-    }
-    .alumni-avatar-text {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, var(--purple) 0%, var(--purple-light) 100%);
-      color: #fff;
-      font-size: 2.4rem;
-      font-weight: 900;
-    }
-    .photo-source {
-      display: block;
-      font-size: 0.68rem;
-      margin: -8px auto 10px;
-      color: var(--text-muted);
-    }
-    .photo-source.ai-generated {
-      color: #B8860B;
-      font-weight: 600;
-    }
-    .alumni-name {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--purple);
-      margin-bottom: 6px;
-      line-height: 1.3;
-    }
-    .alumni-tag {
-      display: inline-block;
-      background: #C8EBF0;
-      color: #0A6070;
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 20px;
-      margin-bottom: 10px;
-      letter-spacing: 0.04em;
-    }
-    .alumni-desc {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-    .alumni-note {
-      text-align: center;
-      margin-top: 28px;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      opacity: 0.7;
-    }
+/* ===== ch6 membership ===== */
+.mship .plans{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:96px}
+.plan{border-radius:26px;padding:40px;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.plan.sp{background:#fff;border:1px solid var(--line)}
+.plan.hn{background:var(--plum-800);color:#f3ead9}
+.plan .tag{align-self:flex-start;font-size:20px;font-weight:700;border-radius:999px;padding:2px 16px;background:#d2603a;color:#fff}
+.plan.hn .tag{background:var(--gold);color:var(--plum-900)}
+.plan h3{font-size:40px;margin:16px 0 6px}
+.plan.hn h3{color:#fff6e3}
+.plan .price{font-family:var(--serif);font-weight:900;font-size:64px;line-height:1;margin:18px 0 6px;color:var(--plum-700)}
+.plan.hn .price{color:var(--gold-2)}
+.plan .price small{font-size:22px;font-weight:700;margin-right:6px}
+.plan .price em{font-style:normal;font-size:22px;margin-left:8px}
+.plan ul{list-style:none;padding:0;margin:22px 0 28px;display:grid;gap:10px;flex:1}
+.plan li{display:flex;gap:12px;font-size:21px}
+.plan li svg{flex:none;width:26px;height:26px;margin-top:6px;color:var(--violet)}
+.plan.hn li svg{color:var(--gold-2)}
+.plan li.no{opacity:.45;text-decoration:line-through}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:96px}
+.split h3{font-size:40px;color:var(--plum-700);margin-bottom:12px}
+.try{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.try .fld{margin-bottom:12px}
+.try .fld input{padding:8px 12px}
+.edm{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--paper);align-self:start}
+.edm-head{--c:#523078;background:var(--c);color:#fff;padding:18px;text-align:center}
+.edm-head small{font-family:var(--latin);font-style:italic;font-size:20px;opacity:.85;display:block}
+.edm-ava{width:84px;height:84px;border-radius:50%;margin:12px auto 0;background:var(--gold);color:var(--plum-900);display:grid;place-items:center;font-family:var(--serif);font-weight:900;font-size:40px;border:4px solid #fff}
+.edm-body{padding:16px 18px 20px;text-align:center}
+.edm-body b{display:block;font-family:var(--serif);font-size:28px}
+.edm-body span{display:block;font-size:20px;color:var(--ink-2)}
+.edm-body p{font-size:20px;margin:10px 0;color:var(--ink)}
+.edm-links{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.edm-links span{font-size:20px;background:var(--lilac);border-radius:8px;padding:0 10px;color:var(--plum-700)}
+.sws{display:flex;gap:10px}
+.sws button{width:40px;height:40px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1px var(--line);cursor:pointer}
+.sws button[aria-pressed=true]{box-shadow:0 0 0 3px var(--plum-700)}
+.hall{background:var(--plum-900);border-radius:28px;padding:48px;color:#f3ead9;margin-bottom:96px;background-image:radial-gradient(500px 260px at 80% 0%,rgba(201,162,75,.18),transparent 70%)}
+.hall-top{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:28px}
+.hall-top h3{font-size:40px;color:#fff6e3}
+.hall-top .latin{color:var(--gold-2);font-size:26px}
+.honor{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;list-style:none;padding:0;margin:0}
+.honor a{display:block;text-decoration:none;background:rgba(255,255,255,.05);border:1px solid rgba(232,205,134,.3);border-radius:18px;overflow:hidden;transition:transform .2s,border-color .2s}
+.honor a:hover{transform:translateY(-4px);border-color:var(--gold-2)}
+.honor .ph{aspect-ratio:4/5;background:var(--plum-700);overflow:hidden}
+.honor img{width:100%;height:100%;object-fit:cover;object-position:center 15%}
+.honor .t{padding:14px 16px 18px}
+.honor b{display:block;font-family:var(--serif);font-size:24px;color:var(--gold-2)}
+.honor span{display:block;font-size:20px;color:#d6c8e4;line-height:1.5}
+.brandpage{display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:center;margin-top:48px;border-top:1px solid var(--line-dark);padding-top:48px}
+.phone{width:240px;height:440px;border-radius:32px;border:8px solid #0e0718;overflow:hidden;background:var(--plum-700);box-shadow:0 30px 60px rgba(0,0,0,.4)}
+.phone img{width:100%;height:auto}
+.phone .scroll{animation:scrollshot 18s ease-in-out infinite alternate}
+@keyframes scrollshot{to{transform:translateY(calc(-100% + 424px))}}
+.checks{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 24px}
+.checks span{font-size:20px;border:1px solid rgba(232,205,134,.4);border-radius:999px;padding:2px 14px;color:var(--gold-3)}
+.steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;list-style:none;padding:0;margin:26px 0 0;counter-reset:s}
+.steps4 li{border-top:3px solid var(--gold);padding-top:14px;counter-increment:s}
+.steps4 li::before{content:counter(s,decimal-leading-zero);font-family:var(--latin);font-style:italic;font-size:30px;color:var(--gold-2);display:block}
+.steps4 b{display:block;font-family:var(--serif);font-size:23px;color:#fff6e3}
+.steps4 span{font-size:20px;color:#d6c8e4}
+.vendors-head{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:end;margin-bottom:28px}
+.vendors-head h3{font-size:40px;color:var(--plum-700)}
+.free{font-family:var(--serif);font-weight:900;font-size:40px;color:#d2603a}
+.vend-marq{overflow:hidden;margin:0 -40px;padding:6px 0 18px;-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.vend-track{display:flex;width:max-content;animation:marq 36s linear infinite}
+.vend-marq:hover .vend-track,.vend-marq:focus-within .vend-track{animation-play-state:paused}
+.vend{display:flex;gap:18px;list-style:none;margin:0;padding:0 18px 0 0}
+.vend li{width:240px;flex:none;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .25s}
+.vend li:hover{transform:translateY(-6px) rotate(-1deg)}
+.vend .ph{aspect-ratio:1;background:var(--lilac);overflow:hidden}
+.vend img{width:100%;height:100%;object-fit:cover}
+.vend .t{padding:12px 16px 16px}
+.vend b{font-family:var(--serif);font-size:22px;color:var(--plum-700);display:block}
+.vend span{font-size:20px;color:var(--ink-2);line-height:1.5;display:block}
+.cmp{width:100%;border-collapse:separate;border-spacing:0;margin:28px 0 0;background:#fff;border-radius:20px;overflow:hidden;border:1px solid var(--line)}
+.cmp th,.cmp td{padding:18px 22px;text-align:left;vertical-align:top;font-size:20px;border-bottom:1px solid var(--line)}
+.cmp thead th{font-family:var(--serif);font-size:24px;background:var(--lav);color:var(--plum-700)}
+.cmp thead th:last-child{background:var(--plum-800);color:var(--gold-2)}
+.cmp tbody th{color:var(--ink-2);width:20%;font-weight:700}
+.cmp tr:last-child>*{border-bottom:0}
+.cmp-wrap{overflow-x:auto}
+.quiz-faq{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;margin-top:96px;align-items:start}
+.quiz{background:var(--plum-800);color:#f3ead9;border-radius:24px;padding:36px}
+.quiz h3{color:#fff6e3;font-size:30px;margin-bottom:6px}
+.qsteps{display:flex;gap:8px;margin:16px 0 20px}
+.qsteps i{flex:1;height:6px;border-radius:6px;background:rgba(255,255,255,.15)}
+.qsteps i.on{background:var(--gold)}
+.qbody h4{font-size:24px;color:#fff6e3;margin-bottom:14px;font-family:var(--sans);font-weight:700}
+.qopts{display:grid;gap:10px}
+.qopts button{text-align:left;background:rgba(255,255,255,.06);border:1px solid var(--line-dark);color:#f3ead9;border-radius:14px;padding:14px 18px;font-size:21px;cursor:pointer}
+.qopts button:hover{background:rgba(232,205,134,.15);border-color:var(--gold-2)}
+.qresult .big{font-family:var(--serif);font-weight:900;font-size:34px;color:var(--gold-2);margin:6px 0 10px}
+.qresult p{color:#e3d6ee}
+.faq details{border-bottom:1px solid var(--line);padding:16px 0}
+.faq summary{cursor:pointer;font-family:var(--serif);font-weight:900;font-size:24px;color:var(--plum-700);list-style:none;display:flex;justify-content:space-between;gap:20px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"＋";color:var(--gold)}
+.faq details[open] summary::after{content:"－"}
+.faq p{margin:10px 0 0;color:var(--ink-2)}
 
-    /* ── 加入表單 ── */
-    .join-section {
-      background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
-      padding: 80px 0;
-    }
-    .join-split {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 48px;
-      align-items: center;
-    }
-    @media (min-width: 900px) {
-      .join-split {
-        grid-template-columns: 1fr 1fr;
-        gap: 64px;
-      }
-    }
-    .join-eyebrow {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: #E8C6F0;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-    .join-headline {
-      font-size: clamp(1.7rem, 3.6vw, 2.3rem);
-      font-weight: 900;
-      color: #fff;
-      line-height: 1.4;
-      margin-bottom: 18px;
-    }
-    .join-subtitle {
-      font-size: 0.98rem;
-      color: rgba(255,255,255,0.82);
-      line-height: 1.8;
-      margin-bottom: 30px;
-      max-width: 460px;
-    }
-    .join-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      color: #fff;
-      border: 1.5px solid rgba(255,255,255,0.6);
-      border-radius: 50px;
-      padding: 12px 24px;
-      font-family: var(--font);
-      font-size: 0.92rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s ease, border-color 0.2s ease;
-    }
-    .btn-ghost:hover {
-      background: rgba(255,255,255,0.14);
-      border-color: #fff;
-    }
-    .form-card {
-      background: #fff;
-      border-radius: 20px;
-      border: 1.5px solid var(--card-border);
-      box-shadow: 0 8px 40px rgba(0,0,0,0.25);
-      padding: 40px 36px;
-    }
-    @media (max-width: 600px) {
-      .form-card {
-        padding: 32px 20px;
-      }
-    }
-    .form-card .section-title {
-      text-align: left;
-      color: var(--purple-dark);
-      margin-bottom: 28px;
-    }
-    .form-group {
-      margin-bottom: 20px;
-    }
-    .form-group label {
-      display: block;
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 6px;
-    }
-    .required-star {
-      color: var(--purple);
-      margin-left: 2px;
-    }
-    .form-group input,
-    .form-group select {
-      width: 100%;
-      padding: 12px 16px;
-      border: 1.5px solid #D4B8E0;
-      border-radius: 10px;
-      font-family: var(--font);
-      font-size: 0.95rem;
-      color: var(--text);
-      background: #fff;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-      outline: none;
-      appearance: none;
-      -webkit-appearance: none;
-    }
-    .form-group input:focus,
-    .form-group select:focus {
-      border-color: var(--purple);
-      box-shadow: 0 0 0 3px rgba(139,90,150,0.12);
-    }
-    .form-group select {
-      cursor: pointer;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%238B5A96'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z' clip-rule='evenodd'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 14px center;
-      background-size: 18px;
-      padding-right: 40px;
-    }
-    .form-group select:invalid {
-      color: var(--text-muted);
-    }
-    .form-group input.error,
-    .form-group select.error {
-      border-color: #E53E3E;
-    }
-    .error-msg {
-      color: #E53E3E;
-      font-size: 0.8rem;
-      margin-top: 4px;
-      display: none;
-    }
+/* ===== ch7 join ===== */
+.join{background:var(--plum-800);color:#f3ead9}
+.join-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start}
+.join h2{color:#fff6e3;font-size:clamp(46px,5.4vw,72px)}
+.join h2 em{font-style:normal;color:var(--gold-2)}
+.share{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.share .btn{min-height:50px;font-size:20px;color:#f3ead9}
+.jform{background:var(--paper);color:var(--ink);border-radius:28px;padding:44px}
+.tiers{display:grid;grid-template-columns:1fr 1fr;gap:12px;border:0;padding:0;margin:0 0 24px}
+.tiers legend{font-size:20px;font-weight:700;color:var(--ink-2);margin-bottom:10px}
+.tier{position:relative;display:block;cursor:pointer}
+.tier input{position:absolute;opacity:0}
+.tier span{display:block;border:2px solid var(--line);border-radius:16px;padding:14px 18px;background:#fff;height:100%;transition:border-color .15s,background .15s}
+.tier b{display:block;font-family:var(--serif);font-size:24px;color:var(--plum-700)}
+.tier small{display:block;font-size:20px;color:var(--muted);line-height:1.5}
+.tier input:checked+span{border-color:var(--violet);background:var(--lav);box-shadow:0 0 0 3px rgba(123,75,179,.15)}
+.tier input:focus-visible+span{outline:3px solid var(--gold);outline-offset:2px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+.req{color:#b43a1e}
+[hidden]{display:none!important}
+.fld>.err,.err{display:none;font-size:20px;color:#b43a1e;margin-top:4px}
+.fld.bad input,.fld.bad select{border-color:#b43a1e}
+.fld.bad>.err{display:block}
+.jform .fine{font-size:20px;color:var(--muted);margin-top:14px}
+.ok-box{display:none;text-align:center;padding:20px 0}
+.ok-box.show{display:block}
+.ok-box h3{font-size:36px;color:var(--plum-700);margin-bottom:10px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 
-    .btn-submit {
-      width: 100%;
-      background: var(--orange);
-      color: #fff;
-      font-family: var(--font);
-      font-size: 1.05rem;
-      font-weight: 700;
-      padding: 16px;
-      border-radius: 50px;
-      border: none;
-      cursor: pointer;
-      letter-spacing: 0.04em;
-      margin-top: 8px;
-      transition: background 0.2s ease, transform 0.15s ease;
-      box-shadow: 0 4px 16px rgba(230,92,0,0.3);
-    }
-    .btn-submit:hover {
-      background: var(--orange-hover);
-      transform: translateY(-2px);
-    }
-    .form-note {
-      text-align: center;
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      margin-top: 14px;
-    }
-    .success-msg {
-      display: none;
-      text-align: center;
-      padding: 24px 16px;
-      background: linear-gradient(135deg, #F0E8F8 0%, #E8F8F0 100%);
-      border-radius: 12px;
-      margin-top: 16px;
-    }
-    .success-msg p {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--purple);
-      line-height: 1.6;
-    }
-    .success-msg .line-step {
-      margin-top: 18px;
-      padding-top: 18px;
-      border-top: 1px dashed rgba(0,0,0,0.15);
-    }
-    .success-msg .line-note {
-      font-size: 0.85rem;
-      font-weight: 400;
-      color: var(--text-muted);
-      margin-top: 10px;
-      line-height: 1.6;
-    }
-    .btn-line {
-      display: inline-block;
-      background: #06C755;
-      color: #fff;
-      font-family: var(--font);
-      font-size: 1rem;
-      font-weight: 700;
-      padding: 14px 32px;
-      border-radius: 50px;
-      text-decoration: none;
-      margin-top: 8px;
-      box-shadow: 0 4px 16px rgba(6,199,85,0.3);
-      transition: background 0.2s ease, transform 0.15s ease;
-    }
-    .btn-line:hover {
-      background: #05a648;
-      transform: translateY(-2px);
-    }
+/* footer */
+footer{background:var(--plum-900);color:#cdbfdc;padding:56px 0;font-size:20px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:space-between;align-items:center}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 28px}
+footer a{color:var(--gold-2);text-decoration:none}
+footer a:hover{text-decoration:underline}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(200px);visibility:hidden;background:var(--plum-900);color:#fff;padding:14px 26px;border-radius:999px;font-size:20px;z-index:120;transition:transform .3s;box-shadow:0 12px 30px rgba(0,0,0,.3);max-width:92vw;text-align:center}
+.toast.show{transform:translateX(-50%) translateY(0);visibility:visible}
 
-    /* ── 頁尾 ── */
-    .footer {
-      background: var(--purple-dark);
-      padding: 48px 0 32px;
-      text-align: center;
-      color: #fff;
-    }
-    .footer-name {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      letter-spacing: 0.06em;
-      opacity: 0.95;
-    }
-    .footer .btn-orange {
-      font-size: 1rem;
-      padding: 14px 36px;
-      margin-bottom: 24px;
-    }
-    .footer-copy {
-      font-size: 0.8rem;
-      opacity: 0.5;
-      letter-spacing: 0.04em;
-    }
+.try>*,.row2>*,.mem-grid>*,.join-grid>*,.wish>*,.wish form>*,.split>*,.cand>*,.about>*,.quiz-faq>*{min-width:0}
+input,select,textarea{max-width:100%;min-width:0}
 
-    /* ── 響應式微調 ── */
-    @media (max-width: 480px) {
-      .stat-item + .stat-item::before { display: none; }
-      .stat-item { min-width: 140px; }
-    }
-  </style>
+/* ===== 特效（反向技能書）===== */
+/* ⑬ 校徽開場：約 2.4 秒、可跳過、同一次瀏覽只播一次 */
+.intro{position:fixed;inset:0;z-index:200;background:var(--plum-900);display:grid;place-items:center;color:#fff6e3;transition:transform .7s cubic-bezier(.7,0,.2,1)}
+.intro.lift{transform:translateY(-100%)}
+.intro .ring{position:relative;width:200px;height:200px;display:grid;place-items:center}
+.intro .ring::before,.intro .ring::after{content:"";position:absolute;inset:0;border:2px solid var(--gold-2);border-radius:50%;animation:focus 1.1s cubic-bezier(.2,.8,.2,1) both}
+.intro .ring::after{inset:-26px;border-style:dashed;opacity:.5;animation-delay:.1s}
+.intro .seal{width:120px;height:120px;font-size:62px;animation:sealIn 1s .35s cubic-bezier(.2,.8,.2,1) both}
+.intro p{margin:26px 0 0;text-align:center;font-family:var(--serif);font-size:30px;animation:fadeUp .7s .9s both}
+.intro p small{display:block;font-family:var(--latin);font-style:italic;font-size:24px;color:var(--gold-2)}
+.intro .flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;animation:flash .35s 1.7s}
+.intro .skip{position:absolute;top:22px;right:22px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:999px;padding:6px 20px;font-size:20px;cursor:pointer}
+@keyframes focus{from{transform:scale(1.9);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes sealIn{from{transform:scale(.4);filter:blur(12px);opacity:0}to{transform:none;filter:none;opacity:1}}
+@keyframes fadeUp{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
+@keyframes flash{50%{opacity:.55}}
+/* ⑧ 捲動縮框開場 */
+.home-bg{transform-origin:50% 0;will-change:transform,border-radius}
+/* ⑪ 文字升起：只有一開始在畫面下方的標題才會先藏起來 */
+.rise{transition:transform .9s cubic-bezier(.2,.8,.2,1),opacity .9s,clip-path .9s cubic-bezier(.2,.8,.2,1)}
+.rise.pre{transform:translateY(28px);opacity:0;clip-path:inset(0 0 100% 0)}
+/* ⑳ 星點連線背景 */
+.net{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.vision>.wrap,.join>.wrap,.mem-hero>.wrap{position:relative;z-index:1}
+.vision,.join{position:relative;overflow:hidden}
+/* ⑲ 段落導覽圓點＋回到頂端 */
+.dots{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:12px}
+.dots a{position:relative;display:block;width:12px;height:12px;border-radius:999px;background:rgba(123,75,179,.35);border:2px solid #fff;box-shadow:0 0 0 1px rgba(42,24,64,.25);transition:height .25s,background .25s}
+.dots a.on{height:34px;background:var(--gold)}
+.dots a span{position:absolute;right:24px;top:50%;transform:translateY(-50%);white-space:nowrap;background:var(--plum-900);color:#fff;font-size:20px;padding:2px 12px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .2s}
+.dots a:hover span,.dots a:focus-visible span{opacity:1}
+.totop{position:fixed;right:22px;bottom:24px;z-index:40;background:var(--plum-800);color:var(--gold-2);border:1px solid var(--gold);border-radius:999px;padding:8px 18px;font-size:20px;font-weight:700;cursor:pointer;opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .25s,transform .25s}
+.totop.show{opacity:1;transform:none;pointer-events:auto}
+/* ㉓ 翻牌計數器 */
+.flip{display:inline-flex;gap:4px;vertical-align:middle}
+.flip i{font-style:normal;display:inline-grid;place-items:center;width:38px;height:52px;border-radius:8px;background:var(--plum-900);color:var(--gold-2);font-family:var(--serif);font-weight:900;font-size:32px;box-shadow:inset 0 -26px 0 rgba(255,255,255,.04),0 2px 0 rgba(0,0,0,.4);position:relative}
+.flip i::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(0,0,0,.45)}
+.flip i.go{animation:flipd .62s ease-in-out}
+@keyframes flipd{0%{transform:rotateX(0)}45%{transform:rotateX(90deg)}55%{transform:rotateX(-90deg)}100%{transform:rotateX(0)}}
+/* ㉑ 中文標題不留孤字 */
+.nw{white-space:nowrap}
+/* 卡片滑過的微光 */
+.al .ph img,.honor img,.tl-card figure img{transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.al:hover .ph img,.honor a:hover img,.tl-card:hover figure img{transform:scale(1.06)}
+@media (max-width:900px){.dots{display:none}.totop{right:14px;bottom:16px}}
+@media (prefers-reduced-motion:reduce){.rise.pre{transform:none;opacity:1;clip-path:none}.intro{display:none}}
+/* ===== responsive ===== */
+@media (max-width:1100px){
+  .bz-grid{grid-template-columns:repeat(3,1fr)}
+  .nav{display:none;position:absolute;top:84px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--plum-900);padding:12px 20px 24px;border-bottom:1px solid var(--line-dark)}
+  .nav.open{display:flex}
+  .nav a{padding:12px 8px;font-size:22px}
+  .nav .btn{margin:10px 0 0}
+  .burger{display:block}
+  .talks{grid-template-columns:1fr 1fr}
+  .honor{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:900px){
+  .wrap{padding:0 22px}
+  section.ch{padding:84px 0}
+  .sec-head{grid-template-columns:1fr}.sec-head .ghost{display:none}
+  .stats{grid-template-columns:1fr 1fr;row-gap:24px}
+  .stat:nth-child(3){padding-left:0;border-left:0}
+  .doors .wrap{grid-template-columns:1fr 1fr;padding:0}
+  .door{border-bottom:1px solid var(--line-dark)}
+  .about,.mem-grid,.cand,.split,.quiz-faq,.join-grid,.vendors-head,.wish{grid-template-columns:1fr;gap:36px}
+  .post{position:static}
+  .tl::before{left:10px}
+  .tl-item{grid-template-columns:32px 1fr}
+  .tl-yr{grid-column:2;text-align:left;padding:0 0 8px}
+  .tl-dot{grid-row:1;grid-column:1;margin:8px 0 0 0}
+  .tl-card{grid-column:2;grid-template-columns:1fr}
+  .pillars,.ext{grid-template-columns:1fr}
+  .bz-grid{grid-template-columns:1fr 1fr}
+  .pane{padding:32px 22px}
+  .biz-marq{margin:0 -22px 24px}
+  .mship .plans{grid-template-columns:1fr}
+  .try{grid-template-columns:1fr}
+  .brandpage{grid-template-columns:1fr;justify-items:center}
+  .steps4{grid-template-columns:1fr 1fr}
+  .wish form{grid-template-columns:1fr}
+  .cand{padding:84px 0 60px}
+  .cand-ph{max-width:420px}
+  .jform{padding:28px 20px}
+  .hall{padding:32px 20px}
+}
+@media (max-width:560px){
+  .bz-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .bz-ava{width:76px;height:76px}
+  .bz-t b{font-size:22px}
+  .talks{grid-template-columns:1fr}
+  .honor{grid-template-columns:1fr 1fr;gap:12px}
+  .honor .t{padding:10px 12px 12px}
+  .alumni{grid-template-columns:1fr;gap:16px}
+  .al{display:grid;grid-template-columns:118px 1fr}
+  .al .ph{aspect-ratio:auto;height:100%;min-height:170px}
+  .al .bd{padding:14px 16px}
+  .al h3{font-size:24px;margin:2px 0 4px}
+  .bd-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .bd-ph{font-size:56px}
+  .bd-info h4{font-size:22px}
+  .pane h3{font-size:30px}
+  .vend li{width:200px}
+  .vend-marq{margin:0 -22px}
+  .tiers,.row2{grid-template-columns:1fr}
+  .home h1{font-size:52px}
+  .brand>span>span{display:none}
+  .bd-btn{border-radius:12px;padding:4px 10px;line-height:1.4}
+  .doors .wrap{grid-template-columns:1fr}
+  .notes{columns:1}
+  .steps4{grid-template-columns:1fr}
+}
+</style>
 </head>
 <body>
+<a class="sr" href="#main">跳到主要內容</a>
 
-  <!-- 頂部細列 -->
-  <div class="topbar">
-    <div class="container">
-      <span class="topbar-left">台南應用科技大學校友會</span>
-      <span class="topbar-right">校友召集令</span>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#home" aria-label="南應大校友會 回到頂端"><span class="seal" aria-hidden="true">南</span><span><b>南應大校友會</b><span>TUT Alumni · since 1964</span></span></a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="nav">選單</button>
+    <nav class="nav" id="nav" aria-label="章節選單">
+      <a href="#corridor">時光走廊</a>
+      <a href="#pride">傑出校友</a>
+      <a href="#memory">記憶牆</a>
+      <a href="#vision">校友會理念</a>
+      <a href="#membership">會員招募</a>
+      <a class="btn btn-gold" href="#join">我要加入</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ========== 第一章 回家 ========== -->
+<section class="home" id="home" aria-labelledby="h-home">
+  <div class="home-bg" role="img" aria-label="南應大校園前，穿著紫色 TUT 上衣的校友揮舞紫色校旗"></div>
+  <div class="wrap">
+    <div class="latin">Tainan University of Technology Alumni Association</div>
+    <h1 id="h-home"><span class="ln"><span>南應人，</span></span><span class="ln"><span>回家了。</span></span></h1>
+    <p class="lead">我們曾經在同一個校園裡青春過。現在，換我們把散落各地的南應人，再一次聚在一起。</p>
+    <div class="cta">
+      <a class="btn btn-gold" href="#join">30 秒加入校友會</a>
+      <a class="btn btn-line" href="#memory">把老照片貼回記憶牆</a>
+    </div>
+    <p class="hint">只要姓名、手機和分會，其餘資料可以之後再補。</p>
+    <div class="stats">
+      <div class="stat"><div class="num"><span class="roll" data-to="1964">1964</span></div><div class="lbl">創校，從台南家專出發</div></div>
+      <div class="stat"><div class="num"><span class="roll" data-to="60">60</span><small>+</small></div><div class="lbl">年辦學，一甲子校友</div></div>
+      <div class="stat"><div class="num"><span class="roll" data-to="5">5</span></div><div class="lbl">個分會，南北都找得到人</div></div>
+      <div class="stat"><div class="num"><span class="roll" id="boardCount" data-to="23">23</span></div><div class="lbl">位理監事校友</div></div>
+    </div>
+  </div>
+</section>
+
+<nav class="doors" aria-label="快速入口">
+  <div class="wrap">
+    <a class="door" href="#corridor"><small>Remember</small><b>回到校園</b><span>從家專到南應大的一甲子</span></a>
+    <a class="door" href="#memory"><small>Share</small><b>貼上回憶</b><span>一張照片、一段話</span></a>
+    <a class="door" href="#vision"><small>Connect</small><b>認識校友會</b><span>商務資源與理監事</span></a>
+    <a class="door" href="#membership"><small>Be seen</small><b>成為會員</b><span>讓你的名字被看見</span></a>
+  </div>
+</nav>
+
+<!-- ========== 第二章 時光走廊 ========== -->
+<section class="ch" id="corridor" aria-labelledby="h-corridor">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="chap"><b>第一章</b>時光走廊</p>
+        <h2 id="h-corridor">從家專少女到南應人，<br>一條走過一甲子的路。</h2>
+      </div>
+      <div class="ghost" aria-hidden="true">1964</div>
+    </div>
+    <div class="about">
+      <div>
+        <p class="lead">台南應用科技大學前身為「台南家政專科學校」（台南家專），1964 年創立；歷經台南女子技術學院（1997）、台南科技大學（2006），於 2010 年正式更名為「台南應用科技大學」。</p>
+        <p>學校以文化創意為辦學核心，是全台科技大學中唯一擁有完整藝術學院（音樂、舞蹈、美術、漫畫）的大學，設計與藝術教學屢獲德國紅點設計獎、iF 設計新秀獎等國際肯定。一甲子以來，無數校友在演藝、設計、藝術、餐飲、文教與公共事務各領域發光發熱。</p>
+      </div>
+      <ul class="prides" aria-label="我們學校的驕傲">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11M10 20v-6h4v6"/></svg>唯一完整藝術學院的科技大學</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="M9 13.5 7.5 21 12 18.5 16.5 21 15 13.5"/></svg>紅點、iF 國際設計獎常勝軍</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3c3 4 6 6 6 10a6 6 0 0 1-12 0c0-4 3-6 6-10Z"/></svg>文化創意辦學主軸</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg>溫馨和諧的學風</li>
+      </ul>
+    </div>
+
+    <ol class="tl" style="list-style:none;padding:0;margin:0">
+      <li class="tl-item">
+        <div class="tl-yr">1964</div><div class="tl-dot" aria-hidden="true"></div>
+        <article class="tl-card">
+          <figure data-zoom="images/tl-1965.webp"><img src="images/tl-1965.webp" alt="台南家政專科學校創校時期的校園插畫，穿制服的女學生走過校門" width="1000" height="750"><figcaption>點圖放大</figcaption></figure>
+          <div class="tl-body"><h3>南應的起點・台南家政專科學校</h3><p class="one">私立台南家政專科學校奉准立案。</p>
+            <details class="tl-more"><summary>看那段故事</summary><p>全女校時代，美姿美儀是每日必修。旗袍課、家政課，一針一線縫出了第一代南應人的樣子。</p></details></div>
+        </article>
+      </li>
+      <li class="tl-item">
+        <div class="tl-yr">1997</div><div class="tl-dot" aria-hidden="true"></div>
+        <article class="tl-card">
+          <figure data-zoom="images/tl-1997.webp"><img src="images/tl-1997.webp" alt="改制台南女子技術學院時期的校園插畫" width="1000" height="750"><figcaption>點圖放大</figcaption></figure>
+          <div class="tl-body"><h3>升格轉型・台南女子技術學院</h3><p class="one">改制為台南女子技術學院。</p>
+            <details class="tl-more"><summary>看那段故事</summary><p>巧藝並修，創意的搖籃開始發光。設計、藝術與家政並進，奠定了日後南應大的文創底子。</p></details></div>
+        </article>
+      </li>
+      <li class="tl-item">
+        <div class="tl-yr">2006</div><div class="tl-dot" aria-hidden="true"></div>
+        <article class="tl-card">
+          <figure data-zoom="images/tl-2006.webp"><img src="images/tl-2006.webp" alt="改名台南科技大學、開始招收男生的校園插畫" width="1000" height="750"><figcaption>點圖放大</figcaption></figure>
+          <div class="tl-body"><h3>邁向科技大學・台南科技大學</h3><p class="one">改名台南科技大學，同一年開始招收男生。</p>
+            <details class="tl-more"><summary>看那段故事</summary><p>校園裡第一次出現了男同學。從女子學校走向男女同校，南應的故事多了新的聲音。</p></details></div>
+        </article>
+      </li>
+      <li class="tl-item">
+        <div class="tl-yr">2010</div><div class="tl-dot" aria-hidden="true"></div>
+        <article class="tl-card">
+          <figure data-zoom="images/tl-2010.webp"><img src="images/tl-2010.webp" alt="定名台南應用科技大學時期的校園插畫" width="1000" height="750"><figcaption>點圖放大</figcaption></figure>
+          <div class="tl-body"><h3>今天的名字・台南應用科技大學</h3><p class="one">更名為台南應用科技大學，持續拓展藝術、設計與科技實務。</p>
+            <details class="tl-more"><summary>看那段故事</summary><p>我們的名字，叫南應大。從這一年起，每一屆畢業生的證書上，都印著同一個校名。</p></details></div>
+        </article>
+      </li>
+      <li class="tl-item">
+        <div class="tl-yr">現在</div><div class="tl-dot" aria-hidden="true"></div>
+        <article class="tl-card">
+          <figure data-zoom="images/tl-now.webp"><img src="images/tl-now.webp" alt="當代南應大四大學群的校園插畫，學生在草地上創作與演奏" width="1000" height="750"><figcaption>點圖放大</figcaption></figure>
+          <div class="tl-body"><h3>四大學群</h3><p class="one">生活科技／管理／設計／藝術。</p>
+            <details class="tl-more"><summary>看那段故事</summary><p>唯一的旗袍課、最完整的家政學程，到今天都還在這裡。走得再遠，南應的根還是同一個。</p></details></div>
+        </article>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ========== 第三章 傑出校友 ========== -->
+<section class="ch" id="pride" aria-labelledby="h-pride" style="background:var(--paper-2)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="chap"><b>第二章</b>南應人，真的很厲害</p>
+        <h2 id="h-pride">這些人，都是我們的學長姊。</h2>
+        <p class="lead" style="margin-top:14px">以校方公開資料中的傑出校友為代表，之後會持續補上更多南應人的故事。</p>
+      </div>
+      <div class="ghost" aria-hidden="true">Pride</div>
+    </div>
+    <div class="chips" role="group" aria-label="依領域篩選傑出校友" id="alChips"></div>
+    <div class="alumni" id="alumni">
+      <article class="al" data-f="show"><div class="ph"><img src="images/al-wang-tong.webp" alt="王瞳"></div><div class="bd"><div class="fd">演藝圈・演員</div><h3>王瞳<span class="aka">（本名吳姍耘）</span></h3><p>橫跨戲劇與綜藝的知名演員，螢光幕前的熟面孔。</p><div class="src">照片來源：NOWnews 今日新聞（民視提供）</div></div></article>
+      <article class="al" data-f="show"><div class="ph"><img src="images/al-lene-lai.webp" alt="賴琳恩"></div><div class="bd"><div class="fd">演藝圈・演員／名模</div><h3>賴琳恩</h3><p>從選美舞台走向戲劇與時尚圈的亮麗學姊。</p><div class="src">照片來源：維基共享資源</div></div></article>
+      <article class="al" data-f="show"><div class="ph"><img src="images/al-xie-yalin.webp" alt="謝雅琳"></div><div class="bd"><div class="fd">演藝圈・藝人／主持人</div><h3>謝雅琳<span class="aka">（阿嬌）</span></h3><p>親切自然、深受觀眾喜愛的節目主持人，也經營「阿嬌生活廚房」。</p><div class="src">照片來源：TVBS 女人我最大</div></div></article>
+      <article class="al" data-f="public"><div class="ph"><img src="images/al-su-chihfen.webp" alt="蘇治芬"></div><div class="bd"><div class="fd">公共事務・前雲林縣長</div><h3>蘇治芬</h3><p>投身公共事務、長期關懷地方發展的學姊。</p><div class="src">照片來源：維基共享資源</div></div></article>
+      <article class="al" data-f="art"><div class="ph"><img src="images/al-zhang-fangyu.webp" alt="張芳宇"></div><div class="bd"><div class="fd">音樂・聲樂家</div><h3>張芳宇</h3><p>73 級音樂科畢業。國立清華大學教授暨藝術學院院長、迪里美聲樂集藝術總監，持續投入演出、教學與學術。</p><div class="src">照片來源：國立清華大學音樂學系</div></div></article>
+      <article class="al" data-f="biz"><div class="ph"><img src="images/al-chen-huishu.webp" alt="陳慧姝"></div><div class="bd"><div class="fd">文創經營・林百貨總經理</div><h3>陳慧姝</h3><p>110 級國際企業經營研究所畢業。高青開發董事長暨總經理，經營 FOCUS 時尚流行館與台南林百貨。</p><div class="src">照片來源：經濟日報展覽資訊網（林百貨提供）</div></div></article>
+      <article class="al" data-f="biz"><div class="ph"><img src="images/al-liu-weizong.webp" alt="劉韋宗"></div><div class="bd"><div class="fd">餐飲廚藝・WCC 特級金牌</div><h3>劉韋宗</h3><p>旅館管理系校友，台南晶英酒店 ROBIN’S 牛排館領班；2024 WCC 世界廚藝大賽奪 4 面特級金牌、5 金 1 銀。</p><div class="src">照片來源：南應大旅遊學院</div></div></article>
+      <article class="al" data-f="art"><div class="ph"><img src="images/al-luzhi-madilin.webp" alt="路之・瑪迪霖"></div><div class="bd"><div class="fd">舞蹈・第七屆傑出校友</div><h3>路之・瑪迪霖</h3><p>舞蹈科 87 級、舞蹈系 96 級。蒂摩爾古薪舞集團長暨藝術總監，把台灣文化與部落藝術帶上國際舞台。</p><div class="src">照片來源：南應大官網</div></div></article>
+      <article class="al" data-f="public"><div class="ph"><img src="images/al-liu-qinman.webp" alt="劉琴滿"></div><div class="bd"><div class="fd">教育・第五屆傑出校友</div><h3>劉琴滿</h3><p>65 級美術工藝科畢業。全國家長會名譽理事長、地檢署教誨師，曾任總統教育獎、師鐸獎評審。</p><div class="src">照片來源：南應大官網</div></div></article>
+      <article class="al" data-f="biz"><div class="ph"><img src="images/al-huang-shihui.webp" alt="黃世惠"></div><div class="bd"><div class="fd">航空產業・第六屆傑出校友</div><h3>黃世惠</h3><p>曾任中華航空多項主管職務，2025 年起擔任台灣虎航董事長，是虎航首位女性董事長。</p><div class="src">照片來源：中央社（台灣虎航提供）</div></div></article>
+      <article class="al" data-f="art"><div class="ph"><img src="images/al-ye-jiwen.webp" alt="葉紀紋"></div><div class="bd"><div class="fd">表演藝術・第六屆傑出校友</div><h3>葉紀紋</h3><p>旅英表演藝術製作人與策展人，創立足跡藝術，策劃愛丁堡藝穗節「臺灣季」。</p><div class="src">照片來源：小明拆台 Podcast</div></div></article>
+      <article class="al" data-f="public"><div class="ph"><img src="images/al-shen-mengying.webp" alt="沈孟穎"></div><div class="bd"><div class="fd">建築・第六屆傑出校友</div><h3>沈孟穎</h3><p>台南家專室內設計科畢業，現任實踐大學建築設計學系助理教授，著有《台灣公宅100年》。</p><div class="src">照片來源：實踐大學建築設計學系</div></div></article>
+      <article class="al" data-f="art"><div class="ph"><img src="images/al-huang-siyu.webp" alt="黃思瑜"></div><div class="bd"><div class="fd">音樂・第六屆傑出校友</div><h3>黃思瑜</h3><p>音樂科系校友、職業作曲家，曾獲美國學術音樂大獎、全球音樂大獎。</p><div class="src">照片來源：南應大校友服務組</div></div></article>
+    </div>
+    <p class="note-sm">照片皆為本人真實照片，取自標示的公開來源，版權屬原作者或原單位所有。</p>
+  </div>
+</section>
+
+<!-- ========== 第四章 記憶牆 ========== -->
+<section class="memory" id="memory" aria-labelledby="h-memory">
+  <div class="mem-hero dark">
+    <div class="wrap">
+      <p class="chap"><b>第三章</b>互動記憶牆</p>
+      <h2 id="h-memory">把你的南應，<br>貼回這面牆。</h2>
+      <p class="lead" style="margin-top:18px">那些年在南應之心、鳳凰樹與紅樓宿舍的日子——你，還記得嗎？一張照片、一段文字，就是一頁回不去的時光。</p>
+      <div class="mem-count" id="memCount" hidden><b id="memNum">0</b><span>則校友回憶已貼上牆</span></div>
     </div>
   </div>
 
-  <!-- Hero 主視覺 -->
-  <section class="hero" id="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1>台南應用科技大學校友會<br>召集令</h1>
-      <p class="hero-subtitle">我們曾經在同一個校園裡青春過。現在，換我們把散落各地的南應人，再一次聚在一起。</p>
-      <a href="#join" class="btn-orange">立即加入校友會</a>
-      <p class="hero-note">填姓名與電話只要 30 秒，其余資料可之後再補</p>
-    </div>
-  </section>
+  <div class="board-wrap">
+    <div class="wrap mem-grid">
+      <form class="post" id="noteForm" novalidate>
+        <h3>寫下你的回憶</h3>
+        <label class="fld"><span>姓名／暱稱</span><input id="fName" maxlength="20" placeholder="例如：鳳凰花下的學姊" autocomplete="nickname"></label>
+        <label class="fld"><span>畢業年度</span>
+          <select id="fYear"><option>1960s</option><option>1970s</option><option>1980s</option><option>1990s</option><option selected>2000s</option><option>2010s</option><option>2020s</option><option>在校生</option></select></label>
+        <fieldset class="fld"><legend>卡片顏色（沒有照片時使用）</legend>
+          <div class="swatch">
+            <label><input type="radio" name="noteColor" value="yellow" id="cYellow" checked><span class="c-yellow" title="香檳"></span><span class="sr">香檳</span></label>
+            <label><input type="radio" name="noteColor" value="pink"><span class="c-pink" title="丁香"></span><span class="sr">丁香</span></label>
+            <label><input type="radio" name="noteColor" value="mint"><span class="c-mint" title="薰衣草"></span><span class="sr">薰衣草</span></label>
+          </div></fieldset>
+        <label class="fld"><span>回憶內容</span><textarea id="fText" maxlength="120" placeholder="旗袍課、紅樓宿舍、畢業展前一晚……"></textarea><div class="cnt"><span id="charCount">0</span> / 120</div></label>
+        <div class="fld"><span>上傳一張照片（選填）</span>
+          <div class="drop" id="fileDrop" role="button" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 8"/></svg>點這裡選擇照片<br>會自動壓縮成小圖</div>
+          <input type="file" id="fPhoto" accept="image/*" hidden>
+          <div class="preview" id="filePreview"><img id="fpImg" alt="照片預覽"><span id="fpMeta"></span><button type="button" id="fpRemove">移除</button></div>
+        </div>
+        <button class="btn btn-plum" type="submit" style="width:100%">貼進回憶相簿</button>
+        <p class="fine">送出後經校友會審核，通過就會出現在這面牆上，所有校友都看得到；也有機會出現在線上講座的直播回憶牆單元。</p>
+      </form>
 
-  <!-- 2026-10-02：與「南應大校友互動記憶牆」互相連結 -->
-  <section style="background:var(--purple-dark);padding:18px 16px;text-align:center;">
-    <a href="https://event.bymyway.com/curated/tut-memory/" target="_blank" rel="noopener"
-       style="color:#fff;text-decoration:none;font-size:17px;line-height:1.6;display:inline-block;">
-      📸 <b>南應大校友互動記憶牆</b>：看校史時光走廊、投票南應十景，<br>把你的南應老照片貼回這面牆 →
-    </a>
-  </section>
-
-  <!-- 數據/號召條 -->
-  <section class="stats-bar">
-    <div class="container">
-      <div class="stat-item">
-        <div class="stat-number">1964</div>
-        <div class="stat-label">創校</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">60+</div>
-        <div class="stat-label">年辦學</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">無數</div>
-        <div class="stat-label">各行各業校友</div>
+      <div>
+        <div class="wall-tools">
+          <div class="chips" role="group" aria-label="依年代篩選回憶" id="decChips" style="margin:0"></div>
+          <div class="sort" role="group" aria-label="排序">
+            <button type="button" class="chip" id="sortNew" aria-pressed="true">最新優先</button>
+            <button type="button" class="chip" id="sortHot" aria-pressed="false">最有感</button>
+          </div>
+        </div>
+        <div class="notes" id="notesGrid" aria-live="polite"></div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- 學校簡介 -->
-  <section class="about" id="about">
-    <div class="container">
-      <div class="about-grid">
+  <div class="talks-wrap dark" id="talks">
+    <div class="wrap">
+      <div class="sec-head">
         <div>
-          <p class="section-label">OUR ALMA MATER</p>
-          <h2 class="section-title">關於我們的母校</h2>
-          <p class="about-text">
-            台南應用科技大學前身為「台南家政專科學校」（台南家專），1964 年創立；歷經台南女子技術學院（1997）、台南科技大學（2006），於 2010 年正式更名為「台南應用科技大學」。學校以文化創意為辦學核心，是全台科技大學中唯一擁有完整藝術學院（音樂、舞蹈、美術、漫畫）的大學，設計與藝術教學屢獲德國紅點設計獎、iF 設計新秀獎等國際肯定。一甲子以來，無數校友在演藝、設計、藝術、餐飲、文教與公共事務各領域發光發熱。
-          </p>
+          <p class="chap"><b>線上講座</b>主題由大家決定</p>
+          <h2>你最想聽哪個主題？</h2>
         </div>
-        <div class="about-features">
-          <h3>我們學校的驕傲</h3>
-          <ul class="feature-list">
-            <li>唯一完整藝術學院的科技大學</li>
-            <li>紅點、iF 國際設計獎常勝軍</li>
-            <li>文化創意辦學主軸</li>
-            <li>溫馨和諧的學風</li>
-          </ul>
-        </div>
+        <div class="ghost" aria-hidden="true">Talks</div>
       </div>
-
-      <!-- 母校沿革時間軸 -->
-      <div class="timeline-block">
-        <h3 class="timeline-title">從台南家政專科學校到今天的南應大</h3>
-        <div class="timeline-grid">
-          <div class="timeline-card">
-            <div class="timeline-year">1964</div>
-            <b>南應的起點</b>
-            <p>私立台南家政專科學校奉准立案。</p>
-          </div>
-          <div class="timeline-card">
-            <div class="timeline-year">1997</div>
-            <b>升格轉型</b>
-            <p>改制為台南女子技術學院。</p>
-          </div>
-          <div class="timeline-card">
-            <div class="timeline-year">2006</div>
-            <b>邁向科技大學</b>
-            <p>改名台南科技大學。</p>
-          </div>
-          <div class="timeline-card">
-            <div class="timeline-year">2010</div>
-            <b>今天的名字</b>
-            <p>更名為台南應用科技大學，並持續拓展藝術、設計與科技實務。</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 加入倡議 -->
-  <section class="why-join">
-    <div class="container">
-      <p class="section-label">WHY JOIN US</p>
-      <h2 class="section-title">加入，不只是留下一筆資料</h2>
-      <p class="why-lead">我們希望把「校友會」做成一個真正有溫度、有連結、有事情可以一起做的南應人平台。</p>
-      <div class="why-grid">
-        <div class="why-card">
-          <div class="why-icon">🤝</div>
-          <h3>找回老同學</h3>
-          <p>重新連上曾一起上課、一起熬夜、一起青春過的同學。</p>
-        </div>
-        <div class="why-card">
-          <div class="why-icon">🌱</div>
-          <h3>跨世代交流</h3>
-          <p>學長姐分享經驗，學弟妹創造新可能，讓南應人的網絡越來越強。</p>
-        </div>
-        <div class="why-card">
-          <div class="why-icon">✨</div>
-          <h3>讓南應人發光</h3>
-          <p>看見各行各業的校友成就，也讓更多人知道「南應大出人才」。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 傑出校友 -->
-  <section class="alumni" id="alumni">
-    <div class="container">
-      <h2 class="section-title">南應人，真的很厲害！</h2>
-      <p class="alumni-lead">這些名人，都是我們的學長姊——以下先以校方公開資料中的傑出校友作為代表，正式上線後可持續補上更多南應人的故事。</p>
-      <div class="alumni-grid">
-
-        <!-- 校友卡 1 -->
-        <div class="alumni-card">
-          <img class="alumni-portrait" src="https://a.lovart.ai/artifacts/agent/LIEDj3J7ibClet3i.png" alt="王瞳（吳姍耘）形象照">
-          <span class="photo-source ai-generated">⚠️AI生成示意圖，非本人照片</span>
-          <div class="alumni-name">王瞳（吳姍耘）</div>
-          <span class="alumni-tag">演藝圈 · 演員</span>
-          <p class="alumni-desc">橫跨戲劇與綜藝的知名演員，螢光幕前的熟面孔。</p>
-        </div>
-
-        <!-- 校友卡 2 -->
-        <div class="alumni-card">
-          <img class="alumni-portrait" src="https://upload.wikimedia.org/wikipedia/commons/9/94/Lene_Lai.jpg" alt="賴琳恩形象照">
-          <span class="photo-source">圖片來源：維基百科</span>
-          <div class="alumni-name">賴琳恩</div>
-          <span class="alumni-tag">演藝圈 · 演員/名模</span>
-          <p class="alumni-desc">從選美舞台走向戲劇與時尚圈的亮麗學姊。</p>
-        </div>
-
-        <!-- 校友卡 3 -->
-        <div class="alumni-card">
-          <img class="alumni-portrait" src="https://a.lovart.ai/artifacts/agent/H8JzQHgJZTFb2O6g.png" alt="謝雅琳（阿嬌）形象照">
-          <span class="photo-source ai-generated">⚠️AI生成示意圖，非本人照片</span>
-          <div class="alumni-name">謝雅琳（阿嬌）</div>
-          <span class="alumni-tag">演藝圈 · 藝人/主持人</span>
-          <p class="alumni-desc">親切自然、深受觀眾喜愛的節目主持人。</p>
-        </div>
-
-        <!-- 校友卡 4 -->
-        <div class="alumni-card">
-          <img class="alumni-portrait" src="https://upload.wikimedia.org/wikipedia/commons/8/8d/立法委員蘇治芬.jpg" alt="蘇治芬形象照">
-          <span class="photo-source">圖片來源：維基百科</span>
-          <div class="alumni-name">蘇治芬</div>
-          <span class="alumni-tag">公共事務 · 前雲林縣長</span>
-          <p class="alumni-desc">投身公共事務、長期關懷地方發展的學姊。</p>
-        </div>
-
-        <!-- 校友卡 5 -->
-        <div class="alumni-card">
-          <img class="alumni-portrait" src="https://a.lovart.ai/artifacts/agent/2zmGnZellsH6aU0s.png" alt="張芳宇形象照">
-          <span class="photo-source ai-generated">⚠️AI生成示意圖，非本人照片</span>
-          <div class="alumni-name">張芳宇</div>
-          <span class="alumni-tag">藝術教育 · 大學藝術學院院長</span>
-          <p class="alumni-desc">73級音樂科畢業。聲樂家、國立清華大學教授暨藝術學院院長，持續投入演出、教學與學術。</p>
-        </div>
-
-        <!-- 校友卡 6 -->
-        <div class="alumni-card">
-          <img class="alumni-portrait" src="https://a.lovart.ai/artifacts/agent/8qujsg8Cea7h4Wh7.png" alt="陳慧姝形象照">
-          <span class="photo-source ai-generated">⚠️AI生成示意圖，非本人照片</span>
-          <div class="alumni-name">陳慧姝</div>
-          <span class="alumni-tag">文創經營 · 台南林百貨經營團隊</span>
-          <p class="alumni-desc">110級國際企業經營研究所畢業。企業經營者，參與 FOCUS、林百貨等品牌經營與文化推廣。</p>
-        </div>
-
-        <!-- 校友卡 7 -->
-        <div class="alumni-card">
-          <img class="alumni-portrait" src="https://a.lovart.ai/artifacts/agent/mKdPgTgdQz5YRiK1.png" alt="劉韋宗形象照">
-          <span class="photo-source ai-generated">⚠️AI生成示意圖，非本人照片</span>
-          <div class="alumni-name">劉韋宗</div>
-          <span class="alumni-tag">餐飲廚藝 · WCC 廚藝大賽特級金牌</span>
-          <p class="alumni-desc">在國際廚藝競賽奪下特級金牌的主廚。</p>
-        </div>
-
-        <!-- 校友卡 8 -->
-        <div class="alumni-card">
-          <img class="alumni-portrait" src="https://a.lovart.ai/artifacts/agent/CpBgzDMVZN8iEKiD.png" alt="路之·瑪迪霖形象照">
-          <span class="photo-source ai-generated">⚠️AI生成示意圖，非本人照片</span>
-          <div class="alumni-name">路之·瑪迪霖</div>
-          <span class="alumni-tag">多元領域 · 第七屆傑出校友</span>
-          <p class="alumni-desc">舞蹈系校友、蒂摩爾古薪舞集創辦人，將台灣文化與部落藝術帶上國際舞台。</p>
-        </div>
-
-        <!-- 校友卡 9 -->
-        <div class="alumni-card">
-          <div class="alumni-portrait alumni-avatar-text">劉</div>
-          <div class="alumni-name">劉琴滿</div>
-          <span class="alumni-tag">教育公職 · 第五屆傑出校友</span>
-          <p class="alumni-desc">65級美術工藝科畢業。長期投入教育與公共事務，曾擔任多項全國性教育相關委員。</p>
-        </div>
-
-        <!-- 校友卡 10 -->
-        <div class="alumni-card">
-          <div class="alumni-portrait alumni-avatar-text">黃</div>
-          <div class="alumni-name">黃世惠</div>
-          <span class="alumni-tag">航空產業 · 第六屆傑出校友</span>
-          <p class="alumni-desc">航空產業管理者。曾任中華航空多項主管職務，2025 年獲選為台灣虎航董事長。</p>
-        </div>
-
-        <!-- 校友卡 11 -->
-        <div class="alumni-card">
-          <div class="alumni-portrait alumni-avatar-text">葉</div>
-          <div class="alumni-name">葉紀紋</div>
-          <span class="alumni-tag">藝術設計 · 第六屆傑出校友</span>
-          <p class="alumni-desc">藝術與設計領域傑出校友，返校參與校友講堂與學弟妹交流。</p>
-        </div>
-
-        <!-- 校友卡 12 -->
-        <div class="alumni-card">
-          <div class="alumni-portrait alumni-avatar-text">沈</div>
-          <div class="alumni-name">沈孟穎</div>
-          <span class="alumni-tag">建築規劃 · 第六屆傑出校友</span>
-          <p class="alumni-desc">建築與公共住宅相關領域校友，曾於 60 週年校慶校友講堂分享專業經驗。</p>
-        </div>
-
-        <!-- 校友卡 13 -->
-        <div class="alumni-card">
-          <div class="alumni-portrait alumni-avatar-text">黃</div>
-          <div class="alumni-name">黃思瑜</div>
-          <span class="alumni-tag">多元領域 · 第六屆傑出校友</span>
-          <p class="alumni-desc">第六屆傑出校友，代表南應人在專業領域持續發展、發光。</p>
-        </div>
-
-      </div>
-      <p class="alumni-note">※ 部分肖像為 AI 生成之形象示意圖，非本人真實照片；無照片者以姓氏頭像代表。</p>
-    </div>
-  </section>
-
-  <!-- 加入表單 -->
-  <section class="join-section" id="join">
-    <div class="container join-split">
-      <div class="join-left">
-        <p class="join-eyebrow">NOW · YOUR TURN</p>
-        <h2 class="join-headline">南應人，換你回來了。💜</h2>
-        <p class="join-subtitle">不用先想起完整畢業資料。姓名＋手機就可以先加入，我們後續再協助確認畢業級別、科系與校友資訊。</p>
-        <div class="join-actions">
-          <button type="button" id="shareBtn" class="btn-ghost">↗ 分享召集令</button>
-          <button type="button" id="copyLinkBtn" class="btn-ghost">⎘ 複製連結</button>
-        </div>
-      </div>
-      <div class="form-card">
-        <h2 class="section-title">加入南應校友</h2>
-
-        <form id="joinForm" novalidate="">
-          <div class="form-group">
-            <label for="name">姓名<span class="required-star">＊</span></label>
-            <input type="text" id="name" name="name" placeholder="請輸入您的姓名" required="">
-            <p class="error-msg" id="name-error">請填寫姓名</p>
-          </div>
-
-          <div class="form-group">
-            <label for="phone">電話<span class="required-star">＊</span></label>
-            <input type="tel" id="phone" name="phone" placeholder="請輸入您的聯絡電話" required="">
-            <p class="error-msg" id="phone-error">請填寫聯絡電話</p>
-          </div>
-
-          <div class="form-group">
-            <label for="grad-year">畢業年（選填）</label>
-            <input type="text" id="grad-year" name="grad-year" placeholder="例：民國 90 年 / 2001 年">
-          </div>
-
-          <div class="form-group">
-            <label for="department">科系（選填）</label>
-            <input type="text" id="department" name="department" placeholder="例：服裝設計系、音樂系">
-          </div>
-
-          <div class="form-group">
-            <label for="chapter">選擇校友會分會<span class="required-star">＊</span></label>
-            <select id="chapter" name="chapter" required="">
-              <option value="" disabled="" selected="">請選擇分會</option>
-              <option value="台南">台南校友會</option>
-              <option value="台中">台中校友會</option>
-              <option value="高雄">高雄校友會</option>
-              <option value="台北">台北校友會</option>
-              <option value="嘉義">嘉義校友會</option>
-            </select>
-            <p class="error-msg" id="chapter-error">請選擇一個校友會分會</p>
-          </div>
-
-          <button type="submit" class="btn-submit">送出，我要加入！</button>
-          <p class="form-note">只填姓名、電話與分會也可以，我們會專人與您聯繫</p>
+      <div class="talks" id="talkCards"></div>
+      <div class="wish">
+        <div><h3>沒有你想聽的？</h3><p style="margin:6px 0 0;font-size:20px;color:#d6c8e4">想聽什麼、想要什麼樣的講座，都可以寫在這裡，校友會會參考大家的願望來安排。</p></div>
+        <form id="wishForm">
+          <label><span class="sr">稱呼（選填）</span><input id="wishName" placeholder="稱呼（選填）" maxlength="20"></label>
+          <label><span class="sr">想聽的主題</span><textarea id="wishText" placeholder="我想聽……" maxlength="200"></textarea></label>
+          <input id="wishWebsite" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-gold" id="wishBtn" type="submit">送出願望</button>
+          <p class="out" id="wishOut" role="status"></p>
         </form>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <div class="success-msg" id="successMsg">
-          <p>報名成功！學長姊我們會盡快與您聯繫 💜</p>
-          <div class="line-step">
-            <a href="#" id="lineAddBtn" class="btn-line" target="_blank" rel="noopener">加入佩佩老師 LINE 官方帳號</a>
-            <p class="line-note">加入後請直接在對話框傳送「我已經送出資料了」，佩佩老師才能盡快跟您聯繫喔！</p>
-          </div>
+<!-- ========== 第五章 校友會理念 ========== -->
+<section class="ch vision dark" id="vision" aria-labelledby="h-vision">
+  <div class="marquee" aria-label="2027 台南校友會理事長候選人 陳佩君">
+    <div class="track" aria-hidden="true">
+      <span>2027 台南校友會理事長候選人　陳佩君</span><span>支持陳佩君</span><span>加入南應校友會，一起把校友量能帶回來</span>
+      <span>2027 台南校友會理事長候選人　陳佩君</span><span>支持陳佩君</span><span>加入南應校友會，一起把校友量能帶回來</span>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="cand">
+      <div class="cand-ph"><img src="images/chen-peijun.webp" alt="2027 台南校友會理事長候選人陳佩君" width="366" height="514"><span class="badge">2027 理事長候選人</span></div>
+      <div>
+        <p class="chap"><b>第四章</b>加入南應大校友會</p>
+        <h2 id="h-vision">把校園的溫暖，<br>帶進<em>職場</em>。</h2>
+        <p class="lead" style="margin-top:16px">2027 年台南校友會理事長候選人<b style="color:#fff6e3">陳佩君</b>的競選理念：讓校友會不只是一份名冊，而是一個有資源、有人脈、有事情可以一起做的南應人平台。</p>
+        <ul aria-label="陳佩君現任">
+          <li>AI 百人導師團隊計畫發起人</li>
+          <li>榮樹下節目企劃</li>
+          <li>愛心商店聯盟計畫共同發起人</li>
+          <li>中華新媒體影音發展協會副祕書長、中華網紅協會副秘書長</li>
+        </ul>
+        <div class="support">
+          <button class="btn btn-gold heart" type="button" id="supportBtn"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6-8 11-8 11Z"/></svg>支持陳佩君</button>
+          <span class="heart"><b id="supportNum">—</b><span style="font-size:20px">個讚</span></span>
+          <a class="link-arrow" href="https://event.bymyway.com/curated/peipei1983/" target="_blank" rel="noopener">看陳佩君的個人網頁 ↗</a>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- 頁尾 -->
-  <footer class="footer">
-    <div class="container">
-      <p class="footer-name">台南應用科技大學校友會</p>
-      <a href="#join" class="btn-orange">我也要加入</a>
-      <p style="margin:10px 0;"><a href="https://event.bymyway.com/curated/tut-memory/" target="_blank" rel="noopener" style="color:inherit;">📸 南應大校友互動記憶牆</a></p>
-      <p class="footer-copy">© 台南應用科技大學校友會 · 召集令</p>
+    <div class="pillars">
+      <a class="pillar" href="#ext"><div class="n">01</div><h3>外部產業資源鏈結</h3><p>產業論壇、企業參訪、會員專屬優惠，把校園人脈延伸成職涯籌碼。</p></a>
+      <a class="pillar" href="#biz"><div class="n">02</div><h3>專屬商務團隊資源</h3><p>商務媒合、經營諮詢、合作案對接——校友的生意，優先找校友。</p></a>
+      <a class="pillar" href="#board"><div class="n">03</div><h3>理監事校友名單</h3><p>認識南應校友會的理監事校友們，每一位的照片與簡介。</p></a>
     </div>
-  </footer>
 
-  <script>
-    // 表單送出攔截與驗證
-    const form = document.getElementById('joinForm');
-    const successMsg = document.getElementById('successMsg');
+    <div class="pane" id="ext">
+      <h3>外部產業資源鏈結</h3>
+      <p class="sub">第一步，我們先為校友打開這幾扇門。</p>
+      <ul class="ext" id="extList"></ul>
+    </div>
 
-    // 分會選項：選了就清除錯誤提示
-    document.getElementById('chapter').addEventListener('change', function() {
-      document.getElementById('chapter-error').style.display = 'none';
-    });
+    <div class="pane" id="biz">
+      <h3>專屬商務團隊資源</h3>
+      <p class="sub">目前已有 16 位夥伴，點名字可以直接看他們的個人網頁，之後還會持續增加。</p>
+      <div class="biz-marq" aria-hidden="true"><div class="track"><span>林家旭</span><span>施正益</span><span>李美芬</span><span>楊仟慧</span><span>江睿翔</span><span>鄭儷絲</span><span>謝志賓</span><span>陳彥玲</span><span>林丁禾</span><span>林士民</span><span>李中閔</span><span>劉雅萍</span><span>吳日勤</span><span>李瑞惠</span><span>阿樂老師</span><span>林志和</span><span>林家旭</span><span>施正益</span><span>李美芬</span><span>楊仟慧</span><span>江睿翔</span><span>鄭儷絲</span><span>謝志賓</span><span>陳彥玲</span><span>林丁禾</span><span>林士民</span><span>李中閔</span><span>劉雅萍</span><span>吳日勤</span><span>李瑞惠</span><span>阿樂老師</span><span>林志和</span></div></div>
+      <ul class="bz-grid"><li><a class="bz" href="https://event.bymyway.com/curated/charles-lin/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-lin.webp" alt="林家旭"></div><div class="bz-t"><b>林家旭</b><span>台灣形象設計發展協會理事長</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/shi-zheng-yi/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-shi.webp" alt="施正益"></div><div class="bz-t"><b>施正益</b><span>彰化縣網路購物服務人員職業工會理事長・Google 第 10 級在地嚮導</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/li-meifen/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-li.webp" alt="李美芬"></div><div class="bz-t"><b>李美芬</b><span>高雄市職能發展協會理事長・宸霖智權科技總經理</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/adia/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-adia.webp" alt="楊仟慧"></div><div class="bz-t"><b>楊仟慧</b><span>當代藝術家・南法藝術家莊園創辦人</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/jiang-ruixiang/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-jiang.webp" alt="江睿翔"></div><div class="bz-t"><b>江睿翔</b><span>手機公益 AI 技術總監・AI 應用實戰導師</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/cica/" target="_blank" rel="noopener"><div class="bz-ava"><span aria-hidden="true">鄭</span></div><div class="bz-t"><b>鄭儷絲</b><span>中華網紅協會理事長</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/nmda/" target="_blank" rel="noopener"><div class="bz-ava"><span aria-hidden="true">謝</span></div><div class="bz-t"><b>謝志賓</b><span>新媒體影音發展協會</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://northern-tw.netlify.app/" target="_blank" rel="noopener"><div class="bz-ava"><span aria-hidden="true">陳</span></div><div class="bz-t"><b>陳彥玲</b><span>全球健康發展協會</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/art-lab/" target="_blank" rel="noopener"><div class="bz-ava"><span aria-hidden="true">林</span></div><div class="bz-t"><b>林丁禾</b><span>藝術商務顧問</span><i>看個人網頁 ↗</i></div></a></li><li><div class="bz"><div class="bz-ava"><span aria-hidden="true">林</span></div><div class="bz-t"><b>林士民</b><span>台南文創協會</span></div></div></li><li><div class="bz"><div class="bz-ava"><span aria-hidden="true">李</span></div><div class="bz-t"><b>李中閔</b><span>網紅部落客聯盟協會理事</span></div></div></li><li><div class="bz"><div class="bz-ava"><span aria-hidden="true">劉</span></div><div class="bz-t"><b>劉雅萍</b><span>台南市台灣世界旗袍文化推展聯合會理事長</span></div></div></li><li><div class="bz"><div class="bz-ava"><span aria-hidden="true">吳</span></div><div class="bz-t"><b>吳日勤</b><span>東倫敦大學藝術博士</span></div></div></li><li><div class="bz"><div class="bz-ava"><span aria-hidden="true">李</span></div><div class="bz-t"><b>李瑞惠</b><span>有限責任台灣區綠能作物運銷合作社</span></div></div></li><li><div class="bz"><div class="bz-ava"><span aria-hidden="true">阿</span></div><div class="bz-t"><b>阿樂老師</b><span>可成音樂文化有限公司</span></div></div></li><li><div class="bz"><div class="bz-ava"><span aria-hidden="true">林</span></div><div class="bz-t"><b>林志和</b><span>智匯保經一處副總</span></div></div></li></ul>
+    </div>
 
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
+    <div class="pane" id="board">
+      <h3>理監事校友名單</h3>
+      <p class="sub" id="boardSub">名單上有您的名字？點「這是我，補簡介」，上傳照片、寫簡介就上架。</p>
+      <ul class="bd-grid" id="bdGrid"></ul>
+      <div class="bd-foot"><span>資料即時讀取自校友會理監事名冊。</span><a class="btn btn-plum" href="#join">加入校友會，一起把量能帶回來</a></div>
+    </div>
+  </div>
+</section>
 
-      const nameEl = document.getElementById('name');
-      const phoneEl = document.getElementById('phone');
-      const nameErr = document.getElementById('name-error');
-      const phoneErr = document.getElementById('phone-error');
-      const chapterErr = document.getElementById('chapter-error');
-      const chapterSelect = document.getElementById('chapter');
+<!-- ========== 第六章 會員招募 ========== -->
+<section class="ch mship" id="membership" aria-labelledby="h-mship">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="chap"><b>第五章</b>贊助會員・榮譽會員</p>
+        <h2 id="h-mship">南應人的名字，<br>值得被看見。</h2>
+        <p class="lead" style="margin-top:14px">校友會正式招募兩種會員——贊助會員，讓你的故事被聽見；榮譽會員，讓你的名字被記住。你的會費，會成為校友會辦講座、做專訪、維護平台的力量。</p>
+      </div>
+      <div class="ghost" aria-hidden="true">Honor</div>
+    </div>
 
-      let valid = true;
+    <div class="plans">
+      <article class="plan sp">
+        <span class="tag">讓你被聽見</span>
+        <h3>贊助會員</h3>
+        <div class="price"><small>NT$</small>1,500</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Podcast 專訪：聊你在南應的那幾年、現在做的事、想對學弟妹說的話</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>一頁式個人簡介 EDM，比照理監事校友卡片，附官網、粉專、LINE 連結</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>跨世代南應人脈</li>
+          <li class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 12h12"/></svg>專屬個人品牌網頁與維護</li>
+        </ul>
+        <a class="btn btn-plum" href="#join" data-tier="贊助會員">我選贊助會員</a>
+      </article>
+      <article class="plan hn">
+        <span class="tag">讓你被記住</span>
+        <h3>榮譽會員</h3>
+        <div class="price"><small>NT$</small>10,000<em>以上</em></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Podcast 專訪</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>名字掛上校友會榮譽欄</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>專屬個人品牌網頁（顧問師天團同一級別）</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>上線後的修改與維護，交給校友會</li>
+        </ul>
+        <a class="btn btn-gold" href="#join" data-tier="榮譽會員">我選榮譽會員</a>
+      </article>
+    </div>
 
-      // 重置
-      nameEl.classList.remove('error');
-      phoneEl.classList.remove('error');
-      nameErr.style.display = 'none';
-      phoneErr.style.display = 'none';
-      chapterErr.style.display = 'none';
+    <div class="split">
+      <div>
+        <p class="chap"><b>贊助會員</b>Try it</p>
+        <h3>現在就試做你的簡介卡。</h3>
+        <p>輸入看看，右邊會即時變成你的樣子。這只是試玩，資料不會送出；正式版由校友會幫你排版——照片、頭銜、幾句話介紹你，再加上常用連結，想轉傳給客戶、朋友都方便。</p>
+        <a class="link-arrow" href="#board">參考：理監事校友卡片 →</a>
+      </div>
+      <div class="try">
+        <div>
+          <label class="fld"><span>姓名</span><input id="b-name" placeholder="陳美玲" maxlength="10"></label>
+          <label class="fld"><span>畢業年與科系</span><input id="b-class" placeholder="85 級 服裝設計科" maxlength="20"></label>
+          <label class="fld"><span>現在的頭銜</span><input id="b-title" placeholder="美玲烘焙工作室 主理人" maxlength="24"></label>
+          <label class="fld"><span>一句話介紹自己</span><input id="b-intro" placeholder="把台南的老味道，做成年輕人也愛的伴手禮。" maxlength="40"></label>
+          <div class="fld"><span>換個主色</span><div class="sws">
+            <button type="button" style="background:#523078" data-c="#523078" aria-pressed="true" aria-label="校徽紫"></button>
+            <button type="button" style="background:#9c7a2c" data-c="#9c7a2c" aria-pressed="false" aria-label="香檳金"></button>
+            <button type="button" style="background:#2f5d62" data-c="#2f5d62" aria-pressed="false" aria-label="湖水綠"></button>
+            <button type="button" style="background:#a4432a" data-c="#a4432a" aria-pressed="false" aria-label="鳳凰紅"></button>
+          </div></div>
+        </div>
+        <div class="edm" aria-live="polite">
+          <div class="edm-head" id="edmHead"><small>TUT Alumni · Sponsor Member</small>南應人專訪・校友簡介<div class="edm-ava" id="e-ava">陳</div></div>
+          <div class="edm-body"><b id="e-name">陳美玲</b><span id="e-class">85 級 服裝設計科</span><span id="e-title">美玲烘焙工作室 主理人</span><p id="e-intro">把台南的老味道，做成年輕人也愛的伴手禮。</p>
+            <div class="edm-links"><span>官方網站</span><span>Facebook</span><span>LINE</span><span>收聽 Podcast</span></div></div>
+        </div>
+      </div>
+    </div>
 
-      // 驗證姓名
-      if (!nameEl.value.trim()) {
-        nameEl.classList.add('error');
-        nameErr.style.display = 'block';
-        valid = false;
-      }
+    <div class="hall">
+      <div class="hall-top">
+        <div><div class="latin">Hall of Honor</div><h3>南應大校友會・榮譽會員榮譽欄</h3></div>
+        <p style="margin:0;font-size:20px;color:#d6c8e4;max-width:24em">點名字，直達每一位的個人品牌網頁。以下為品牌頁範例。</p>
+      </div>
+      <ul class="honor">
+        <li><a href="https://event.bymyway.com/curated/charles-lin/" target="_blank" rel="noopener"><div class="ph"><img src="images/charles-portrait.webp" alt="林家旭博士" width="600" height="941"></div><div class="t"><b>林家旭 博士</b><span>台灣形象設計發展協會理事長</span></div></a></li>
+        <li><a href="https://event.bymyway.com/curated/111-wei/" target="_blank" rel="noopener"><div class="ph"><img src="images/tsai-xiaowei.webp" alt="蔡筱薇" width="640" height="868"></div><div class="t"><b>蔡筱薇</b><span>台南市東區市議員候選人</span></div></a></li>
+        <li><a href="https://event.bymyway.com/curated/1107-taiwna-tea/master.html" target="_blank" rel="noopener"><div class="ph"><img src="images/xue-yuhui.webp" alt="薛郁慧老師" width="644" height="960"></div><div class="t"><b>薛郁慧 老師</b><span>翠濤藝研主理人・茶文化活動規劃</span></div></a></li>
+        <li><a href="https://event.bymyway.com/curated/peipei1983/" target="_blank" rel="noopener"><div class="ph"><img src="images/chen-peijun.webp" alt="陳佩君老師" width="366" height="514"></div><div class="t"><b>陳佩君 老師</b><span>鋼琴家・音樂教育家・音樂策展</span></div></a></li>
+      </ul>
+      <div class="brandpage">
+        <div class="phone" aria-hidden="true"><img class="scroll" src="images/shot-charles-long.webp" alt="" width="345" height="1400"></div>
+        <div>
+          <div class="latin" style="color:var(--gold-2);font-size:26px">Your Brand Page</div>
+          <h3 style="font-size:38px;color:#fff6e3;margin:6px 0 12px">點進去，是一整頁屬於你的品牌網站。</h3>
+          <p style="color:#e3d6ee">以林家旭博士的頁面為例：從輔大織品系、百貨與品牌業界，到大學講台與水墨飛白個展，一整條人生路被說得清清楚楚。榮譽會員拿到的，就是這個規格，和「顧問師天團」同一級別。</p>
+          <div class="checks"><span>學經歷</span><span>專長</span><span>生活事蹟時間軸</span><span>公益足跡</span><span>媒體牆</span><span>照片牆</span><span>聯絡與邀約</span><span>電腦、手機都好看</span></div>
+          <a class="btn btn-gold" href="https://event.bymyway.com/curated/charles-lin/" target="_blank" rel="noopener">打開完整範例頁 ↗</a>
+          <h4 style="font-size:28px;color:#fff6e3;margin-top:44px">上線不是結束，是開始。</h4>
+          <ol class="steps4">
+            <li><b>上線</b><span>品牌頁掛上榮譽欄，學經歷、照片牆一次到位。</span></li>
+            <li><b>更新</b><span>接任新職務？傳一句話，頭銜簡介跟著改。</span></li>
+            <li><b>新增</b><span>上了報導、辦了活動，媒體牆幫你補上。</span></li>
+            <li><b>持續</b><span>朋友點進來，看到的永遠是現在的你。</span></li>
+          </ol>
+        </div>
+      </div>
+    </div>
 
-      // 驗證電話（基本格式：至少 8 位數字）
-      const phoneVal = phoneEl.value.trim().replace(/[\s\-]/g, '');
-      if (!phoneVal || !/^\d{8,}$/.test(phoneVal)) {
-        phoneEl.classList.add('error');
-        phoneErr.textContent = phoneVal ? '電話格式不正確，請填寫至少 8 位數字' : '請填寫聯絡電話';
-        phoneErr.style.display = 'block';
-        valid = false;
-      }
+    <div class="vendors-head">
+      <div><p class="chap"><b>贊助廠商</b>Sponsor Partners</p><h3>把好物，變成校友的福利。</h3></div>
+      <div><div class="free">免費</div><p style="margin:0;font-size:20px;color:var(--ink-2)">不是會員、不用會費。提供自家產品讓校友會做福利、抽獎，我們把你的名字、商品與 EDM 放上「贊助廠商榮譽牆」。</p></div>
+    </div>
+    <div class="vend-marq" role="region" aria-label="贊助廠商榮譽牆"><div class="vend-track"><ul class="vend"><li><div class="ph"><img src="images/vendor-1.webp" alt="林任猛的贊助商品"></div><div class="t"><b>林任猛</b><span>蠶絲遠紅外線苦茶油皂、防輻射手機貼</span></div></li><li><div class="ph"><img src="images/vendor-2.webp" alt="黃士恒的贊助商品"></div><div class="t"><b>黃士恒</b><span>毛樂飲，寵物飲料，寵愛你的毛小孩</span></div></li><li><div class="ph"><img src="images/vendor-3.webp" alt="潘喜善的贊助商品"></div><div class="t"><b>潘喜善</b><span>幸福泡菜製造機</span></div></li><li><div class="ph"><img src="images/vendor-4.webp" alt="陳清玉的贊助商品"></div><div class="t"><b>陳清玉</b><span>龍揚茶莊</span></div></li><li><div class="ph"><img src="images/vendor-5.webp" alt="鄭守晴的贊助商品"></div><div class="t"><b>鄭守晴</b><span>創新 BOTIERA 萃取專利保健品</span></div></li><li><div class="ph"><img src="images/vendor-6.webp" alt="吳雅菁的贊助商品"></div><div class="t"><b>吳雅菁</b><span>日本職人文創工藝 x AI</span></div></li><li><div class="ph"><img src="images/vendor-7.webp" alt="吳婉蓉的贊助商品"></div><div class="t"><b>吳婉蓉</b><span>蛋白優格燕麥杯</span></div></li><li><div class="ph"><img src="images/vendor-8.webp" alt="EVERYDAY CAFE的贊助商品"></div><div class="t"><b>EVERYDAY CAFE</b><span>手搖飲（贊助 50 杯）</span></div></li><li><div class="ph"><img src="images/vendor-9.webp" alt="煦多午茶的贊助商品"></div><div class="t"><b>煦多午茶</b><span>手作甜點（贊助 50 份）</span></div></li></ul><ul class="vend" aria-hidden="true"><li><div class="ph"><img src="images/vendor-1.webp" alt=""></div><div class="t"><b>林任猛</b><span>蠶絲遠紅外線苦茶油皂、防輻射手機貼</span></div></li><li><div class="ph"><img src="images/vendor-2.webp" alt=""></div><div class="t"><b>黃士恒</b><span>毛樂飲，寵物飲料，寵愛你的毛小孩</span></div></li><li><div class="ph"><img src="images/vendor-3.webp" alt=""></div><div class="t"><b>潘喜善</b><span>幸福泡菜製造機</span></div></li><li><div class="ph"><img src="images/vendor-4.webp" alt=""></div><div class="t"><b>陳清玉</b><span>龍揚茶莊</span></div></li><li><div class="ph"><img src="images/vendor-5.webp" alt=""></div><div class="t"><b>鄭守晴</b><span>創新 BOTIERA 萃取專利保健品</span></div></li><li><div class="ph"><img src="images/vendor-6.webp" alt=""></div><div class="t"><b>吳雅菁</b><span>日本職人文創工藝 x AI</span></div></li><li><div class="ph"><img src="images/vendor-7.webp" alt=""></div><div class="t"><b>吳婉蓉</b><span>蛋白優格燕麥杯</span></div></li><li><div class="ph"><img src="images/vendor-8.webp" alt=""></div><div class="t"><b>EVERYDAY CAFE</b><span>手搖飲（贊助 50 杯）</span></div></li><li><div class="ph"><img src="images/vendor-9.webp" alt=""></div><div class="t"><b>煦多午茶</b><span>手作甜點（贊助 50 份）</span></div></li></ul></div></div>
+    <p class="note-sm" style="margin-top:8px">※ 以上為示範單位，取自「AI 微論壇」台南場現場設攤與贊助的夥伴，正式榮譽牆將依校友會贊助廠商名單陸續更新。　<a class="link-arrow" href="#join" data-tier="贊助廠商">我是贊助廠商，我要提供禮贈品 →</a></p>
 
-      // 驗證分會選項
-      if (!chapterSelect.value) {
-        chapterErr.style.display = 'block';
-        valid = false;
-      }
+    <div class="cmp-wrap">
+      <table class="cmp">
+        <caption class="sr">贊助會員與榮譽會員比較</caption>
+        <thead><tr><th scope="col">兩種會員，比一比</th><th scope="col">贊助會員　NT$1,500</th><th scope="col">榮譽會員　NT$10,000 以上</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Podcast 專訪</th><td>包含</td><td>包含</td></tr>
+          <tr><th scope="row">你的頁面</th><td>一頁式個人簡介 EDM＋超連結</td><td>專屬個人品牌網頁（顧問師天團等級）</td></tr>
+          <tr><th scope="row">內容有多深</th><td>照片、頭銜、簡介、幾個常用連結</td><td>學經歷、專長、生活事蹟、公益足跡、媒體牆、照片牆、聯絡</td></tr>
+          <tr><th scope="row">出現在哪裡</th><td>比照理監事校友簡介的待遇</td><td>校友會榮譽欄，點名字直達你的品牌頁</td></tr>
+          <tr><th scope="row">後續修改與維護</th><td>—</td><td>校友會負責</td></tr>
+          <tr><th scope="row">最適合</th><td>想先跟校友會連上線、讓同學知道你在做什麼</td><td>想在南應人脈圈建立個人品牌、接案、被邀約</td></tr>
+        </tbody>
+      </table>
+    </div>
 
-      if (!valid) return;
+    <div class="quiz-faq">
+      <div class="quiz" id="quiz">
+        <h3>不知道選哪個？</h3>
+        <p style="margin:0;font-size:20px;color:#d6c8e4">回答三題，幫你配對。</p>
+        <div class="qsteps" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="qbody" id="qbody" aria-live="polite"></div>
+      </div>
+      <div class="faq">
+        <h3 style="font-size:34px;color:var(--plum-700);margin-bottom:8px">常見問題</h3>
+        <details open><summary>贊助會員跟榮譽會員，最大的差別是什麼？</summary><p>贊助會員拿到的是 Podcast 專訪和一頁式個人簡介 EDM，規格比照理監事校友卡片；榮譽會員的名字掛在校友會榮譽欄上，點進去是一整頁個人品牌網站，而且之後的修改與維護都由校友會負責。</p></details>
+        <details><summary>我沒有整理好的簡介和照片，可以申請嗎？</summary><p>可以。表單只要姓名、手機和分會，送出後專人會跟你聯繫，一步一步把需要的照片和資料整理出來。</p></details>
+        <details><summary>Podcast 專訪要聊什麼？</summary><p>聊你在南應的回憶、現在在做的事，以及想對學弟妹說的話。錄音時間和方式，專人會跟你約。</p></details>
+        <details><summary>榮譽會員的「後續修改與維護」是什麼意思？</summary><p>品牌頁上線後，你有新的頭銜、得獎、報導或活動，傳給校友會，我們幫你更新到頁面上，不用自己學架網站。</p></details>
+        <details><summary>會費怎麼繳？</summary><p>送出表單後，專人會跟你聯繫，說明繳費方式並確認你選的方案。</p></details>
+        <details><summary>我還沒加入校友會，可以直接申請嗎？</summary><p>可以，表單裡選好你想加入的分會（台南、台中、高雄、台北、嘉義），我們會一起幫你登記。</p></details>
+      </div>
+    </div>
+  </div>
+</section>
 
-      var submitBtn = form.querySelector('.btn-submit');
-      submitBtn.disabled = true;
-      submitBtn.textContent = '送出中…';
+<!-- ========== 第七章 加入 ========== -->
+<section class="ch join dark" id="join" aria-labelledby="h-join">
+  <div class="wrap join-grid">
+    <div>
+      <p class="chap"><b>第六章</b>Now · Your turn</p>
+      <h2 id="h-join">南應人，<br><em>換你回來了。</em></h2>
+      <p class="lead" style="margin-top:18px">不用先想起完整畢業資料。選好身分，留下姓名、手機和分會就可以送出，我們後續再協助確認畢業級別、科系與校友資訊。</p>
+      <ol class="steps4" style="grid-template-columns:1fr 1fr">
+        <li><b>填表選身分</b><span>必填只有三格。</span></li>
+        <li><b>專人聯繫</b><span>確認方案與後續流程。</span></li>
+        <li><b>交照片資料</b><span>沒整理好也沒關係。</span></li>
+        <li><b>上線</b><span>簡介、品牌頁掛上榮譽欄。</span></li>
+      </ol>
+      <div class="share">
+        <button class="btn btn-line" type="button" id="shareBtn">分享召集令</button>
+        <a class="btn btn-line" id="lineShare" href="https://social-plugins.line.me/lineit/share" target="_blank" rel="noopener">傳到 LINE</a>
+        <button class="btn btn-line" type="button" id="copyBtn">複製連結</button>
+      </div>
+    </div>
 
-      var payload = {
-        name: nameEl.value.trim(),
-        phone: phoneEl.value.trim(),
-        gradYear: document.getElementById('grad-year').value.trim(),
-        department: document.getElementById('department').value.trim(),
-        chapter: chapterSelect.value,
-        source: location.hostname.indexOf('bymyway.com') !== -1 ? 'bymyway' : 'github-pages'
-      };
+    <div class="jform">
+      <form id="joinForm" novalidate>
+        <fieldset class="tiers">
+          <legend>我要以什麼身分加入 <span class="req">＊</span></legend>
+          <label class="tier"><input type="radio" name="tier" value="一般校友" checked><span><b>一般校友</b><small>免費加入校友會</small></span></label>
+          <label class="tier"><input type="radio" name="tier" value="贊助會員"><span><b>贊助會員</b><small>NT$1,500・Podcast＋簡介 EDM</small></span></label>
+          <label class="tier"><input type="radio" name="tier" value="榮譽會員"><span><b>榮譽會員</b><small>NT$10,000 以上・榮譽欄＋品牌網頁</small></span></label>
+          <label class="tier"><input type="radio" name="tier" value="贊助廠商"><span><b>贊助廠商</b><small>免費・提供禮贈品給校友</small></span></label>
+        </fieldset>
+        <div class="row2">
+          <label class="fld" id="f-name-w"><span>姓名 <span class="req">＊</span></span><input id="j-name" name="name" autocomplete="name" required><span class="err">請填寫姓名</span></label>
+          <label class="fld" id="f-phone-w"><span>手機 <span class="req">＊</span></span><input id="j-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required><span class="err" id="phoneErr">請填寫手機</span></label>
+        </div>
+        <label class="fld" id="f-chapter-w"><span>分會 <span class="req">＊</span></span>
+          <select id="j-chapter" name="chapter" required><option value="">請選擇分會</option><option>台南校友會</option><option>台中校友會</option><option>高雄校友會</option><option>台北校友會</option><option>嘉義校友會</option></select><span class="err">請選擇分會</span></label>
+        <div class="row2">
+          <label class="fld"><span>畢業年（選填）</span><input id="j-year" name="gradYear" placeholder="例如：85 級／1996"></label>
+          <label class="fld"><span>科系（選填）</span><input id="j-dept" name="department" placeholder="例如：服裝設計科"></label>
+        </div>
+        <div class="row2">
+          <label class="fld"><span>Email（選填）</span><input id="j-email" name="email" type="email" autocomplete="email"></label>
+          <label class="fld"><span>現職或專業（選填）</span><input id="j-job" name="job"></label>
+        </div>
+        <label class="fld" id="giftW" hidden><span>想提供的禮贈品 <span class="req">＊</span></span><input id="j-gift" name="gift" placeholder="例如：手作甜點 50 份"><span class="err">請寫下禮贈品內容</span></label>
+        <label class="fld"><span>想對校友會說的話（選填）</span><textarea id="j-msg" name="message" style="min-height:90px"></textarea></label>
+        <input class="hp" name="website" id="j-website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn btn-gold" type="submit" id="joinBtn" style="width:100%">送出，我要加入！</button>
+        <p class="fine" id="joinFine">只填姓名、手機與分會也可以，我們會專人與您聯繫。</p>
+        <p class="err" id="joinErr" role="alert" style="text-align:center"></p>
+      </form>
+      <div class="ok-box" id="joinOk" tabindex="-1">
+        <h3 id="okTitle">歡迎回家！</h3>
+        <p id="okText">校友會已收到您的資料，專人會盡快與您聯繫。</p>
+        <a class="btn btn-plum" id="lineAdd" href="https://line.me/R/ti/p/@701ohlly" target="_blank" rel="noopener">加校友會 LINE 好友</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
 
-      function showSuccess(lineUrl) {
-        form.style.display = 'none';
-        var lineBtn = document.getElementById('lineAddBtn');
-        if (lineBtn) lineBtn.href = lineUrl;
-        successMsg.style.display = 'block';
-        successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
+<footer>
+  <div class="wrap">
+    <div><b style="font-family:var(--serif);color:#fff6e3;font-size:22px">台南應用科技大學校友會</b><br>© 2026 TUT Alumni Association</div>
+    <nav aria-label="製作與友善連結">
+      <a href="https://www.tava-ai.com/" target="_blank" rel="noopener">本網頁由 TAVA AI 製作</a>
+      <a href="https://www.bymyway.com/" target="_blank" rel="noopener">出品人 大樹教練</a>
+      <a href="https://event.bymyway.com/curated/rongtree/" target="_blank" rel="noopener">友善連結 榮樹下</a>
+      <a href="https://event.bymyway.com/curated/skyteam/" target="_blank" rel="noopener">顧問師天團・人才軍火庫</a>
+    </nav>
+  </div>
+</footer>
 
-      fetch('https://event.bymyway.com/api/tut/join', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      })
-        .then(function(r) { return r.json(); })
-        .then(function(data) {
-          showSuccess(data.greet_url || data.add_friend_url || 'https://line.me/R/ti/p/@701ohlly');
-        })
-        .catch(function() {
-          // 網路異常也不能卡住訪客：仍導向加好友，只是少了預填問候語
-          showSuccess('https://line.me/R/ti/p/@701ohlly');
-        });
-    });
+<div class="ov" id="bioOv"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="bioName"><h3 id="bioName"></h3><div class="sub" id="bioSub"></div><div id="bioText"></div><div class="links" id="bioLinks"></div><button class="btn btn-plum" type="button" id="bioClose">關閉</button></div></div>
+<div class="ov lb" id="lbOv" role="dialog" aria-modal="true" aria-label="放大檢視"><button class="x" type="button" id="lbClose">關閉</button><img id="lbImg" alt=""></div>
+<div class="toast" id="toast" role="status"></div>
 
-    // 清除錯誤狀態
-    document.getElementById('name').addEventListener('input', function() {
-      this.classList.remove('error');
-      document.getElementById('name-error').style.display = 'none';
-    });
-    document.getElementById('phone').addEventListener('input', function() {
-      this.classList.remove('error');
-      document.getElementById('phone-error').style.display = 'none';
-    });
+<script>
+(function(){
+'use strict';
+var $=function(s,c){return (c||document).querySelector(s)},$$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+/* 在 event.bymyway.com 上用同網域路徑；放在其他主機（預覽、GitHub Pages）時改打正式網域 */
+var API=/(^|\.)bymyway\.com$/.test(location.hostname)?'':'https://event.bymyway.com';
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function esc(t){return String(t==null?'':t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function lsGet(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
+function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+var tt;function toast(m){var t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){t.classList.remove('show')},2800)}
+function setParam(k,v){var u=new URL(location.href);if(v)u.searchParams.set(k,v);else u.searchParams.delete(k);history.replaceState(null,'',u)}
+function getParam(k){return new URL(location.href).searchParams.get(k)}
 
-    // 分享召集令 / 複製連結
-    var shareBtn = document.getElementById('shareBtn');
-    var copyLinkBtn = document.getElementById('copyLinkBtn');
-    var shareUrl = location.href;
-    var shareText = '南應人，換你回來了。一起找回同學、連結校友會，加入台南應用科技大學校友會召集令！';
+/* ---------- 選單 ---------- */
+var burger=$('.burger'),nav=$('#nav');
+burger.addEventListener('click',function(){var o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+$$('#nav a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');burger.setAttribute('aria-expanded','false')})});
+if('IntersectionObserver' in window){
+  var links={};$$('#nav a[href^="#"]').forEach(function(a){links[a.getAttribute('href').slice(1)]=a});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&links[e.target.id]){$$('#nav a').forEach(function(x){x.classList.remove('on')});links[e.target.id].classList.add('on')}})},{rootMargin:'-45% 0px -50% 0px'});
+  ['corridor','pride','memory','vision','membership','join'].forEach(function(id){io.observe(document.getElementById(id))});
+}
 
-    function flashBtnLabel(btn, text, duration) {
-      var original = btn.textContent;
-      btn.textContent = text;
-      setTimeout(function() { btn.textContent = original; }, duration || 1800);
-    }
+/* ---------- ⑨ 滾輪數字（沒有 JS 或關閉動畫時，直接顯示數字） ---------- */
+function roll(el,val,base){
+  val=String(val);el.setAttribute('aria-label',val);
+  if(reduce){el.textContent=val;return}
+  el.innerHTML='';
+  val.split('').forEach(function(ch,i){
+    var r=document.createElement('span');r.className='reel';r.setAttribute('aria-hidden','true');
+    var col=document.createElement('i');var h='';for(var n=0;n<=9;n++)h+='<b>'+n+'</b>';col.innerHTML=h;r.appendChild(col);el.appendChild(r);
+    setTimeout(function(){col.style.transitionDelay=((base||0)+i*45)+'ms';col.style.transform='translateY(-'+(+ch)+'em)'},60);
+  });
+}
+$$('.roll').forEach(function(el,k){roll(el,el.getAttribute('data-to'),900+k*70)});
 
-    if (shareBtn) {
-      shareBtn.addEventListener('click', function() {
-        if (navigator.share) {
-          navigator.share({ title: '台南應用科技大學校友會・召集令', text: shareText, url: shareUrl }).catch(function() {});
-        } else {
-          navigator.clipboard.writeText(shareText + ' ' + shareUrl).then(function() {
-            flashBtnLabel(shareBtn, '✓ 已複製分享文字');
-          }).catch(function() {
-            flashBtnLabel(shareBtn, '複製失敗，請手動複製網址');
-          });
-        }
-      });
-    }
+/* ---------- 放大檢視 ---------- */
+var lb=$('#lbOv'),lbImg=$('#lbImg'),lastFocus=null;
+function openLB(src,alt){lastFocus=document.activeElement;lbImg.src=src;lbImg.alt=alt||'';lb.classList.add('open');$('#lbClose').focus()}
+function closeLB(){lb.classList.remove('open');lastFocus&&lastFocus.focus()}
+lb.addEventListener('click',function(e){if(e.target===lb)closeLB()});$('#lbClose').addEventListener('click',closeLB);
+$$('[data-zoom]').forEach(function(f){f.tabIndex=0;f.setAttribute('role','button');f.setAttribute('aria-label','放大檢視圖片');
+  var go=function(){var i=$('img',f);openLB(f.getAttribute('data-zoom'),i&&i.alt)};
+  f.addEventListener('click',go);f.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}})});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(lb.classList.contains('open'))closeLB();if($('#bioOv').classList.contains('open'))closeBio()}});
 
-    if (copyLinkBtn) {
-      copyLinkBtn.addEventListener('click', function() {
-        navigator.clipboard.writeText(shareUrl).then(function() {
-          flashBtnLabel(copyLinkBtn, '✓ 已複製連結');
-        }).catch(function() {
-          flashBtnLabel(copyLinkBtn, '複製失敗，請手動複製網址');
-        });
-      });
-    }
-  </script>
+/* ---------- 第二章 傑出校友（篩選寫進網址 ?field=） ---------- */
+var FIELDS=[['all','全部'],['show','演藝'],['art','音樂・舞蹈・藝術'],['public','公共事務與教育'],['biz','產業經營']];
+var alWrap=$('#alumni'),alChips=$('#alChips');
+alChips.innerHTML=FIELDS.map(function(f){var c=f[0]==='all'?$$('.al',alWrap).length:$$('.al[data-f="'+f[0]+'"]',alWrap).length;return '<button type="button" class="chip" data-f="'+f[0]+'" aria-pressed="false">'+f[1]+'<em>'+c+'</em></button>'}).join('');
+function setField(f,write){if(!FIELDS.some(function(x){return x[0]===f}))f='all';
+  $$('.chip',alChips).forEach(function(b){b.setAttribute('aria-pressed',b.dataset.f===f)});
+  $$('.al',alWrap).forEach(function(c){c.hidden=!(f==='all'||c.dataset.f===f)});
+  if(write)setParam('field',f==='all'?'':f)}
+alChips.addEventListener('click',function(e){var b=e.target.closest('.chip');if(b)setField(b.dataset.f,true)});
+setField(getParam('field')||'all',false);
 
+/* ---------- 第三章 記憶牆（後端：/api/memwall/tut-memory/notes，欄位與舊版相同） ---------- */
+var SEED_NOTES=[
+  {id:'seed1',name:'旗袍課幽靈車手',year:'1982 屆',color:'yellow',txt:'家政科二年級，旗袍課縫到半夜，但成品穿上那天全都值得。'},
+  {id:'seed2',name:'306 寢室全體',year:'2008 屆',color:'pink',txt:'紅樓宿舍半夜真的有椅子聲，我們整間寢室沒人敢去廁所。'},
+  {id:'seed3',name:'阿凱',year:'2015 屆',color:'mint',txt:'南應之心前第一次告白，現在小孩都兩歲了。'},
+  {id:'seed4',name:'設計系爆肝王',year:'2012 屆',color:'yellow',txt:'設計大樓四樓的燈，是陪我熬過畢業展的那盞。評圖前一晚大家互相遞咖啡，那味道現在聞到還會想哭。'},
+  {id:'seed5',name:'鳳凰花下的學姊',year:'1996 屆',color:'pink',txt:'畢業那天鳳凰花開得剛好，我們沿著花道拍照，學妹們在旁邊唱離別歌，哭得比我們還慘。'},
+  {id:'seed6',name:'餐廳常客小陳',year:'2019 屆',color:'mint',txt:'學生餐廳的排骨飯加一顆滷蛋，是我一個月生活費的支柱。畢業後吃過很多家，都不是那個味道。'}
+];
+var MEMWALL_API=API+'/api/memwall/tut-memory/notes';
+var serverNotes=[],userNotes=lsGet('tut_notes',[]),echoMap=lsGet('tut_echoes',{}),sortNew=true,decade=getParam('decade')||'all';
+var DECADES=['all','1960s','1970s','1980s','1990s','2000s','2010s','2020s','在校生'];
+function decadeOf(y){y=String(y||'');if(y.indexOf('在校')>=0)return '在校生';var m=y.match(/(19|20)\d\d/);if(m)return m[0].slice(0,3)+'0s';var d=y.match(/(19|20)\d0s/);return d?d[0]:''}
+function myPending(){var ok={};serverNotes.forEach(function(n){ok[n.id]=1});return userNotes.filter(function(n){return !(n.serverId&&ok[n.serverId])})}
+function allNotes(){return myPending().concat(serverNotes,SEED_NOTES)}
+function echoCount(n){return (n.baseEcho||0)+(echoMap[n.id]?1:0)}
+function noteHTML(n,i){
+  var rot=((i*37)%7-3)*.6;
+  var sig='<p class="sig">— '+esc(n.name||'匿名校友')+(n.year?' · '+esc(n.year):'')+'</p>';
+  var foot='<button type="button" class="echo'+(echoMap[n.id]?' on':'')+'" data-echo="'+esc(n.id)+'" aria-pressed="'+(!!echoMap[n.id])+'">♡ <span>'+echoCount(n)+'</span> 共鳴</button>';
+  var pend=n.pending?'<span class="pend">審核中・目前只有你看得到</span>':'';
+  if(n.photo)return '<article class="note photo" style="--rot:'+rot+'deg"><div class="pic" data-src="'+esc(n.photo)+'" role="button" tabindex="0" aria-label="放大檢視回憶照片"><img src="'+esc(n.photo)+'" alt="'+esc(n.name||'匿名校友')+'上傳的回憶照片"></div>'+pend+'<p class="tx">'+esc(n.txt)+'</p>'+sig+foot+'</article>';
+  return '<article class="note '+(['yellow','pink','mint'].indexOf(n.color)>=0?n.color:'yellow')+'" style="--rot:'+rot+'deg">'+pend+'<p class="tx">'+esc(n.txt)+'</p>'+sig+foot+'</article>';
+}
+function renderNotes(){
+  var list=allNotes().filter(function(n){return decade==='all'||decadeOf(n.year)===decade});
+  list.sort(sortNew?function(a,b){return (b.ts||0)-(a.ts||0)}:function(a,b){return echoCount(b)-echoCount(a)});
+  $('#notesGrid').innerHTML=list.length?list.map(noteHTML).join(''):'<p class="empty">這個年代還沒有人貼回憶——你來當第一個吧。</p>';
+}
+function refreshCount(){var n=serverNotes.length;if(n>0){$('#memNum').textContent=n.toLocaleString('en-US');$('#memCount').hidden=false}}
+var decChips=$('#decChips');
+decChips.innerHTML=DECADES.map(function(d){return '<button type="button" class="chip" data-d="'+d+'" aria-pressed="'+(d===decade)+'">'+(d==='all'?'全部年代':d)+'</button>'}).join('');
+decChips.addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;decade=b.dataset.d;$$('.chip',decChips).forEach(function(x){x.setAttribute('aria-pressed',x===b)});setParam('decade',decade==='all'?'':decade);renderNotes()});
+function setSort(){$('#sortNew').setAttribute('aria-pressed',sortNew);$('#sortHot').setAttribute('aria-pressed',!sortNew)}
+$('#sortNew').addEventListener('click',function(){sortNew=true;setSort();renderNotes()});
+$('#sortHot').addEventListener('click',function(){sortNew=false;setSort();renderNotes()});
+$('#notesGrid').addEventListener('click',function(e){
+  var b=e.target.closest('.echo');if(b){var id=b.dataset.echo;if(echoMap[id])delete echoMap[id];else echoMap[id]=1;lsSet('tut_echoes',echoMap);renderNotes();return}
+  var p=e.target.closest('.pic');if(p)openLB(p.dataset.src,'校友回憶照片');
+});
+$('#notesGrid').addEventListener('keydown',function(e){var p=e.target.closest('.pic');if(p&&(e.key==='Enter'||e.key===' ')){e.preventDefault();openLB(p.dataset.src,'校友回憶照片')}});
+renderNotes();
+fetch(MEMWALL_API).then(function(r){return r.json()}).then(function(d){
+  if(!d||!d.ok)return;
+  serverNotes=(d.notes||[]).map(function(n){return {id:n.id,name:n.name,year:n.year,color:n.color,txt:n.txt,photo:n.photo?((/^https?:/.test(n.photo)?'':'https://event.bymyway.com')+n.photo):null,ts:Date.parse((n.created_at||'').replace(' ','T'))||0,baseEcho:0}});
+  renderNotes();refreshCount();
+}).catch(function(){});
+
+var pendingPhoto=null,fPhoto=$('#fPhoto'),drop=$('#fileDrop');
+drop.addEventListener('click',function(){fPhoto.click()});
+drop.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();fPhoto.click()}});
+fPhoto.addEventListener('change',function(){var f=fPhoto.files&&fPhoto.files[0];if(!f)return;
+  var rd=new FileReader();rd.onload=function(){var img=new Image();img.onload=function(){try{
+    var ratio=Math.min(1,1000/Math.max(img.width,img.height)),c=document.createElement('canvas');c.width=Math.round(img.width*ratio);c.height=Math.round(img.height*ratio);
+    c.getContext('2d').drawImage(img,0,0,c.width,c.height);var url=c.toDataURL('image/jpeg',.75),bytes=Math.round((url.length-url.indexOf(',')-1)*3/4);
+    if(bytes>1.2*1024*1024){toast('這張照片壓縮後還是太大，請換一張試試');fPhoto.value='';return}
+    pendingPhoto=url;$('#fpImg').src=url;$('#fpMeta').textContent='已壓縮至約 '+Math.round(bytes/1024)+' KB';$('#filePreview').classList.add('show');
+  }catch(err){toast('這張照片讀取失敗，請換一張試試')}};img.onerror=function(){toast('這張照片讀取失敗，請換一張試試')};img.src=rd.result};rd.readAsDataURL(f)});
+$('#fpRemove').addEventListener('click',function(){pendingPhoto=null;fPhoto.value='';$('#filePreview').classList.remove('show')});
+$('#fText').addEventListener('input',function(){$('#charCount').textContent=this.value.length});
+$('#noteForm').addEventListener('submit',function(e){
+  e.preventDefault();var txt=$('#fText').value.trim();
+  if(!txt){toast('先寫點什麼再貼進相簿喔');$('#fText').focus();return}
+  var color=($('input[name=noteColor]:checked')||{}).value||'yellow';
+  var note={id:'u'+Date.now().toString(36),name:$('#fName').value.trim(),year:$('#fYear').value,color:color,txt:txt,ts:Date.now(),baseEcho:0,pending:true};
+  if(pendingPhoto)note.photo=pendingPhoto;
+  userNotes.push(note);lsSet('tut_notes',userNotes);
+  fetch(MEMWALL_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:note.name,year:note.year,color:note.color,txt:note.txt,photo:note.photo||''})})
+    .then(function(r){return r.json()}).then(function(d){if(d&&d.ok){note.serverId=d.id;lsSet('tut_notes',userNotes)}else toast(d&&d.error==='too many'?'送出太多次了，請稍後再試':'暫時送不出去，回憶先貼在你自己的牆上')})
+    .catch(function(){toast('暫時送不出去，回憶先貼在你自己的牆上')});
+  sortNew=true;setSort();decade='all';$$('.chip',decChips).forEach(function(x){x.setAttribute('aria-pressed',x.dataset.d==='all')});setParam('decade','');renderNotes();
+  this.reset();$('#charCount').textContent='0';pendingPhoto=null;$('#filePreview').classList.remove('show');
+  toast('已送出！審核通過後，所有校友都看得到');
+  $('#notesGrid').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+});
+
+/* 講座票選（後端：/api/works/poll/tut-memory） */
+var TALKS=[
+  {id:'t1',no:'01',title:'記憶開箱：南應十景票選 LIVE',desc:'十景票選結果現場揭曉，一起倒數誰是南應人心中的 No.1。',tags:['十景現場揭票','校友連線說故事']},
+  {id:'t2',no:'02',title:'從家專到南應：跨越一甲子的女子學校傳奇',desc:'走過一甲子的校園故事，由資深校友親自說給你聽。',tags:['資深校友講古','旗袍課老照片募集']},
+  {id:'t3',no:'03',title:'設計×藝術學院之夜：爆肝人的同學會',desc:'設計人與藝術人的深夜同學會，作品與鬼故事齊飛。',tags:['作品即興接龍','鬼故事大賽']},
+  {id:'t4',no:'04',title:'南應人的商務資源課：校友網絡怎麼用',desc:'把校友網絡變成你的商務籌碼，資源一次看個夠。',tags:['商務團隊資源大公開','一對一職涯媒合']}
+];
+var POLL_API=API+'/api/works/poll/tut-memory',pollCounts=null,myVotes=lsGet('tut_talk_votes',{}),voterId=lsGet('tut_voter','');
+if(!voterId){voterId='v'+Math.random().toString(36).slice(2,12)+Date.now().toString(36);lsSet('tut_voter',voterId)}
+function renderTalks(){$('#talkCards').innerHTML=TALKS.map(function(t){var mine=!!myVotes[t.id],n=pollCounts&&pollCounts[t.id];
+  var cnt=pollCounts?(n>0?'<b>'+n+'</b> 人想聽':'成為第一個想聽的人'):'　';
+  return '<article class="talk"><div class="no">'+t.no+'</div><h3>《'+esc(t.title)+'》</h3><p>'+esc(t.desc)+'</p><div class="tg">'+t.tags.map(function(g){return '<span>'+esc(g)+'</span>'}).join('')+'</div><div class="wc">'+cnt+'</div><button type="button" class="btn '+(mine?'btn-line':'btn-plum')+'" data-vote="'+t.id+'"'+(mine?' disabled':'')+'>'+(mine?'已投：我想聽這個':'我想聽這個')+'</button></article>'}).join('')}
+$('#talkCards').addEventListener('click',function(e){var b=e.target.closest('[data-vote]');if(!b||myVotes[b.dataset.vote])return;var id=b.dataset.vote;b.disabled=true;
+  fetch(POLL_API+'/vote',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({option:id,voter:voterId})}).then(function(r){return r.json()}).then(function(d){
+    if(d&&d.ok){myVotes[id]=1;lsSet('tut_talk_votes',myVotes);pollCounts=d.counts||pollCounts;renderTalks();toast('收到！謝謝您投下想聽的一票')}else{b.disabled=false;toast((d&&d.error)||'投票沒成功，請稍後再試')}
+  }).catch(function(){b.disabled=false;toast('網路不太穩，請稍後再試')})});
+renderTalks();
+fetch(POLL_API).then(function(r){return r.json()}).then(function(d){if(d&&d.ok){pollCounts=d.counts||{};renderTalks()}}).catch(function(){});
+$('#wishForm').addEventListener('submit',function(e){e.preventDefault();var text=$('#wishText').value.trim(),out=$('#wishOut'),btn=$('#wishBtn');
+  if(text.length<2){out.textContent='請先寫下您想聽的主題喔';$('#wishText').focus();return}
+  btn.disabled=true;out.textContent='送出中…';
+  fetch(POLL_API+'/suggest',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({suggestion:text,name:$('#wishName').value.trim(),website:$('#wishWebsite').value})})
+    .then(function(r){return r.json()}).then(function(d){btn.disabled=false;if(d&&d.ok){$('#wishText').value='';out.textContent='收到了！校友會會參考大家的想法來安排講座。'}else out.textContent=(d&&d.error)||'送出沒成功，請稍後再試'})
+    .catch(function(){btn.disabled=false;out.textContent='網路不太穩，請稍後再試'})});
+
+/* ---------- 第四章 校友會理念 ---------- */
+/* 外部產業資源：要增加，在陣列後面加一行 ['名稱','一句說明（可留空）','網址'] */
+var EXT_LINKS=[
+  ['大台南策展中心','免費幫校友們上架你的店家或個人品牌頁面。','https://event.bymyway.com/tainan-shangquan/'],
+  ['AI 百人導師團隊','為校友們引薦各方 AI 高手。','https://mentor100.bymyway.com/'],
+  ['大樹小講','舉辦各式各樣的講座，協助大家獲得自我成長的資源。','https://event.bymyway.com/bigtree/'],
+  ['海餅乾俱樂部','用海餅乾的精神，發揚光大南應校友會。','https://event.bymyway.com/seabiscuit20/#home'],
+  ['中華網紅協會','更高的曝光、更多的交流、更真實的商機。','https://event.bymyway.com/cica/'],
+  ['中華新媒體影音發展協會','讓專業被看見，讓合作真正發生。','https://event.bymyway.com/curated/nmda/']
+];
+$('#extList').innerHTML=EXT_LINKS.map(function(x){return '<li><a href="'+esc(x[2])+'" target="_blank" rel="noopener"><b>'+esc(x[0])+'</b><span>'+esc(x[1])+'</span><i>前往看看 ↗</i></a></li>'}).join('');
+
+/* 理監事名單：正本讀 /api/tut/team/board（資料庫），讀不到才用下面這份備援名單 */
+var BOARD=['王佩茹','楊孟薰','陳佩君','謝念均','許山本美道子','王佑文','劉上維','邱鈺涵','林泓丞','曾智美','陳沛岺','潘皓瑋','何冠忻','林惠雯','彭韻錚','邱錦秀','顏妙青','金巧玲','陳孟珩','楊志芳','吳泰良','郭怡淳','孫熙閑'].map(function(n){return {name:n,title:'',bio:'',photo:'',links:[]}});
+var BUILD=(location.search.match(/[?&]build=([A-Za-z0-9]+)/)||[])[1]||'';
+function renderBoard(){
+  $('#boardSub').textContent=BUILD?'建置模式（只有您看得到）：每張卡的「編輯」可以上傳照片、補職稱和簡介。':'目前已有 '+BOARD.length+' 位理監事校友。名單上有您的名字？點「這是我，補簡介」，上傳照片、寫簡介就上架。';
+  $('#bdGrid').innerHTML=BOARD.map(function(p,i){
+    var pic=p.photo?'<img src="'+esc(p.photo)+'" alt="'+esc(p.name)+'">':'<span class="bd-ph" aria-hidden="true">'+esc(p.name.charAt(0))+'</span>';
+    var more=(p.bio||(p.links&&p.links.length))?'<button type="button" class="bd-btn" data-i="'+i+'">簡介</button>':'';
+    var act='';
+    if(p.edit&&p.edit.indexOf('https://event.bymyway.com/tut/team/edit/')===0)act='<a class="bd-btn" href="'+esc(p.edit)+'" target="_blank" rel="noopener">編輯</a>';
+    else if(p.id&&!p.filled)act='<form class="bd-claim" method="post" action="https://event.bymyway.com/tut/team/claim/'+(+p.id)+'" target="_blank"><button type="submit" class="bd-btn">這是我，補簡介</button></form>';
+    return '<li class="bd-card"><div class="bd-photo">'+pic+'</div><div class="bd-info"><h4>'+esc(p.name)+'</h4><div class="bd-title">'+esc(p.title||'理監事校友')+'</div>'+more+act+'</div></li>';
+  }).join('');
+}
+renderBoard();
+fetch(API+'/api/tut/team/board'+(BUILD?'?build='+BUILD:''),{cache:'no-store'}).then(function(r){return r.json()}).then(function(d){
+  if(!Array.isArray(d)||!d.length)return;
+  BOARD=d.filter(function(p){return p&&typeof p.name==='string'&&p.name}).map(function(p){return {id:+p.id||0,filled:!!p.filled,edit:String(p.edit||''),name:p.name,title:String(p.title||''),bio:String(p.bio||''),photo:/^https?:\/\//.test(p.photo||'')?p.photo:'',links:Array.isArray(p.links)?p.links:[]}});
+  /* 有照片、填好資料的排前面，名單看起來更完整 */
+  BOARD.sort(function(a,b){return (b.photo?1:0)-(a.photo?1:0)});
+  renderBoard();var bc=$('#boardCount');if(bc&&+bc.getAttribute('data-to')!==BOARD.length){bc.setAttribute('data-to',BOARD.length);roll(bc,BOARD.length)}
+}).catch(function(){});
+var bioOv=$('#bioOv'),bioBtn=null;
+function closeBio(){bioOv.classList.remove('open');bioBtn&&bioBtn.focus()}
+$('#bdGrid').addEventListener('click',function(e){var b=e.target.closest('button.bd-btn[data-i]');if(!b)return;var p=BOARD[+b.dataset.i];if(!p)return;bioBtn=b;
+  $('#bioName').textContent=p.name;$('#bioSub').textContent=p.title||'理監事校友';
+  $('#bioText').innerHTML=(p.bio||'').split(/\r?\n\s*\r?\n|\r?\n/).filter(function(t){return t.trim()}).map(function(t){return '<p>'+esc(t.trim())+'</p>'}).join('');
+  $('#bioLinks').innerHTML=(p.links||[]).filter(function(l){return l&&/^https?:\/\//i.test(l.url||'')}).map(function(l){return '<a href="'+esc(l.url)+'" target="_blank" rel="noopener">'+esc(l.label||'連結')+'</a>'}).join('');
+  bioOv.classList.add('open');$('#bioClose').focus()});
+$('#bioClose').addEventListener('click',closeBio);bioOv.addEventListener('click',function(e){if(e.target===bioOv)closeBio()});
+
+/* 支持陳佩君（後端：/api/works/counter/tut-memory/support-peijun，與舊頁同一個計數） */
+var SUP=API+'/api/works/counter/tut-memory/support-peijun',sn=null,supNum=$('#supportNum'),supBtn=$('#supportBtn');
+function showSup(){if(sn===null){supNum.textContent='—';return}flipTo(supNum,sn)}
+fetch(SUP).then(function(r){return r.json()}).then(function(d){if(d&&d.ok){sn=d.n;showSup()}}).catch(function(){});
+supBtn.addEventListener('click',function(){sn=(sn===null?0:sn)+1;showSup();supNum.classList.remove('pop');void supNum.offsetWidth;supNum.classList.add('pop');
+  fetch(SUP,{method:'POST'}).then(function(r){return r.json()}).then(function(d){if(d&&d.ok&&typeof d.n==='number'&&d.n>sn){sn=d.n;showSup()}}).catch(function(){})});
+
+/* ---------- 第五章 會員 ---------- */
+[['#b-name','#e-name','陳美玲'],['#b-class','#e-class','85 級 服裝設計科'],['#b-title','#e-title','美玲烘焙工作室 主理人'],['#b-intro','#e-intro','把台南的老味道，做成年輕人也愛的伴手禮。']].forEach(function(m){
+  $(m[0]).addEventListener('input',function(){var v=this.value.trim()||m[2];$(m[1]).textContent=v;if(m[0]==='#b-name')$('#e-ava').textContent=Array.from(v)[0]})});
+$$('.sws button').forEach(function(b){b.addEventListener('click',function(){$$('.sws button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});$('#edmHead').style.setProperty('--c',b.dataset.c)})});
+var Q=[{q:'你最希望加入校友會之後……',o:[['讓老同學知道我現在在做什麼',0],['讓更多人認識我的專業、找我合作',2]]},
+  {q:'說到「自己的網頁」，你的狀況是？',o:[['有粉專或官網了，缺一張好轉傳的簡介',0],['一直想要一個像樣的個人品牌頁',2],['完全沒有，但不急',0]]},
+  {q:'資料更新這件事……',o:[['偶爾才有新消息，自己來就好',0],['常有新活動、新頭銜，希望有人幫我顧',2]]}];
+var qi=0,score=0;
+function renderQ(){$$('.qsteps i').forEach(function(b,i){b.classList.toggle('on',i<=qi)});var qb=$('#qbody');
+  if(qi<Q.length){qb.innerHTML='<h4>'+(qi+1)+'／3　'+Q[qi].q+'</h4><div class="qopts">'+Q[qi].o.map(function(o,i){return '<button type="button" data-i="'+i+'">'+o[0]+'</button>'}).join('')+'</div>'}
+  else{var h=score>=4,tier=h?'榮譽會員':'贊助會員';qb.innerHTML='<div class="qresult"><div style="font-size:20px;color:#d6c8e4">你的配對結果</div><div class="big">'+(h?'榮譽會員最適合你':'從贊助會員開始剛剛好')+'</div><p>'+(h?'你需要的是一個會跟著你成長的品牌頁，掛在榮譽欄上，之後的更新也交給校友會。':'一次 Podcast 專訪＋一張好轉傳的簡介卡，先跟校友會連上線，之後隨時可以升級。')+'</p><a class="btn btn-gold" href="#join" data-tier="'+tier+'">我選'+tier+'</a> <button type="button" class="btn btn-line" id="qAgain" style="color:#f3ead9">重新測一次</button></div>'}}
+$('#qbody').addEventListener('click',function(e){var b=e.target.closest('.qopts button');if(b){score+=Q[qi].o[+b.dataset.i][1];qi++;renderQ();return}if(e.target.id==='qAgain'){qi=0;score=0;renderQ()}});
+renderQ();
+
+/* ---------- 第六章 加入（一般校友 → /api/tut/join；會員與廠商 → /api/works/contact，site=tut-membership） ---------- */
+var jf=$('#joinForm');
+function curTier(){return ($('input[name=tier]:checked',jf)||{}).value||'一般校友'}
+function syncTier(){var t=curTier();$('#giftW').hidden=t!=='贊助廠商';
+  $('#joinBtn').textContent=t==='一般校友'?'送出，我要加入！':'送出'+t+'申請';
+  $('#joinFine').textContent=t==='一般校友'?'只填姓名、手機與分會也可以，我們會專人與您聯繫。':'送出後專人會與您聯繫，說明繳費方式與後續流程。'}
+$$('input[name=tier]',jf).forEach(function(r){r.addEventListener('change',syncTier)});
+document.addEventListener('click',function(e){var a=e.target.closest('[data-tier]');if(!a)return;var r=$('input[name=tier][value="'+a.dataset.tier+'"]',jf);if(r){r.checked=true;syncTier()}});
+['#j-name','#j-phone','#j-chapter','#j-gift'].forEach(function(s){$(s).addEventListener('input',function(){this.closest('.fld').classList.remove('bad')})});
+jf.addEventListener('submit',function(e){
+  e.preventDefault();var ok=true,first=null,t=curTier();
+  function bad(sel,cond){var el=$(sel);el.closest('.fld').classList.toggle('bad',cond);if(cond){ok=false;first=first||el}}
+  var name=$('#j-name').value.trim(),phone=$('#j-phone').value.replace(/[\s\-]/g,''),chapter=$('#j-chapter').value;
+  bad('#j-name',!name);
+  $('#phoneErr').textContent=phone?'手機格式不正確，請填寫至少 8 位數字':'請填寫手機';bad('#j-phone',!/^\+?\d{8,}$/.test(phone));
+  bad('#j-chapter',!chapter);
+  if(t==='贊助廠商')bad('#j-gift',!$('#j-gift').value.trim());
+  if(!ok){first.focus();return}
+  var btn=$('#joinBtn'),label=btn.textContent;btn.disabled=true;btn.textContent='送出中…';$('#joinErr').style.display='none';
+  var year=$('#j-year').value.trim(),dept=$('#j-dept').value.trim(),email=$('#j-email').value.trim(),job=$('#j-job').value.trim(),msg=$('#j-msg').value.trim();
+  function done(line){jf.style.display='none';
+    $('#okTitle').textContent=t==='一般校友'?'歡迎回家！':t+'申請成功！';
+    $('#okText').textContent=t==='一般校友'?'校友會已收到您的資料。加校友會 LINE 好友，第一手活動消息不漏接。':(t==='贊助廠商'?'專人會與您聯繫，確認贈品內容與交貨方式。':'專人會與您聯繫，說明繳費方式並約好 Podcast 專訪時間。');
+    if(line)$('#lineAdd').href=line;var ok=$('#joinOk');ok.classList.add('show');ok.focus()}
+  function fail(){btn.disabled=false;btn.textContent=label;var er=$('#joinErr');er.textContent='網路不太穩，資料沒送出去，請稍後再按一次送出。';er.style.display='block'}
+  if(t==='一般校友'){
+    fetch(API+'/api/tut/join',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,phone:phone,gradYear:year,department:dept,chapter:chapter,email:email,job:job,message:msg,source:/bymyway\.com$/.test(location.hostname)?'bymyway':location.hostname})})
+      .then(function(r){return r.json()}).then(function(d){done(d&&(d.greet_url||d.add_friend_url))})
+      .catch(function(){done(null)}); /* 舊版作法：網路異常也不卡住訪客，仍給加好友連結 */
+  }else{
+    var lines=['方案：'+t,'分會：'+chapter];if(year)lines.push('畢業年：'+year);if(dept)lines.push('科系：'+dept);if(job)lines.push('現職或專業：'+job);if(t==='贊助廠商')lines.push('禮贈品：'+$('#j-gift').value.trim());
+    fetch(API+'/api/works/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({site:'tut-membership',name:name,phone:phone,email:email,item:t,message:lines.join('\n')+(msg?'\n'+msg:''),website:$('#j-website').value})})
+      .then(function(r){if(!r.ok)throw 0;return r.json().catch(function(){return {}})}).then(function(){done(null)}).catch(fail);
+  }
+});
+syncTier();
+
+/* 分享 */
+var shareText='南應人，換你回來了。時光走廊、互動記憶牆、校友會資源與會員招募都在這一頁，30 秒加入台南應用科技大學校友會！';
+function pageUrl(){return location.href.split('#')[0].split('?')[0]}
+$('#lineShare').href='https://social-plugins.line.me/lineit/share?url='+encodeURIComponent(pageUrl())+'&text='+encodeURIComponent(shareText);
+function copy(){var u=pageUrl();(navigator.clipboard?navigator.clipboard.writeText(shareText+' '+u):Promise.reject()).then(function(){toast('已複製文案和連結')}).catch(function(){prompt('複製這個連結',u)})}
+$('#copyBtn').addEventListener('click',copy);
+$('#shareBtn').addEventListener('click',function(){if(navigator.share)navigator.share({title:'南應大校友會｜南應人，回家了',text:shareText,url:pageUrl()}).catch(function(){});else copy()});
+
+/* ===================== 特效 ===================== */
+/* ㉓ 翻牌計數器：只翻有變的那幾位 */
+function flipTo(el,n){
+  var str=String(n);while(str.length<4)str='0'+str;
+  el.setAttribute('aria-label',n+' 個讚');
+  if(!el.classList.contains('flip')){el.classList.add('flip');el.innerHTML=''}
+  var cells=$$('i',el);
+  while(cells.length<str.length){var c=document.createElement('i');c.setAttribute('aria-hidden','true');el.insertBefore(c,el.firstChild);cells=$$('i',el)}
+  str.split('').forEach(function(d,k){var c=cells[k];if(c.textContent===d)return;
+    if(reduce||!c.textContent){c.textContent=d;return}
+    c.classList.remove('go');void c.offsetWidth;c.classList.add('go');setTimeout(function(){c.textContent=d},300)});
+}
+
+/* ㉑ 中文標題不留孤字：最後 4 個字綁在一起（標點結尾綁 5 個） */
+$$('h2,h3,.lead,.tl-body .one,.al p').forEach(function(el){
+  var walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null),last=null,n;
+  while((n=walker.nextNode()))if(n.nodeValue.trim())last=n;
+  if(!last||el.textContent.trim().length<8)return;
+  var t=last.nodeValue.replace(/\s+$/,''),k=/[，。！？、；：」』）]$/.test(t)?5:4;
+  if(t.length<=k)return;
+  var span=document.createElement('span');span.className='nw';span.textContent=t.slice(-k);
+  last.nodeValue=t.slice(0,-k);last.parentNode.insertBefore(span,last.nextSibling);
+});
+
+/* ⑬ 校徽開場（約 2.4 秒、可跳過；同一次瀏覽只播一次；關閉動畫的人不播） */
+(function(){
+  var seen=false;try{seen=sessionStorage.getItem('tut_intro')==='1';sessionStorage.setItem('tut_intro','1')}catch(e){}
+  if(reduce||seen||location.hash)return;
+  var o=document.createElement('div');o.className='intro';o.setAttribute('aria-hidden','true');
+  o.innerHTML='<div><div class="ring"><span class="seal">南</span></div><p>南應人，回家了<small>TUT Alumni · since 1964</small></p></div><div class="flash"></div><button type="button" class="skip">跳過</button>';
+  document.body.appendChild(o);
+  var gone=false;function end(){if(gone)return;gone=true;o.classList.add('lift');setTimeout(function(){o.remove()},750)}
+  o.querySelector('.skip').addEventListener('click',end);setTimeout(end,2100);
+})();
+
+/* ⑧ 捲動縮框開場：第一屏照片往下捲時縮成圓角卡片，跟捲軸慢半拍 */
+(function(){
+  if(reduce)return;var bg=$('.home-bg'),home=$('.home');if(!bg)return;
+  var cur=0,raf=0;
+  function target(){return Math.max(0,Math.min(1,scrollY/(innerHeight*1.55)))}
+  function tick(){var t=target();cur+=(t-cur)*.12;if(Math.abs(t-cur)<.001)cur=t;
+    var min=innerWidth<700?.97:.94,sc=1-(1-min)*cur;
+    bg.style.transform='scale('+sc.toFixed(4)+')';bg.style.borderRadius=(18*cur/sc).toFixed(1)+'px';
+    raf=cur!==t?requestAnimationFrame(tick):0}
+  addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame(tick)},{passive:true});tick();
+})();
+
+/* ⑪ 文字升起：門檻 0；一開始就在畫面上的標題不藏，避免空白 */
+(function(){
+  if(reduce)return;
+  var groups=$$('.sec-head,.cand>div:last-child,.join-grid>div:first-child,.mem-hero .wrap,.pane,.split>div:first-child,.vendors-head,.hall-top');
+  var items=[];
+  groups.forEach(function(g){$$('.chap,h2,h3,.lead',g).slice(0,4).forEach(function(el,k){
+    if(el.getBoundingClientRect().top>innerHeight){el.classList.add('rise','pre');el.style.transitionDelay=(k*120)+'ms';items.push(el)}})});
+  function show(el){el.classList.remove('pre')}
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){show(e.target);io.unobserve(e.target)}})},{threshold:0});
+    items.forEach(function(el){io.observe(el)});
+  }
+  /* 保險：捲過的標題一定顯示（觀察器沒觸發也不會留白） */
+  function sweep(){items=items.filter(function(el){if(el.getBoundingClientRect().top<innerHeight){show(el);return false}return true})}
+  addEventListener('scroll',sweep,{passive:true});setTimeout(sweep,800);
+})();
+
+/* ⑳ 星點連線：像校友人脈網，只在看得到時才畫 */
+function starNet(host){
+  if(reduce||!host)return;
+  var c=document.createElement('canvas');c.className='net';c.setAttribute('aria-hidden','true');host.insertBefore(c,host.firstChild);
+  var x=c.getContext('2d'),P=[],W=0,H=0,dpr=Math.min(2,devicePixelRatio||1),on=false,raf=0;
+  function size(){W=host.clientWidth;H=host.clientHeight;c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0)}
+  size();for(var i=0;i<46;i++)P.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35});
+  function draw(){x.clearRect(0,0,W,H);
+    for(var i=0;i<P.length;i++){var p=P[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+      for(var j=i+1;j<P.length;j++){var q=P[j],dx=p.x-q.x,dy=p.y-q.y,d=Math.sqrt(dx*dx+dy*dy);
+        if(d<150){x.strokeStyle='rgba(232,205,134,'+(.28*(1-d/150)).toFixed(3)+')';x.lineWidth=1;x.beginPath();x.moveTo(p.x,p.y);x.lineTo(q.x,q.y);x.stroke()}}
+      x.fillStyle='rgba(246,231,189,.75)';x.beginPath();x.arc(p.x,p.y,1.8,0,6.283);x.fill()}
+    raf=on?requestAnimationFrame(draw):0}
+  addEventListener('resize',size);
+  new IntersectionObserver(function(es){on=es[0].isIntersecting;if(on&&!raf)raf=requestAnimationFrame(draw)}).observe(host);
+}
+starNet($('.mem-hero'));starNet($('#vision'));starNet($('#join'));
+
+/* ⑲ 段落導覽圓點＋回到頂端 */
+(function(){
+  var secs=[['home','回家'],['corridor','時光走廊'],['pride','傑出校友'],['memory','記憶牆'],['vision','校友會理念'],['membership','會員招募'],['join','加入']];
+  var nav=document.createElement('nav');nav.className='dots';nav.setAttribute('aria-label','段落導覽');
+  nav.innerHTML=secs.map(function(s){return '<a href="#'+s[0]+'"><span>'+s[1]+'</span></a>'}).join('');document.body.appendChild(nav);
+  var top=document.createElement('button');top.type='button';top.className='totop';top.textContent='↑ 回到頂端';document.body.appendChild(top);
+  top.addEventListener('click',function(){scrollTo({top:0,behavior:reduce?'auto':'smooth'})});
+  var links=$$('a',nav);
+  function upd(){top.classList.toggle('show',scrollY>500);var mid=innerHeight*.45,cur=0;
+    secs.forEach(function(s,i){var el=document.getElementById(s[0]);if(el&&el.getBoundingClientRect().top<mid)cur=i});
+    links.forEach(function(a,i){a.classList.toggle('on',i===cur)})}
+  addEventListener('scroll',upd,{passive:true});upd();
+})();
+})();
+</script>
 </body>
 </html>
