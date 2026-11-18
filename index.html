@@ -1231,7 +1231,7 @@ var EXT_LINKS=[
 $('#extList').innerHTML=EXT_LINKS.map(function(x){return '<li><a href="'+esc(x[2])+'" target="_blank" rel="noopener"><b>'+esc(x[0])+'</b><span>'+esc(x[1])+'</span><i>前往看看 ↗</i></a></li>'}).join('');
 
 /* 理監事名單：正本讀 /api/tut/team/board（資料庫），讀不到才用下面這份備援名單 */
-var BOARD=['王佩茹','楊孟薰','陳佩君','謝念均','許山本美道子','王佑文','劉上維','邱鈺涵','林泓丞','曾智美','陳沛岺','潘皓瑋','何冠忻','林惠雯','彭韻錚','邱錦秀','顏妙青','金巧玲','陳孟珩','楊志芳','吳泰良','郭怡淳','孫熙閑'].map(function(n){return {name:n,title:'',bio:'',photo:'',links:[]}});
+var BOARD=['王佩茹','楊孟薰','陳佩君','謝念均','許山本美道子','劉曉琳','劉上維','邱鈺涵','林泓丞','曾智美','陳沛岺','潘皓瑋','何冠忻','林惠雯','彭韻錚','邱錦秀','顏妙青','金巧玲','陳孟珩','楊志芳','吳泰良','郭怡淳','孫熙閑'].map(function(n){return {name:n,title:'',bio:'',photo:'',links:[]}});
 var BUILD=(location.search.match(/[?&]build=([A-Za-z0-9]+)/)||[])[1]||'';
 function renderBoard(){
   $('#boardSub').textContent=BUILD?'建置模式（只有您看得到）：每張卡的「編輯」可以上傳照片、補職稱和簡介。':'目前已有 '+BOARD.length+' 位理監事校友。名單上有您的名字？點「這是我，補簡介」，上傳照片、寫簡介就上架。';
