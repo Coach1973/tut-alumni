@@ -154,6 +154,12 @@ section.ch{padding:120px 0;position:relative}
 .al .src{font-size:20px;color:var(--muted);border-top:1px dashed var(--line);padding-top:8px;margin-top:6px}
 .al[hidden]{display:none}
 .note-sm{font-size:20px;color:var(--muted);margin-top:28px}
+.pride-self{margin-top:40px;padding:32px;border-radius:var(--r);background:#fff;border:1px dashed var(--violet)}
+.pride-self h3{font-family:var(--serif);font-size:30px;color:var(--plum-700);margin:0 0 8px}
+.pride-self .sub{font-size:20px;color:var(--ink-2);margin:0 0 20px}
+.pride-self .alumni{list-style:none;padding:0;margin:0 0 24px}
+.pride-self .alumni:empty{display:none}
+.al .more-sup{font-size:20px;font-weight:700;color:var(--violet);margin-top:auto;padding-top:10px;text-decoration:none}
 
 /* ===== ch4 memory wall ===== */
 .memory{background:var(--plum-900);color:#f3ead9;overflow:hidden}
@@ -230,10 +236,10 @@ fieldset.fld{border:0;padding:0;margin:0 0 18px}
 .marquee:hover .track{animation-play-state:paused}
 .marquee .track span::before{content:"★";margin-right:18px}
 @keyframes marq{to{transform:translateX(-50%)}}
-.cand{display:grid;grid-template-columns:420px 1fr;gap:64px;align-items:center;padding:110px 0 80px}
-.cand-ph{position:relative;border-radius:24px;overflow:hidden;background:var(--plum-600);aspect-ratio:4/5;box-shadow:0 30px 60px rgba(0,0,0,.35)}
+.cand{display:grid;grid-template-columns:300px 1fr;gap:56px;align-items:center;padding:110px 0 80px}
+.cand-ph{position:relative;border-radius:18px;overflow:hidden;background:var(--plum-600);aspect-ratio:4/5;border:1px solid rgba(232,200,120,.55);box-shadow:0 0 0 6px rgba(255,246,227,.06),0 18px 36px rgba(0,0,0,.32)}
 .cand-ph img{width:100%;height:100%;object-fit:cover;object-position:center 25%}
-.cand-ph .badge{position:absolute;left:18px;bottom:18px;background:var(--gold);color:var(--plum-900);font-weight:700;font-size:20px;padding:6px 16px;border-radius:999px}
+.cand-ph .badge{position:absolute;left:12px;right:12px;bottom:12px;text-align:center;background:rgba(43,26,64,.82);backdrop-filter:blur(6px);color:var(--gold-2);border:1px solid rgba(232,200,120,.5);font-weight:700;font-size:20px;padding:6px 12px;border-radius:999px}
 .cand h2 em{font-style:normal;color:var(--gold-2)}
 .cand ul{list-style:none;padding:0;margin:20px 0 28px;display:grid;gap:8px}
 .cand li{display:flex;gap:12px;font-size:22px;color:#e8dcf2}
@@ -518,7 +524,7 @@ input,select,textarea{max-width:100%;min-width:0}
   .steps4{grid-template-columns:1fr 1fr}
   .wish form{grid-template-columns:1fr}
   .cand{padding:84px 0 60px}
-  .cand-ph{max-width:420px}
+  .cand-ph{max-width:280px}
   .jform{padding:28px 20px}
   .hall{padding:32px 20px}
 }
@@ -588,7 +594,7 @@ input,select,textarea{max-width:100%;min-width:0}
       <div class="stat"><div class="num"><span class="roll" data-to="1964">1964</span></div><div class="lbl">創校，從台南家專出發</div></div>
       <div class="stat"><div class="num"><span class="roll" data-to="60">60</span><small>+</small></div><div class="lbl">年辦學，一甲子校友</div></div>
       <div class="stat"><div class="num"><span class="roll" data-to="5">5</span></div><div class="lbl">個分會，南北都找得到人</div></div>
-      <div class="stat"><div class="num"><span class="roll" id="boardCount" data-to="23">23</span></div><div class="lbl">位理監事校友</div></div>
+      <div class="stat"><div class="num"><span class="roll" id="boardCount" data-to="23">23</span></div><div class="lbl">位理監事校友候選人</div></div>
     </div>
   </div>
 </section>
@@ -698,6 +704,12 @@ input,select,textarea{max-width:100%;min-width:0}
       <article class="al" data-f="art"><div class="ph"><img src="images/al-huang-siyu.webp" alt="黃思瑜"></div><div class="bd"><div class="fd">音樂・第六屆傑出校友</div><h3>黃思瑜</h3><p>音樂科系校友、職業作曲家，曾獲美國學術音樂大獎、全球音樂大獎。</p><div class="src">照片來源：南應大校友服務組</div></div></article>
     </div>
     <p class="note-sm">照片皆為本人真實照片，取自標示的公開來源，版權屬原作者或原單位所有。</p>
+    <div class="pride-self" id="prideSelf">
+      <h3>校友自己登錄的傑出校友</h3>
+      <p class="sub">您也是（或認識）傑出校友？按下面的按鈕，自己登錄，或幫學長姊、學弟妹登錄都可以：填姓名、頭銜、簡介、附一張照片，送出立刻上架，之後用專屬連結隨時補充。</p>
+      <ul class="alumni" id="prideList" aria-live="polite"></ul>
+      <a class="btn btn-gold" href="https://event.bymyway.com/tut/team/join?team=pride" target="_blank" rel="noopener">我也是傑出校友 ↗</a>
+    </div>
   </div>
 </section>
 
@@ -804,7 +816,7 @@ input,select,textarea{max-width:100%;min-width:0}
     <div class="pillars">
       <a class="pillar" href="#ext"><div class="n">01</div><h3>外部產業資源鏈結</h3><p>產業論壇、企業參訪、會員專屬優惠，把校園人脈延伸成職涯籌碼。</p></a>
       <a class="pillar" href="#biz"><div class="n">02</div><h3>專屬商務團隊資源</h3><p>商務媒合、經營諮詢、合作案對接——校友的生意，優先找校友。</p></a>
-      <a class="pillar" href="#board"><div class="n">03</div><h3>理監事校友名單</h3><p>認識南應校友會的理監事校友們，每一位的照片與簡介。</p></a>
+      <a class="pillar" href="#board"><div class="n">03</div><h3>理監事校友候選人名單</h3><p>認識南應校友會的理監事校友們，每一位的照片與簡介。</p></a>
     </div>
 
     <div class="pane" id="ext">
@@ -821,10 +833,10 @@ input,select,textarea{max-width:100%;min-width:0}
     </div>
 
     <div class="pane" id="board">
-      <h3>理監事校友名單</h3>
+      <h3>理監事校友候選人名單</h3>
       <p class="sub" id="boardSub">名單上有您的名字？點「這是我，補簡介」，上傳照片、寫簡介就上架。</p>
       <ul class="bd-grid" id="bdGrid"></ul>
-      <div class="bd-foot"><span>資料即時讀取自校友會理監事名冊。</span><a class="btn btn-plum" href="#join">加入校友會，一起把量能帶回來</a></div>
+      <div class="bd-foot"><span>資料即時讀取自校友會理監事名冊；正式理監事以投票結果為準。</span><a class="btn btn-plum" href="#join">加入校友會，一起把量能帶回來</a></div>
     </div>
   </div>
 </section>
@@ -1227,7 +1239,7 @@ function renderBoard(){
     var act='';
     if(p.edit&&p.edit.indexOf('https://event.bymyway.com/tut/team/edit/')===0)act='<a class="bd-btn" href="'+esc(p.edit)+'" target="_blank" rel="noopener">編輯</a>';
     else if(p.id&&!p.filled)act='<form class="bd-claim" method="post" action="https://event.bymyway.com/tut/team/claim/'+(+p.id)+'" target="_blank"><button type="submit" class="bd-btn">這是我，補簡介</button></form>';
-    return '<li class="bd-card"><div class="bd-photo">'+pic+'</div><div class="bd-info"><h4>'+esc(p.name)+'</h4><div class="bd-title">'+esc(p.title||'理監事校友')+'</div>'+more+act+'</div></li>';
+    return '<li class="bd-card"><div class="bd-photo">'+pic+'</div><div class="bd-info"><h4>'+esc(p.name)+'</h4><div class="bd-title">'+esc(p.title||'理監事校友候選人')+'</div>'+more+act+'</div></li>';
   }).join('');
 }
 renderBoard();
@@ -1238,10 +1250,18 @@ fetch(API+'/api/tut/team/board'+(BUILD?'?build='+BUILD:''),{cache:'no-store'}).t
   BOARD.sort(function(a,b){return (b.photo?1:0)-(a.photo?1:0)});
   renderBoard();var bc=$('#boardCount');if(bc&&+bc.getAttribute('data-to')!==BOARD.length){bc.setAttribute('data-to',BOARD.length);roll(bc,BOARD.length)}
 }).catch(function(){});
+/* 校友自己登錄的傑出校友：讀 /api/tut/team/pride（跟理監事同一套登錄系統） */
+fetch(API+'/api/tut/team/pride',{cache:'no-store'}).then(function(r){return r.json()}).then(function(d){
+  if(!Array.isArray(d))return;
+  $('#prideList').innerHTML=d.filter(function(p){return p&&p.name}).map(function(p){
+    var pic=p.photo&&/^https?:\/\//.test(p.photo)?'<img src="'+esc(p.photo)+'" alt="'+esc(p.name)+'" loading="lazy">':'';
+    var ln=(p.links||[]).map(function(l){return '<a class="more-sup" href="'+esc(l.url)+'" target="_blank" rel="noopener nofollow">'+esc(l.label)+' ↗</a>'}).join(' ');
+    return '<li class="al"><div class="ph">'+pic+'</div><div class="bd"><div class="fd">校友自己登錄</div><h3>'+esc(p.name)+'</h3><p>'+esc(p.title)+'</p><p style="font-size:20px">'+esc((p.bio||'').slice(0,160))+'</p>'+ln+'</div></li>'}).join('');
+}).catch(function(){});
 var bioOv=$('#bioOv'),bioBtn=null;
 function closeBio(){bioOv.classList.remove('open');bioBtn&&bioBtn.focus()}
 $('#bdGrid').addEventListener('click',function(e){var b=e.target.closest('button.bd-btn[data-i]');if(!b)return;var p=BOARD[+b.dataset.i];if(!p)return;bioBtn=b;
-  $('#bioName').textContent=p.name;$('#bioSub').textContent=p.title||'理監事校友';
+  $('#bioName').textContent=p.name;$('#bioSub').textContent=p.title||'理監事校友候選人';
   $('#bioText').innerHTML=(p.bio||'').split(/\r?\n\s*\r?\n|\r?\n/).filter(function(t){return t.trim()}).map(function(t){return '<p>'+esc(t.trim())+'</p>'}).join('');
   $('#bioLinks').innerHTML=(p.links||[]).filter(function(l){return l&&/^https?:\/\//i.test(l.url||'')}).map(function(l){return '<a href="'+esc(l.url)+'" target="_blank" rel="noopener">'+esc(l.label||'連結')+'</a>'}).join('');
   bioOv.classList.add('open');$('#bioClose').focus()});
