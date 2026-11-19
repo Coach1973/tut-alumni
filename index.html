@@ -238,7 +238,19 @@ fieldset.fld{border:0;padding:0;margin:0 0 18px}
 @keyframes marq{to{transform:translateX(-50%)}}
 .cand{display:grid;grid-template-columns:300px 1fr;gap:56px;align-items:center;padding:110px 0 80px}
 .cand-ph{position:relative;border-radius:18px;overflow:hidden;background:var(--plum-600);aspect-ratio:4/5;border:1px solid rgba(232,200,120,.55);box-shadow:0 0 0 6px rgba(255,246,227,.06),0 18px 36px rgba(0,0,0,.32)}
-.cand-ph img{width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.cand-ph img{width:100%;height:100%;object-fit:cover;object-position:center 0%;transform:scale(1.35);transform-origin:50% 60%}
+@property --fa{syntax:"<angle>";inherits:false;initial-value:0deg}
+.cand-ph::before{content:"";position:absolute;inset:0;z-index:2;padding:11px;border-radius:18px;pointer-events:none;
+  background:repeating-conic-gradient(from var(--fa),#fff8d6 0 5deg,#d9a93a 5deg 11deg,#7a5a14 11deg 16deg);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);
+  animation:frameRun 6s linear infinite,frameGlow 1.6s ease-in-out infinite alternate}
+.cand-ph::after{content:"";position:absolute;inset:0;z-index:2;border-radius:18px;pointer-events:none;
+  background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.55) 50%,transparent 60%) -200% 0/200% 100% no-repeat;animation:frameSheen 3.6s ease-in-out infinite}
+.cand-ph .badge{z-index:3}
+@keyframes frameRun{to{--fa:360deg}}
+@keyframes frameGlow{from{filter:brightness(.92)}to{filter:brightness(1.25) drop-shadow(0 0 6px rgba(255,226,140,.9))}}
+@keyframes frameSheen{0%{background-position:-200% 0}60%,100%{background-position:200% 0}}
+@media (prefers-reduced-motion:reduce){.cand-ph::before,.cand-ph::after{animation:none}}
 .cand-ph .badge{position:absolute;left:12px;right:12px;bottom:12px;text-align:center;background:rgba(43,26,64,.82);backdrop-filter:blur(6px);color:var(--gold-2);border:1px solid rgba(232,200,120,.5);font-weight:700;font-size:20px;padding:6px 12px;border-radius:999px}
 .cand h2 em{font-style:normal;color:var(--gold-2)}
 .cand ul{list-style:none;padding:0;margin:20px 0 28px;display:grid;gap:8px}
@@ -566,10 +578,11 @@ input,select,textarea{max-width:100%;min-width:0}
     <nav class="nav" id="nav" aria-label="章節選單">
       <a href="#corridor">時光走廊</a>
       <a href="#pride">傑出校友</a>
-      <a href="#memory">記憶牆</a>
-      <a href="#vision">校友會理念</a>
+      <a href="#vision">候選人理念</a>
+      <a href="#biz">人脈連結</a>
       <a href="#membership">會員招募</a>
-      <a href="https://event.bymyway.com/curated/tut-alumni-1213/" target="_blank" rel="noopener">會員大會・聖誕餐會</a>
+      <a href="https://event.bymyway.com/curated/tut-alumni-1213/" target="_blank" rel="noopener">聖誕餐會</a>
+      <a href="#memory">記憶牆</a>
       <a class="btn btn-gold" href="#join">我要加入</a>
     </nav>
   </div>
@@ -586,7 +599,7 @@ input,select,textarea{max-width:100%;min-width:0}
     <p class="lead">我們曾經在同一個校園裡青春過。現在，換我們把散落各地的南應人，再一次聚在一起。</p>
     <div class="cta">
       <a class="btn btn-gold" href="#join">30 秒加入校友會</a>
-      <a class="btn btn-line" href="#memory">把老照片貼回記憶牆</a>
+      <a class="btn btn-line" href="#membership">會員招募</a>
       <a class="btn btn-line" href="https://event.bymyway.com/curated/tut-alumni-1213/" target="_blank" rel="noopener">12/13 會員大會暨聖誕餐會 ↗</a>
     </div>
     <p class="hint">只要姓名、手機和分會，其餘資料可以之後再補。</p>
@@ -715,78 +728,7 @@ input,select,textarea{max-width:100%;min-width:0}
   </div>
 </section>
 
-<!-- ========== 第四章 記憶牆 ========== -->
-<section class="memory" id="memory" aria-labelledby="h-memory">
-  <div class="mem-hero dark">
-    <div class="wrap">
-      <p class="chap"><b>第三章</b>互動記憶牆</p>
-      <h2 id="h-memory">把你的南應，<br>貼回這面牆。</h2>
-      <p class="lead" style="margin-top:18px">那些年在南應之心、鳳凰樹與紅樓宿舍的日子——你，還記得嗎？一張照片、一段文字，就是一頁回不去的時光。</p>
-      <div class="mem-count" id="memCount" hidden><b id="memNum">0</b><span>則校友回憶已貼上牆</span></div>
-    </div>
-  </div>
-
-  <div class="board-wrap">
-    <div class="wrap mem-grid">
-      <form class="post" id="noteForm" novalidate>
-        <h3>寫下你的回憶</h3>
-        <label class="fld"><span>姓名／暱稱</span><input id="fName" maxlength="20" placeholder="例如：鳳凰花下的學姊" autocomplete="nickname"></label>
-        <label class="fld"><span>畢業年度</span>
-          <select id="fYear"><option>1960s</option><option>1970s</option><option>1980s</option><option>1990s</option><option selected>2000s</option><option>2010s</option><option>2020s</option><option>在校生</option></select></label>
-        <fieldset class="fld"><legend>卡片顏色（沒有照片時使用）</legend>
-          <div class="swatch">
-            <label><input type="radio" name="noteColor" value="yellow" id="cYellow" checked><span class="c-yellow" title="香檳"></span><span class="sr">香檳</span></label>
-            <label><input type="radio" name="noteColor" value="pink"><span class="c-pink" title="丁香"></span><span class="sr">丁香</span></label>
-            <label><input type="radio" name="noteColor" value="mint"><span class="c-mint" title="薰衣草"></span><span class="sr">薰衣草</span></label>
-          </div></fieldset>
-        <label class="fld"><span>回憶內容</span><textarea id="fText" maxlength="120" placeholder="旗袍課、紅樓宿舍、畢業展前一晚……"></textarea><div class="cnt"><span id="charCount">0</span> / 120</div></label>
-        <div class="fld"><span>上傳一張照片（選填）</span>
-          <div class="drop" id="fileDrop" role="button" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 8"/></svg>點這裡選擇照片<br>會自動壓縮成小圖</div>
-          <input type="file" id="fPhoto" accept="image/*" hidden>
-          <div class="preview" id="filePreview"><img id="fpImg" alt="照片預覽"><span id="fpMeta"></span><button type="button" id="fpRemove">移除</button></div>
-        </div>
-        <button class="btn btn-plum" type="submit" style="width:100%">貼進回憶相簿</button>
-        <p class="fine">送出後經校友會審核，通過就會出現在這面牆上，所有校友都看得到；也有機會出現在線上講座的直播回憶牆單元。</p>
-      </form>
-
-      <div>
-        <div class="wall-tools">
-          <div class="chips" role="group" aria-label="依年代篩選回憶" id="decChips" style="margin:0"></div>
-          <div class="sort" role="group" aria-label="排序">
-            <button type="button" class="chip" id="sortNew" aria-pressed="true">最新優先</button>
-            <button type="button" class="chip" id="sortHot" aria-pressed="false">最有感</button>
-          </div>
-        </div>
-        <div class="notes" id="notesGrid" aria-live="polite"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="talks-wrap dark" id="talks">
-    <div class="wrap">
-      <div class="sec-head">
-        <div>
-          <p class="chap"><b>線上講座</b>主題由大家決定</p>
-          <h2>你最想聽哪個主題？</h2>
-        </div>
-        <div class="ghost" aria-hidden="true">Talks</div>
-      </div>
-      <div class="talks" id="talkCards"></div>
-      <div class="wish">
-        <div><h3>沒有你想聽的？</h3><p style="margin:6px 0 0;font-size:20px;color:#d6c8e4">想聽什麼、想要什麼樣的講座，都可以寫在這裡，校友會會參考大家的願望來安排。</p></div>
-        <form id="wishForm">
-          <label><span class="sr">稱呼（選填）</span><input id="wishName" placeholder="稱呼（選填）" maxlength="20"></label>
-          <label><span class="sr">想聽的主題</span><textarea id="wishText" placeholder="我想聽……" maxlength="200"></textarea></label>
-          <input id="wishWebsite" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <button class="btn btn-gold" id="wishBtn" type="submit">送出願望</button>
-          <p class="out" id="wishOut" role="status"></p>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========== 第五章 校友會理念 ========== -->
+<!-- ========== 第三章 候選人理念 ========== -->
 <section class="ch vision dark" id="vision" aria-labelledby="h-vision">
   <div class="marquee" aria-label="2027 台南校友會理事長候選人 陳佩君">
     <div class="track" aria-hidden="true">
@@ -798,7 +740,7 @@ input,select,textarea{max-width:100%;min-width:0}
     <div class="cand">
       <div class="cand-ph"><img src="images/chen-peijun.webp" alt="2027 台南校友會理事長候選人陳佩君" width="366" height="514"><span class="badge">2027 理事長候選人</span></div>
       <div>
-        <p class="chap"><b>第四章</b>加入南應大校友會</p>
+        <p class="chap"><b>第三章</b>候選人理念</p>
         <h2 id="h-vision">把校園的溫暖，<br>帶進<em>職場</em>。</h2>
         <p class="lead" style="margin-top:16px">2027 年台南校友會理事長候選人<b style="color:#fff6e3">陳佩君</b>的競選理念：讓校友會不只是一份名冊，而是一個有資源、有人脈、有事情可以一起做的南應人平台。</p>
         <ul aria-label="陳佩君現任">
@@ -816,22 +758,22 @@ input,select,textarea{max-width:100%;min-width:0}
     </div>
 
     <div class="pillars">
-      <a class="pillar" href="#ext"><div class="n">01</div><h3>外部產業資源鏈結</h3><p>產業論壇、企業參訪、會員專屬優惠，把校園人脈延伸成職涯籌碼。</p></a>
-      <a class="pillar" href="#biz"><div class="n">02</div><h3>鏈接商務團隊資源</h3><p>商務媒合、經營諮詢、合作案對接——校友的生意，優先找校友。</p></a>
+      <a class="pillar" href="#biz"><div class="n">01</div><h3>商務團隊資源連結</h3><p>商務媒合、經營諮詢、合作案對接——校友的生意，優先找校友。</p></a>
+      <a class="pillar" href="#ext"><div class="n">02</div><h3>外部產業資源連結</h3><p>產業論壇、企業參訪、會員專屬優惠，把校園人脈延伸成職涯籌碼。</p></a>
       <a class="pillar" href="#board"><div class="n">03</div><h3>理監事校友候選人名單</h3><p>認識南應校友會的理監事校友們，每一位的照片與簡介。</p></a>
     </div>
 
-    <div class="pane" id="ext">
-      <h3>外部產業資源鏈結</h3>
-      <p class="sub">第一步，我們先為校友打開這幾扇門。</p>
-      <ul class="ext" id="extList"></ul>
-    </div>
-
     <div class="pane" id="biz">
-      <h3>鏈接商務團隊資源</h3>
+      <h3>商務團隊資源連結</h3>
       <p class="sub">目前已有 38 位夥伴，點名字可以直接看他們的個人網頁，之後還會持續增加。</p>
       <div class="biz-marq" aria-hidden="true"><div class="track"><span>張瓊文</span><span>陳建大明</span><span>蔡曜隆</span><span>魏江煌</span><span>吳俊誠</span><span>趙啟弦</span><span>王俊甫</span><span>楊健一</span><span>黃士恒</span><span>張嘉仁</span><span>陳怡靜</span><span>吳大樹</span><span>凌榆舜</span><span>楊智凱</span><span>林玟妗</span><span>劉惠華</span><span>黃源謀</span><span>陳淑鈴</span><span>林家旭</span><span>施正益</span><span>李美芬</span><span>楊仟慧</span><span>江睿翔</span><span>鄭儷絲</span><span>謝志賓</span><span>陳彥玲</span><span>林丁禾</span><span>林士民</span><span>李中閔</span><span>劉雅萍</span><span>吳日勤</span><span>李瑞惠</span><span>阿樂老師</span><span>傅恩平</span><span>林富郎</span><span>陳杉榕</span><span>郝振平</span><span>李文財</span><span>林家旭</span><span>施正益</span><span>李美芬</span><span>楊仟慧</span><span>江睿翔</span><span>鄭儷絲</span><span>謝志賓</span><span>陳彥玲</span><span>林丁禾</span><span>林士民</span><span>李中閔</span><span>劉雅萍</span><span>吳日勤</span><span>李瑞惠</span><span>阿樂老師</span><span>傅恩平</span><span>林富郎</span><span>陳杉榕</span><span>郝振平</span><span>李文財</span></div></div>
       <ul class="bz-grid"><li><a class="bz" href="https://event.bymyway.com/curated/charles-lin/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-lin.webp" alt="林家旭"></div><div class="bz-t"><b>林家旭</b><span>台灣形象設計發展協會理事長</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/shi-zheng-yi/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-shi.webp" alt="施正益"></div><div class="bz-t"><b>施正益</b><span>彰化縣網路購物服務人員職業工會理事長・Google 第 10 級在地嚮導</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/li-meifen/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-li.webp" alt="李美芬"></div><div class="bz-t"><b>李美芬</b><span>高雄市職能發展協會理事長・宸霖智權科技總經理</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/adia/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-adia.webp" alt="楊仟慧"></div><div class="bz-t"><b>楊仟慧</b><span>當代藝術家・南法藝術家莊園創辦人</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/jiang-ruixiang/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-jiang.webp" alt="江睿翔"></div><div class="bz-t"><b>江睿翔</b><span>手機公益 AI 技術總監・AI 應用實戰導師</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/zheng-lisi-muse/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-34f8ca86.webp" alt="鄭儷絲"></div><div class="bz-t"><b>鄭儷絲</b><span>中華網紅協會創會理事長・台灣網紅直播界教母</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/nmda/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-roger.webp" alt="謝志賓"></div><div class="bz-t"><b>謝志賓</b><span>新媒體影音發展協會</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/chen-alice/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-chen.webp" alt="陳彥玲"></div><div class="bz-t"><b>陳彥玲</b><span>全球健康發展協會</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/art-lab/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-dinghe.webp" alt="林丁禾"></div><div class="bz-t"><b>林丁禾</b><span>藝術商務顧問</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/shihmin/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-shihmin.webp" alt="林士民"></div><div class="bz-t"><b>林士民</b><span>台南文創協會理事長</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/lee-chungmin/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-leechungmin.webp" alt="李中閔"></div><div class="bz-t"><b>李中閔</b><span>網紅部落客聯盟協會理事</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/liu-yaping/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-liuyaping.webp" alt="劉雅萍"></div><div class="bz-t"><b>劉雅萍</b><span>台南市台灣世界旗袍文化推展聯合會理事長</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/wu-riqin/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-wuriqin.webp" alt="吳日勤"></div><div class="bz-t"><b>吳日勤</b><span>東倫敦大學藝術博士</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/li-ruihui-muse/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-3e241138.webp" alt="李瑞惠"></div><div class="bz-t"><b>李瑞惠</b><span>有限責任台灣區綠能作物運銷合作社</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/ale-brand/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-ale.webp" alt="阿樂老師"></div><div class="bz-t"><b>阿樂老師</b><span>可成音樂文化有限公司</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/fu-enping/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-66072940.webp" alt="傅恩平"></div><div class="bz-t"><b>傅恩平</b><span>商務英漢通譯・榮益齋有限公司</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/lin-fulang-muse/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-linfulang.webp" alt="林富郎"></div><div class="bz-t"><b>林富郎</b><span>千山律師事務所主持律師</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/da-a-brother/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-daa.webp" alt="陳杉榕"></div><div class="bz-t"><b>陳杉榕</b><span>種樹達人・百萬人愛心消費運動</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/hao-zhenping/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-hao.webp" alt="郝振平"></div><div class="bz-t"><b>郝振平</b><span>照相雞攝影工房創辦人・台南劇場攝影</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/li-wen-cai/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-liwencai.webp" alt="李文財"></div><div class="bz-t"><b>李文財</b><span>高雄市創新創業協會名譽理事長</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/chen-shuling-muse-2/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-2bc49083.webp" alt="陳淑鈴"></div><div class="bz-t"><b>陳淑鈴</b><span>台灣首廟天壇董事會秘書</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/huang-yuanmou-muse/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-6da8b2c6.webp" alt="黃源謀"></div><div class="bz-t"><b>黃源謀</b><span>府城導覽・法律出身的歷史說書人</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/liu-huihua/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-7037a036.webp" alt="劉惠華"></div><div class="bz-t"><b>劉惠華</b><span>AI 創新應用專家・世新傳播博士</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/lin-wenjin/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-2d0b74b2.webp" alt="林玟妗"></div><div class="bz-t"><b>林玟妗</b><span>暢銷書教母・董事長</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/yang-chihkai/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-257df0b4.webp" alt="楊智凱"></div><div class="bz-t"><b>楊智凱</b><span>蘭都觀光工廠副總經理・把台南市花種成一個品牌</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/lingyushun/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-821d77bc.webp" alt="凌榆舜"></div><div class="bz-t"><b>凌榆舜</b><span>iSmart 南區業務經理・跨領域數位轉型顧問</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/coachwu/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-428ee3e8.webp" alt="吳大樹"></div><div class="bz-t"><b>吳大樹</b><span>大樹教育顧問創辦人・海餅乾俱樂部創辦人</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/chen-yijing/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-3cf5e82c.webp" alt="陳怡靜"></div><div class="bz-t"><b>陳怡靜</b><span>薩加瑪奇克創藝學院創辦人・數位音樂教育者</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/zhang-jiaren/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-6a4f24e4.webp" alt="張嘉仁"></div><div class="bz-t"><b>張嘉仁</b><span>iSquare 愛斯奎科技管理顧問工作室創辦人</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/huang-shiheng-muse/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-d83ac8e9.webp" alt="黃士恒"></div><div class="bz-t"><b>黃士恒</b><span>誠律有限公司代表人・「毛飲樂」寵物飲料推廣者</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/yang-smart/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-df6d1d79.webp" alt="楊健一"></div><div class="bz-t"><b>楊健一</b><span>數位轉型顧問・次世代 SaaS 智慧選務系統</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/wang-junfu/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-2e8b0395.webp" alt="王俊甫"></div><div class="bz-t"><b>王俊甫</b><span>萬加 ONE+ 智能 AI 系統平台・AI 與數位轉型顧問</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/zhao-qixian-muse/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-084d941e.webp" alt="趙啟弦"></div><div class="bz-t"><b>趙啟弦</b><span>寫寫文字創作者・日更寫作與 Podcast《寫寫跟你說》</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/wu-juncheng-muse/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-91ab51cd.webp" alt="吳俊誠"></div><div class="bz-t"><b>吳俊誠</b><span>全美戲院經理・赤嵌朋派商圈發展協會創會理事長</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/wei-jianghuang-muse/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-3ac45788.webp" alt="魏江煌"></div><div class="bz-t"><b>魏江煌</b><span>駿聖國際車業・HOT 大聯盟・BNI 國產車業代表</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/richrd-tsai/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-da0790e8.webp" alt="蔡曜隆"></div><div class="bz-t"><b>蔡曜隆</b><span>總工程師・企業教練・《結繩領導學》作者</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/chen-jian-daming/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-8311f510.webp" alt="陳建大明"></div><div class="bz-t"><b>陳建大明</b><span>臺灣當代藝術家・策展人・無界學院發起人</span><i>看個人網頁 ↗</i></div></a></li><li><a class="bz" href="https://event.bymyway.com/curated/zhang-qiongwen/" target="_blank" rel="noopener"><div class="bz-ava"><img src="images/bz-ed9ca753.webp" alt="張瓊文"></div><div class="bz-t"><b>張瓊文</b><span>新唐人電視台《廚娘香Q秀》製作人・《美麗心台灣》企劃</span><i>看個人網頁 ↗</i></div></a></li></ul>
+    </div>
+
+    <div class="pane" id="ext">
+      <h3>外部產業資源連結</h3>
+      <p class="sub">第一步，我們先為校友打開這幾扇門。</p>
+      <ul class="ext" id="extList"></ul>
     </div>
 
     <div class="pane" id="board">
@@ -843,12 +785,12 @@ input,select,textarea{max-width:100%;min-width:0}
   </div>
 </section>
 
-<!-- ========== 第六章 會員招募 ========== -->
+<!-- ========== 第四章 會員招募 ========== -->
 <section class="ch mship" id="membership" aria-labelledby="h-mship">
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <p class="chap"><b>第五章</b>贊助會員・榮譽會員</p>
+        <p class="chap"><b>第四章</b>會員招募</p>
         <h2 id="h-mship">南應人的名字，<br>值得被看見。</h2>
         <p class="lead" style="margin-top:14px">校友會正式招募兩種會員——贊助會員，讓你的故事被聽見；榮譽會員，讓你的名字被記住。你的會費，會成為校友會辦講座、做專訪、維護平台的力量。</p>
       </div>
@@ -982,6 +924,77 @@ input,select,textarea{max-width:100%;min-width:0}
   </div>
 </section>
 
+<!-- ========== 第五章 記憶牆 ========== -->
+<section class="memory" id="memory" aria-labelledby="h-memory">
+  <div class="mem-hero dark">
+    <div class="wrap">
+      <p class="chap"><b>第五章</b>互動記憶牆</p>
+      <h2 id="h-memory">把你的南應，<br>貼回這面牆。</h2>
+      <p class="lead" style="margin-top:18px">那些年在南應之心、鳳凰樹與紅樓宿舍的日子——你，還記得嗎？一張照片、一段文字，就是一頁回不去的時光。</p>
+      <div class="mem-count" id="memCount" hidden><b id="memNum">0</b><span>則校友回憶已貼上牆</span></div>
+    </div>
+  </div>
+
+  <div class="board-wrap">
+    <div class="wrap mem-grid">
+      <form class="post" id="noteForm" novalidate>
+        <h3>寫下你的回憶</h3>
+        <label class="fld"><span>姓名／暱稱</span><input id="fName" maxlength="20" placeholder="例如：鳳凰花下的學姊" autocomplete="nickname"></label>
+        <label class="fld"><span>畢業年度</span>
+          <select id="fYear"><option>1960s</option><option>1970s</option><option>1980s</option><option>1990s</option><option selected>2000s</option><option>2010s</option><option>2020s</option><option>在校生</option></select></label>
+        <fieldset class="fld"><legend>卡片顏色（沒有照片時使用）</legend>
+          <div class="swatch">
+            <label><input type="radio" name="noteColor" value="yellow" id="cYellow" checked><span class="c-yellow" title="香檳"></span><span class="sr">香檳</span></label>
+            <label><input type="radio" name="noteColor" value="pink"><span class="c-pink" title="丁香"></span><span class="sr">丁香</span></label>
+            <label><input type="radio" name="noteColor" value="mint"><span class="c-mint" title="薰衣草"></span><span class="sr">薰衣草</span></label>
+          </div></fieldset>
+        <label class="fld"><span>回憶內容</span><textarea id="fText" maxlength="120" placeholder="旗袍課、紅樓宿舍、畢業展前一晚……"></textarea><div class="cnt"><span id="charCount">0</span> / 120</div></label>
+        <div class="fld"><span>上傳一張照片（選填）</span>
+          <div class="drop" id="fileDrop" role="button" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 8"/></svg>點這裡選擇照片<br>會自動壓縮成小圖</div>
+          <input type="file" id="fPhoto" accept="image/*" hidden>
+          <div class="preview" id="filePreview"><img id="fpImg" alt="照片預覽"><span id="fpMeta"></span><button type="button" id="fpRemove">移除</button></div>
+        </div>
+        <button class="btn btn-plum" type="submit" style="width:100%">貼進回憶相簿</button>
+        <p class="fine">送出後經校友會審核，通過就會出現在這面牆上，所有校友都看得到；也有機會出現在線上講座的直播回憶牆單元。</p>
+      </form>
+
+      <div>
+        <div class="wall-tools">
+          <div class="chips" role="group" aria-label="依年代篩選回憶" id="decChips" style="margin:0"></div>
+          <div class="sort" role="group" aria-label="排序">
+            <button type="button" class="chip" id="sortNew" aria-pressed="true">最新優先</button>
+            <button type="button" class="chip" id="sortHot" aria-pressed="false">最有感</button>
+          </div>
+        </div>
+        <div class="notes" id="notesGrid" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="talks-wrap dark" id="talks">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="chap"><b>線上講座</b>主題由大家決定</p>
+          <h2>你最想聽哪個主題？</h2>
+        </div>
+        <div class="ghost" aria-hidden="true">Talks</div>
+      </div>
+      <div class="talks" id="talkCards"></div>
+      <div class="wish">
+        <div><h3>沒有你想聽的？</h3><p style="margin:6px 0 0;font-size:20px;color:#d6c8e4">想聽什麼、想要什麼樣的講座，都可以寫在這裡，校友會會參考大家的願望來安排。</p></div>
+        <form id="wishForm">
+          <label><span class="sr">稱呼（選填）</span><input id="wishName" placeholder="稱呼（選填）" maxlength="20"></label>
+          <label><span class="sr">想聽的主題</span><textarea id="wishText" placeholder="我想聽……" maxlength="200"></textarea></label>
+          <input id="wishWebsite" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-gold" id="wishBtn" type="submit">送出願望</button>
+          <p class="out" id="wishOut" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ========== 第七章 加入 ========== -->
 <section class="ch join dark" id="join" aria-labelledby="h-join">
   <div class="wrap join-grid">
@@ -1046,7 +1059,7 @@ input,select,textarea{max-width:100%;min-width:0}
   <div class="wrap">
     <div><b style="font-family:var(--serif);color:#fff6e3;font-size:22px">台南應用科技大學校友會</b><br>© 2026 TUT Alumni Association</div>
     <nav aria-label="製作與友善連結">
-      <a href="https://event.bymyway.com/curated/tut-alumni-1213/" target="_blank" rel="noopener">會員大會暨聖誕餐會</a>
+      <a href="https://event.bymyway.com/curated/tut-alumni-1213/" target="_blank" rel="noopener">聖誕餐會</a>
       <a href="https://www.tava-ai.com/" target="_blank" rel="noopener">本網頁由 TAVA AI 製作</a>
       <a href="https://www.bymyway.com/" target="_blank" rel="noopener">出品人 大樹教練</a>
       <a href="https://event.bymyway.com/curated/rongtree/" target="_blank" rel="noopener">友善連結 榮樹下</a>
@@ -1419,7 +1432,7 @@ starNet($('.mem-hero'));starNet($('#vision'));starNet($('#join'));
 
 /* ⑲ 段落導覽圓點＋回到頂端 */
 (function(){
-  var secs=[['home','回家'],['corridor','時光走廊'],['pride','傑出校友'],['memory','記憶牆'],['vision','校友會理念'],['membership','會員招募'],['join','加入']];
+  var secs=[['home','回家'],['corridor','時光走廊'],['pride','傑出校友'],['vision','候選人理念'],['biz','人脈連結'],['membership','會員招募'],['memory','記憶牆'],['join','加入']];
   var nav=document.createElement('nav');nav.className='dots';nav.setAttribute('aria-label','段落導覽');
   nav.innerHTML=secs.map(function(s){return '<a href="#'+s[0]+'"><span>'+s[1]+'</span></a>'}).join('');document.body.appendChild(nav);
   var top=document.createElement('button');top.type='button';top.className='totop';top.textContent='↑ 回到頂端';document.body.appendChild(top);
