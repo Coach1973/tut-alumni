@@ -1247,12 +1247,12 @@ $('#extList').innerHTML=EXT_LINKS.map(function(x){return '<li><a href="'+esc(x[2
 var BOARD=['王佩茹','楊孟薰','陳佩君','謝念均','許山本美道子','劉曉琳','劉上維','邱鈺涵','林泓丞','曾智美','陳沛岺','潘皓瑋','何冠忻','林惠雯','彭韻錚','邱錦秀','顏妙青','金巧玲','陳孟珩','楊志芳','吳泰良','郭怡淳','孫熙閑'].map(function(n){return {name:n,title:'',bio:'',photo:'',links:[]}});
 var BUILD=(location.search.match(/[?&]build=([A-Za-z0-9]+)/)||[])[1]||'';
 function renderBoard(){
-  $('#boardSub').textContent=BUILD?'建置模式（只有您看得到）：每張卡的「編輯」可以上傳照片、補職稱和簡介。':'目前已有 '+BOARD.length+' 位理監事校友。名單上有您的名字？點「這是我，補簡介」，上傳照片、寫簡介就上架。';
+  $('#boardSub').textContent=BUILD?'建置模式（只有您看得到）：每張卡的「編輯」可以上傳照片、補職稱和簡介。':'目前已有 '+BOARD.length+' 位理監事校友候選人，名單建置中。每張卡都能點「編輯」直接補簡介、改字、加連結，不用登入。';
   $('#bdGrid').innerHTML=BOARD.map(function(p,i){
     var pic=p.photo?'<img src="'+esc(p.photo)+'" alt="'+esc(p.name)+'">':'<span class="bd-ph" aria-hidden="true">'+esc(p.name.charAt(0))+'</span>';
     var more=(p.bio||(p.links&&p.links.length))?'<button type="button" class="bd-btn" data-i="'+i+'">簡介</button>':'';
     var act='';
-    if(p.edit&&p.edit.indexOf('https://event.bymyway.com/tut/team/edit/')===0)act='<a class="bd-btn" href="'+esc(p.edit)+'" target="_blank" rel="noopener">編輯</a>';
+    if(p.edit&&p.edit.indexOf('https://event.bymyway.com/tut/team/edit/')===0)act='<a class="bd-btn" href="'+esc(p.edit)+'" target="_blank" rel="noopener">'+(p.filled?'編輯':'這是我，補簡介')+'</a>';
     else if(p.id&&!p.filled)act='<form class="bd-claim" method="post" action="https://event.bymyway.com/tut/team/claim/'+(+p.id)+'" target="_blank"><button type="submit" class="bd-btn">這是我，補簡介</button></form>';
     return '<li class="bd-card"><div class="bd-photo">'+pic+'</div><div class="bd-info"><h4>'+esc(p.name)+'</h4><div class="bd-title">'+esc(p.title||'理監事校友候選人')+'</div>'+more+act+'</div></li>';
   }).join('');
