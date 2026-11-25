@@ -349,6 +349,15 @@ a.bz:hover{transform:translateY(-4px);border-color:var(--violet);box-shadow:0 12
 .sws{display:flex;gap:10px}
 .sws button{width:40px;height:40px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1px var(--line);cursor:pointer}
 .sws button[aria-pressed=true]{box-shadow:0 0 0 3px var(--plum-700)}
+.spm{margin:0 0 72px}
+.spm-head{margin-bottom:28px}
+.spm .chap{flex-wrap:wrap;row-gap:6px}
+.spm .chap b{white-space:nowrap}
+.spm-head h3{font-family:var(--serif);font-size:36px;color:var(--plum-700);margin:6px 0 10px}
+.spm-sub{font-size:20px;color:var(--ink-2);margin:0;max-width:34em}
+.spm .bd-card{box-shadow:0 8px 22px rgba(82,48,120,.08)}
+.spm .bd-title b{display:block;color:var(--ink);font-weight:700}
+.spm-empty{font-size:20px;color:var(--ink-2);padding:28px;border:1px dashed var(--violet);border-radius:18px;background:#fff;text-align:center}
 .hall{background:var(--plum-900);border-radius:28px;padding:48px;color:#f3ead9;margin-bottom:96px;background-image:radial-gradient(500px 260px at 80% 0%,rgba(201,162,75,.18),transparent 70%)}
 .hall-top{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:28px}
 .hall-top h3{font-size:40px;color:#fff6e3}
@@ -852,6 +861,16 @@ input,select,textarea{max-width:100%;min-width:0}
       </div>
     </div>
 
+    <div class="spm" id="sponsorMembers">
+      <div class="spm-head">
+        <p class="chap"><b>贊助會員</b>Sponsor Members</p>
+        <h3>謝謝你們，讓校友會走得更遠。</h3>
+        <p class="spm-sub" id="spmSub">每一位贊助會員，都是校友會辦講座、做專訪、維護平台的力量。</p>
+      </div>
+      <ul class="bd-grid" id="spmGrid" aria-live="polite"></ul>
+      <p class="spm-empty" id="spmEmpty" hidden>贊助會員名單陸續上架中，歡迎成為第一批被看見的名字。</p>
+    </div>
+
     <div class="hall">
       <div class="hall-top">
         <div><div class="latin">Hall of Honor</div><h3>南應大校友會・榮譽會員榮譽欄</h3></div>
@@ -1273,6 +1292,16 @@ fetch(API+'/api/tut/team/pride',{cache:'no-store'}).then(function(r){return r.js
     var ln=(p.links||[]).map(function(l){return '<a class="more-sup" href="'+esc(l.url)+'" target="_blank" rel="noopener nofollow">'+esc(l.label)+' ↗</a>'}).join(' ');
     return '<li class="al"><div class="ph">'+pic+'</div><div class="bd"><div class="fd">校友自己登錄</div><h3>'+esc(p.name)+'</h3><p>'+esc(p.title)+'</p><p style="font-size:20px">'+esc((p.bio||'').slice(0,160))+'</p>'+ln+'</div></li>'}).join('');
 }).catch(function(){});
+/* 贊助會員：正本讀 /api/tut/team/sponsor（校友會後台或巴哈 SOP 新增，不開放自己填表） */
+fetch(API+'/api/tut/team/sponsor',{cache:'no-store'}).then(function(r){return r.json()}).then(function(d){
+  if(!Array.isArray(d))return;
+  d=d.filter(function(p){return p&&p.name});
+  $('#spmEmpty').hidden=d.length>0;
+  if(d.length)$('#spmSub').textContent='目前已有 '+d.length+' 位贊助會員。每一位，都是校友會辦講座、做專訪、維護平台的力量。';
+  $('#spmGrid').innerHTML=d.map(function(p){
+    var pic=p.photo&&/^https?:\/\//.test(p.photo)?'<img src="'+esc(p.photo)+'" alt="'+esc(p.name)+'" loading="lazy">':'<span class="bd-ph" aria-hidden="true">'+esc(Array.from(p.name)[0])+'</span>';
+    return '<li class="bd-card"><div class="bd-photo">'+pic+'</div><div class="bd-info"><h4>'+esc(p.name)+'</h4><div class="bd-title">'+(p.company?'<b>'+esc(p.company)+'</b>':'')+esc(p.role||'')+'</div></div></li>'}).join('');
+}).catch(function(){$('#spmEmpty').hidden=false});
 var bioOv=$('#bioOv'),bioBtn=null;
 function closeBio(){bioOv.classList.remove('open');bioBtn&&bioBtn.focus()}
 $('#bdGrid').addEventListener('click',function(e){var b=e.target.closest('button.bd-btn[data-i]');if(!b)return;var p=BOARD[+b.dataset.i];if(!p)return;bioBtn=b;
